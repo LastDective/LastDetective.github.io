@@ -1,0 +1,2423 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.6.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.6.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.6.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.6.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Bruce Liu个人站，主要涉及前端知识共享、实践教程、前沿技术共同学习等方面">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Bruce Liu&#39;s Blog">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
+<meta property="og:site_name" content="Bruce Liu&#39;s Blog">
+<meta property="og:description" content="Bruce Liu个人站，主要涉及前端知识共享、实践教程、前沿技术共同学习等方面">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Bruce Liu&#39;s Blog">
+<meta name="twitter:description" content="Bruce Liu个人站，主要涉及前端知识共享、实践教程、前沿技术共同学习等方面">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/page/2/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Bruce Liu's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Bruce Liu's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Stay Hungry, Stay Foolish</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/14/Java泛型/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bruce Liu">
+      <meta itemprop="description" content="Bruce Liu个人站，主要涉及前端知识共享、实践教程、前沿技术共同学习等方面">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bruce Liu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/03/14/Java泛型/" class="post-title-link" itemprop="http://yoursite.com/page/2/index.html">Java泛型</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-14 15:35:34" itemprop="dateCreated datePublished" datetime="2019-03-14T15:35:34+08:00">2019-03-14</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-09-14 00:22:44" itemprop="dateModified" datetime="2019-09-14T00:22:44+08:00">2019-09-14</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>泛型是从  Java 5 开始增加的对于数据类型的规范和检测机制，使用泛型有如下两个优点</p>
+<ol>
+<li>可以有效地避免 <code>ClassCastException</code> ，在编译期就可以使用泛型发现类型转换错误，或者类型不匹配</li>
+<li>避免强类型转换     </li>
+</ol>
+<h2 id="一、泛型引入"><a href="#一、泛型引入" class="headerlink" title="一、泛型引入"></a>一、泛型引入</h2><p>请看下面的例子</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ShowExample</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        List list = <span class="keyword">new</span> ArrayList();</span><br><span class="line">        <span class="comment">// 往 list 中添加一个 String</span></span><br><span class="line">        list.add(<span class="string">"这是一个String"</span>);</span><br><span class="line">        <span class="comment">// 往 list 中添加一个 整形 </span></span><br><span class="line">        list.add(<span class="number">123</span>);</span><br><span class="line">        printSomeThing(list);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">printSomeThing</span><span class="params">(List list)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; list.size(); i++) &#123;</span><br><span class="line">            <span class="comment">// 进行类型转换</span></span><br><span class="line">            String temp = (String) list.get(i);</span><br><span class="line">            System.out.println(temp);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">这是一个String</span><br><span class="line">Exception <span class="keyword">in</span> thread <span class="string">"main"</span> java.lang.ClassCastException: java.lang.Integer cannot be cast to java.lang.String</span><br></pre></td></tr></table></figure>
+<p>第一行被正确打印，但是第二行的整形却在进行强制类型转换的时候失败了，这个如果发生在程序运行期间，会给整个项目带来安全问题。所以，如果能在编译期间就发现这个问题，会对程序的健壮性有很大的提高。</p>
+<p>泛型使用一对尖括号来设置变量的类型，多用在集合框架中。比如，如下代码定义了一个只能存放 <code>String</code> 类型数据的 <code>List</code> 。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; stringList = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br></pre></td></tr></table></figure>
+<h2 id="二、泛型类"><a href="#二、泛型类" class="headerlink" title="二、泛型类"></a>二、泛型类</h2><p><strong>当类中要操作的引用数据类型不确定时，就需要使用泛型。</strong></p>
+<h3 id="JDK-1-5-之前使用-Object-来完成扩展"><a href="#JDK-1-5-之前使用-Object-来完成扩展" class="headerlink" title="JDK 1.5 之前使用 Object 来完成扩展"></a>JDK 1.5 之前使用 Object 来完成扩展</h3><p>现在我们需要定义一个工具类用来设置和获取属性值，在没有泛型之前，可以通过下面的方法实现</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GenericClassDemo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        ToolOld toolOld = <span class="keyword">new</span> ToolOld();</span><br><span class="line">        <span class="comment">// 通过 Object 暂存数据</span></span><br><span class="line">        toolOld.setObject(<span class="keyword">new</span> Cat());</span><br><span class="line">        <span class="comment">// 将数据强制装换回原来的类型</span></span><br><span class="line">        Cat cat = (Cat) toolOld.getObject();</span><br><span class="line">        <span class="comment">// 如果强制准换的类型于原来的类型不一致，就会出现类型转换错误</span></span><br><span class="line">        <span class="comment">// ClassCastException</span></span><br><span class="line">        <span class="comment">// Dog dog = (Dog) toolOld.getObject();</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span> </span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span> </span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 此方法可以用来暂存和获取一个对象</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ToolOld</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Object object;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">getObject</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> object;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setObject</span><span class="params">(Object object)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.object = object;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果没有报错，因为 <code>Object</code> 是所有类的父类，上面的 <code>ToolOld</code> 通过 <code>object</code> 属性暂存数据，当需要获取数据时再通过强制转换，转换成原来的类型。</p>
+<h3 id="定义泛型类"><a href="#定义泛型类" class="headerlink" title="定义泛型类"></a>定义泛型类</h3><p>泛型类的定义方法如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ClassName</span>&lt;泛型标识符&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> 泛型标识符 属性名称;</span><br><span class="line">    <span class="comment">// 定义一个参数类型是指定泛型的方法</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">testMethod</span><span class="params">(T t)</span> </span>&#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="使用泛型类"><a href="#使用泛型类" class="headerlink" title="使用泛型类"></a>使用泛型类</h3><p>上面 <code>Object</code> 的方法可以使用泛型来代替。下面定义了一个泛型类 <code>ToolGeneric</code>，每次创建对象时可以传入类型，在调用 <code>set</code> 方法时，如果类型不匹配，则编译不会通过。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GenericClassDemo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 这里指定了类中只能传入 toolGeneric 类型</span></span><br><span class="line">        ToolGeneric&lt;Cat&gt; toolGeneric = <span class="keyword">new</span> ToolGeneric&lt;Cat&gt;();</span><br><span class="line">        <span class="comment">// 如果传入 new Dog() 就会报错</span></span><br><span class="line">        toolGeneric.setT(<span class="keyword">new</span> Cat());</span><br><span class="line">        Cat cat = toolGeneric.getT();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 泛型类 传入的类型用T来标记</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ToolGeneric</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> T t;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">getT</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> t;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 调用set 函数时传入的参数类型必须与创建对象时泛型的类型相同</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setT</span><span class="params">(T t)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.t = t;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>另一个泛型类的例子</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GenericClassShowCase</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        PrintTool&lt;String&gt; printToolStr = <span class="keyword">new</span> PrintTool&lt;String&gt;();</span><br><span class="line">        printToolStr.printSomeThing(<span class="string">"你好"</span>);</span><br><span class="line">        <span class="comment">// 因为已经指定 printToolStr 传入的类型为 String 下面的语句不能通过编译</span></span><br><span class="line">       <span class="comment">// printToolStr.printSomeThing(12312);</span></span><br><span class="line"></span><br><span class="line">        PrintTool&lt;Integer&gt; printToolInt = <span class="keyword">new</span> PrintTool&lt;Integer&gt;();</span><br><span class="line">        printToolInt.printSomeThing(<span class="number">3123412</span>);</span><br><span class="line">        <span class="comment">// 因为已经指定 printToolStr 传入的类型为 Integer 下面的语句不能通过编译</span></span><br><span class="line">       <span class="comment">// printToolInt.printSomeThing("你好");</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PrintTool</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">printSomeThing</span><span class="params">(T t)</span> </span>&#123;</span><br><span class="line">        System.out.println(t);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 需要注意的是 静态方法不能引用上面的泛型 T，</span></span><br><span class="line">    <span class="comment">// 但是可以定义泛型静态方法</span></span><br><span class="line">    <span class="comment">// 'PrintTool.this' cannot be referenced from a static context</span></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    public static void showIt(T t) &#123;</span></span><br><span class="line"><span class="comment">        System.out.println(t);</span></span><br><span class="line"><span class="comment">    &#125;*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果 ：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">你好</span><br><span class="line">3123412</span><br></pre></td></tr></table></figure>
+<p>上面的泛型类通过每次指定不同的类型，可以打印不同的数据类型。但是每打印一个新的数据类型都需要运行 <code>PrintTool&lt;XXX&gt; printTool = new PrintTool&lt;XXX&gt;()</code> 来创建新的类，这样也不方便，所以有必要使用<strong>泛型方法</strong>。</p>
+<h3 id="泛型方法"><a href="#泛型方法" class="headerlink" title="泛型方法"></a>泛型方法</h3><p>泛型方法定义时需要将一对尖括号包裹的泛型类型写在函数的返回值之前。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public &lt;T&gt; void getName(T t) &#123;</span><br><span class="line">    // TODO</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>下面是一个泛型方法的例子</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GenericMethodShow</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        GenericMethod&lt;String&gt; stringGenericMethod = <span class="keyword">new</span> GenericMethod&lt;String&gt;();</span><br><span class="line">        stringGenericMethod.show(<span class="string">"你好"</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 编译不通过，应为 show 方法使用的是类传来的参数类型，</span></span><br><span class="line">        <span class="comment">// 所以在本例中只能打印 String 类型的数据</span></span><br><span class="line">        <span class="comment">// stringGenericMethod.show(13123);</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// show 方法的参数类型在调用时通过传入的参数确定，</span></span><br><span class="line">        <span class="comment">// 所以两种类型都可以打印</span></span><br><span class="line">        stringGenericMethod.print(<span class="string">"你好"</span>);</span><br><span class="line">        stringGenericMethod.print(<span class="number">123124</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 调用静态泛型方法</span></span><br><span class="line">        GenericMethod.showStatic(<span class="string">"static"</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GenericMethod</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="comment">// 这是一个普通的方法，只是参数的类型是泛型</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">(T t)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"show: "</span> + t);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 这是一个泛型方法,这里泛型使用的是 T2，而不是类中的T</span></span><br><span class="line">    <span class="keyword">public</span> &lt;T2&gt; <span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(T2 t)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"print: "</span> + t);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 静态方法可以定义泛型函数，可以使用用户调用时传入的参数的类型 T3</span></span><br><span class="line">    <span class="comment">// 但是无法使用本类的泛型 T</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> &lt;T3&gt; <span class="function"><span class="keyword">void</span> <span class="title">showStatic</span><span class="params">(T3 t3)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"static: "</span> + t3);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">show: 你好</span><br><span class="line"><span class="built_in">print</span>: 你好</span><br><span class="line"><span class="built_in">print</span>: 123124</span><br><span class="line">static: static</span><br></pre></td></tr></table></figure>
+<h2 id="泛型接口"><a href="#泛型接口" class="headerlink" title="泛型接口"></a>泛型接口</h2><p>泛型接口的定义方式为</p>
+<figure class="highlight plain"><figcaption><span>IterName<t>&#123;</t></span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">interface IterName&lt;T&gt;&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>泛型接口使用时可以在<strong>泛型类的定义时传入泛型的类型</strong>，也可以在<strong>调用方法时通过参数来确定泛型的类型</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GenericInterfaceShow</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        ShowInterImpl1 showInterImpl1 = <span class="keyword">new</span> ShowInterImpl1();</span><br><span class="line">        showInterImpl1.show(<span class="string">"哈哈"</span>);</span><br><span class="line">        <span class="comment">// 编译不通过</span></span><br><span class="line">        <span class="comment">//showInterImpl1.show(123);</span></span><br><span class="line"></span><br><span class="line">        ShowInterImpl2 showInterImpl2 = <span class="keyword">new</span> ShowInterImpl2();</span><br><span class="line">        <span class="comment">// 在调用时确定参数类型</span></span><br><span class="line">        showInterImpl2.show(<span class="string">"哈哈2"</span>);</span><br><span class="line">        showInterImpl2.show(<span class="number">1234</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义一个泛型接口</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">ShowInter</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">show</span><span class="params">(T t)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在定义接口类时传入泛型</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ShowInterImpl1</span> <span class="keyword">implements</span> <span class="title">ShowInter</span>&lt;<span class="title">String</span>&gt; </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="comment">// 这里的参数类型必须写 String</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        System.out.println(s);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在调用时定义参数类型</span></span><br><span class="line"><span class="comment">// 方法定义时必须在类名和接口名后都加入泛型</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ShowInterImpl2</span>&lt;<span class="title">T</span>&gt; <span class="keyword">implements</span> <span class="title">ShowInter</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">(T t)</span> </span>&#123;</span><br><span class="line">        System.out.println(t);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">哈哈</span><br><span class="line">哈哈<span class="number">2</span></span><br><span class="line"><span class="number">1234</span></span><br></pre></td></tr></table></figure>
+<h2 id="泛型限定"><a href="#泛型限定" class="headerlink" title="泛型限定"></a>泛型限定</h2><p>当不知道数据类型时，可以用 <code>?</code> 作为通配符</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GenericExtends</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        ArrayList&lt;Person&gt; personList = <span class="keyword">new</span> ArrayList&lt;Person&gt;();</span><br><span class="line">        personList.add(<span class="keyword">new</span> Person(<span class="string">"aaa"</span>));</span><br><span class="line">        personList.add(<span class="keyword">new</span> Person(<span class="string">"bbb"</span>));</span><br><span class="line">        personList.add(<span class="keyword">new</span> Person(<span class="string">"ccc"</span>));</span><br><span class="line"></span><br><span class="line">        ArrayList&lt;Student&gt; studentList = <span class="keyword">new</span> ArrayList&lt;Student&gt;();</span><br><span class="line">        personList.add(<span class="keyword">new</span> Person(<span class="string">"aaa1"</span>));</span><br><span class="line">        personList.add(<span class="keyword">new</span> Person(<span class="string">"bbb2"</span>));</span><br><span class="line">        personList.add(<span class="keyword">new</span> Person(<span class="string">"ccc3"</span>));</span><br><span class="line"></span><br><span class="line">      <span class="comment">//  printData(personList);</span></span><br><span class="line">      <span class="comment">//  printData(studentList);</span></span><br><span class="line"></span><br><span class="line">        ArrayList&lt;String&gt; strings = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">        strings.add(<span class="string">"a"</span>);</span><br><span class="line">        strings.add(<span class="string">"b"</span>);</span><br><span class="line">        strings.add(<span class="string">"c"</span>);</span><br><span class="line"></span><br><span class="line">        ArrayList&lt;Integer&gt; integers  = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">        integers.add(<span class="number">1</span>);</span><br><span class="line">        integers.add(<span class="number">2</span>);</span><br><span class="line">        integers.add(<span class="number">3</span>);</span><br><span class="line">        printData(strings);</span><br><span class="line">        printData(integers);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用 ? 作为限定符</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">printData</span><span class="params">(ArrayList&lt;?&gt; dataList)</span> </span>&#123;</span><br><span class="line">        Iterator&lt;?&gt; iterator = dataList.iterator();</span><br><span class="line">        <span class="keyword">while</span> (iterator.hasNext()) &#123;</span><br><span class="line">            System.out.println(iterator.next());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 这里也可以使用T, 这种写法与 printData 的差别不大，区别在于可以通过 t 对变量进行操作</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function"><span class="keyword">void</span> <span class="title">printData2</span><span class="params">(ArrayList&lt;T&gt; dataList)</span> </span>&#123;</span><br><span class="line">        Iterator&lt;T&gt; iterator = dataList.iterator();</span><br><span class="line">        <span class="keyword">while</span> (iterator.hasNext()) &#123;</span><br><span class="line">            T t = iterator.next();</span><br><span class="line">            System.out.println(t);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a</span><br><span class="line">b</span><br><span class="line">c</span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
+<p>可以看出：使用 <code>?</code> 可以匹配不同类型的数据</p>
+<p> 这个例子说明 <strong>子父类之间的泛型不能通过多态调用</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 泛型限定</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GenericExtends</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        ArrayList&lt;Person&gt; personList = <span class="keyword">new</span> ArrayList&lt;Person&gt;();</span><br><span class="line">        personList.add(<span class="keyword">new</span> Person(<span class="string">"aaa"</span>));</span><br><span class="line">        personList.add(<span class="keyword">new</span> Person(<span class="string">"bbb"</span>));</span><br><span class="line">        personList.add(<span class="keyword">new</span> Person(<span class="string">"ccc"</span>));</span><br><span class="line"></span><br><span class="line">        ArrayList&lt;Student&gt; studentList = <span class="keyword">new</span> ArrayList&lt;Student&gt;();</span><br><span class="line">        studentList.add(<span class="keyword">new</span> Student(<span class="string">"aaa1"</span>));</span><br><span class="line">        studentList.add(<span class="keyword">new</span> Student(<span class="string">"bbb2"</span>));</span><br><span class="line">        studentList.add(<span class="keyword">new</span> Student(<span class="string">"ccc3"</span>));</span><br><span class="line">        printPerson(personList);</span><br><span class="line">        <span class="comment">// 下面的代码编译不通过</span></span><br><span class="line">        <span class="comment">// 说明 ArrayList&lt;Person&gt; peopleList = new       ArrayList&lt;Student&gt;();是不成立的</span></span><br><span class="line">        <span class="comment">// 同样 ArrayList&lt;Student&gt; peopleList = new       ArrayList&lt;Person&gt;(); 也是不成立的</span></span><br><span class="line">       <span class="comment">// printPerson(studentList);</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">printPerson</span><span class="params">(ArrayList&lt;Person&gt; personList)</span> </span>&#123;</span><br><span class="line">        Iterator&lt;Person&gt; iterator = personList.iterator();</span><br><span class="line">        <span class="keyword">while</span> (iterator.hasNext()) &#123;</span><br><span class="line">            System.out.println(iterator.next().getName());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span> <span class="keyword">extends</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Student</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>现在我们确实需要使用 <code>printPerson</code> 方法来打印 <code>studentList</code> ，将 <code>printPerson</code> 申明为<strong>泛型方法</strong>是一个途径：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function"><span class="keyword">void</span> <span class="title">printPerson</span><span class="params">(ArrayList&lt;T&gt; personList)</span> </span>&#123;</span><br><span class="line">        Iterator&lt;T&gt; iterator = personList.iterator();</span><br><span class="line">        <span class="keyword">while</span> (iterator.hasNext()) &#123;</span><br><span class="line"></span><br><span class="line">            System.out.println(((Person) iterator.next()).getName());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>或者使用 <code>？</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">printPerson</span><span class="params">(ArrayList&lt;?&gt; personList)</span> </span>&#123;</span><br><span class="line">        Iterator&lt;?&gt; iterator = personList.iterator();</span><br><span class="line">        <span class="keyword">while</span> (iterator.hasNext()) &#123;</span><br><span class="line">            System.out.println(((Person) iterator.next()).getName());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>但是这两种方法都有局限性：无论 <code>personList</code> 中存储的是什么类型的数据都可以传入。这就存在了风险：就上面的例子来说，如果 <code>personList</code> 里边存储的不是 <code>Person</code> 类（或者子类），就会造成类型转换异常。为了解决这个问题，引入了类型限定。</p>
+<p>使用 <code>&lt;? extends Person&gt;</code> 来限定 <code>personList</code> 只能存储 <strong><code>Person</code> 类或者其子类型</strong>。</p>
+<p>下面是一个类型限定的例子</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">printPersonExtend</span><span class="params">(ArrayList&lt;? extends Person&gt; personList)</span> </span>&#123;</span><br><span class="line">    Iterator&lt;? extends Person&gt; iterator = personList.iterator();</span><br><span class="line">    <span class="keyword">while</span>(iterator.hasNext()) &#123;</span><br><span class="line">        System.out.println(iterator.next().getName());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>增加一个汽车类 <code>Car</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Car</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String brandName;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Car</span><span class="params">(String brandName)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.brandName = brandName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getBrandName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> brandName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setBrandName</span><span class="params">(String brandName)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.brandName = brandName;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>调用打印方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">public class GenericExtends &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        ArrayList&lt;Person&gt; personList = new ArrayList&lt;Person&gt;();</span><br><span class="line">        personList.add(new Person(&quot;aaa&quot;));</span><br><span class="line">        personList.add(new Person(&quot;bbb&quot;));</span><br><span class="line">        personList.add(new Person(&quot;ccc&quot;));</span><br><span class="line"></span><br><span class="line">        ArrayList&lt;Student&gt; studentList = new ArrayList&lt;Student&gt;();</span><br><span class="line">        studentList.add(new Student(&quot;aaa1&quot;));</span><br><span class="line">        studentList.add(new Student(&quot;bbb2&quot;));</span><br><span class="line">        studentList.add(new Student(&quot;ccc3&quot;));</span><br><span class="line">        // 打印 Person</span><br><span class="line">        printPersonExtend(personList);</span><br><span class="line">        // 因为 Stduent 是 Person 的子类，所以也可以打印</span><br><span class="line">        printPersonExtend(studentList);</span><br><span class="line">        </span><br><span class="line"></span><br><span class="line">        ArrayList&lt;Car&gt; carList = new ArrayList&lt;Car&gt;();</span><br><span class="line">        carList.add(new Car(&quot;Benz&quot;));</span><br><span class="line">        carList.add(new Car(&quot;BMW&quot;));</span><br><span class="line">        carList.add(new Car(&quot;Porsche&quot;));</span><br><span class="line">        // 编译失败，因为 Car 类和 Person 类没有任何关系</span><br><span class="line">        // printPersonExtend(carList);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void printPersonExtend(ArrayList&lt;? extends Person&gt; personList) &#123;</span><br><span class="line">        Iterator&lt;? extends Person&gt; iterator = personList.iterator();</span><br><span class="line">        while (iterator.hasNext()) &#123;</span><br><span class="line">            System.out.println(iterator.next().getName());</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>与此同时，使用 <code>&lt;? super Student&gt;</code> 限定只能传入 <code>Student</code> 类及其父类，<code>TreeSet</code> 的一个构造方法就使用如下的限定符：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">TreeSet</span><span class="params">(Comparator&lt;? <span class="keyword">super</span> E&gt; comparator)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">this</span>(<span class="keyword">new</span> TreeMap&lt;E,Object&gt;(comparator));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>下面是一个使用 <code>&lt;? super E&gt;</code> 的例子:</p>
+<p>定义一个 <code>Worker</code> 类，它同时也是 <code>Person</code> 的子类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Worker</span> <span class="keyword">extends</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Worker</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>现在我们用 <code>TreeSet</code> 分别存储 学生 和 工人，并将它们倒序输出</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GenericSuper</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 创建 studentTreeSet 并用 StudentComparator 指定比较的方法</span></span><br><span class="line">        TreeSet&lt;Student&gt; studentTreeSet = <span class="keyword">new</span> TreeSet&lt;Student&gt;(<span class="keyword">new</span> StudentComparator());</span><br><span class="line">        studentTreeSet.add(<span class="keyword">new</span> Student(<span class="string">"s--001"</span>));</span><br><span class="line">        studentTreeSet.add(<span class="keyword">new</span> Student(<span class="string">"s--002"</span>));</span><br><span class="line">        studentTreeSet.add(<span class="keyword">new</span> Student(<span class="string">"s--003"</span>));</span><br><span class="line">        Iterator&lt;Student&gt; studentIterator = studentTreeSet.iterator();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (studentIterator.hasNext()) &#123;</span><br><span class="line">            System.out.println(studentIterator.next().getName());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 创建 studentTreeSet 并用 WorkerComparator 指定比较的方法</span></span><br><span class="line">        TreeSet&lt;Worker&gt; workerTreeSet = <span class="keyword">new</span> TreeSet&lt;Worker&gt;(<span class="keyword">new</span> WorkerComparator());</span><br><span class="line">        workerTreeSet.add(<span class="keyword">new</span> Worker(<span class="string">"w--001"</span>));</span><br><span class="line">        workerTreeSet.add(<span class="keyword">new</span> Worker(<span class="string">"w--002"</span>));</span><br><span class="line">        workerTreeSet.add(<span class="keyword">new</span> Worker(<span class="string">"w--003"</span>));</span><br><span class="line"></span><br><span class="line">        Iterator&lt;Worker&gt; workerIterator = workerTreeSet.iterator();</span><br><span class="line">        <span class="keyword">while</span> (workerIterator.hasNext()) &#123;</span><br><span class="line">            System.out.println(workerIterator.next().getName());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 用来比较 Student 对象</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">StudentComparator</span> <span class="keyword">implements</span> <span class="title">Comparator</span>&lt;<span class="title">Student</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Student s1, Student s2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> s2.getName().compareTo(s1.getName());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 用来比较 Worker 对象</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">WorkerComparator</span> <span class="keyword">implements</span> <span class="title">Comparator</span>&lt;<span class="title">Worker</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Worker w1, Worker w2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> w2.getName().compareTo(w1.getName());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出结果如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">s--003</span><br><span class="line">s--002</span><br><span class="line">s--001</span><br><span class="line">w--003</span><br><span class="line">w--002</span><br><span class="line">w--001</span><br></pre></td></tr></table></figure>
+<p>上面两种不同的对象比较，使用了不同的比较器，是否可以将其合并成一个呢？</p>
+<p>查看源码 <code>TreeSet</code> 当前的构造函数如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">TreeSet</span><span class="params">(Comparator&lt;? <span class="keyword">super</span> E&gt; comparator)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">this</span>(<span class="keyword">new</span> TreeMap&lt;E,Object&gt;(comparator));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个源码说明比较器参数可以<strong>传入 <code>E</code> 类型，或者 <code>E</code> 类型的 父类型</strong></p>
+<p>现在重写一个通用的比较器</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这里指定了类型时 Student 和 Worker 的共同父类 Person </span></span><br><span class="line"><span class="comment">// 所以，当传入 Student 或者 Worker 时，比较器都是可以使用的 </span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AllPersonComp</span> <span class="keyword">implements</span> <span class="title">Comparator</span>&lt;<span class="title">Person</span>&gt; </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Person s1, Person s2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> s2.getName().compareTo(s1.getName())</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在定义 <code>TreeSet</code> 时传入上面的比较器</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GenericSuper</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 构造函数中传入的泛型是Student，后面的参数就可以传入以Student的父类作为泛型的比较器</span></span><br><span class="line">        TreeSet&lt;Student&gt; studentTreeSet = <span class="keyword">new</span> TreeSet&lt;Student&gt;(<span class="keyword">new</span> AllPersonComp());</span><br><span class="line">        studentTreeSet.add(<span class="keyword">new</span> Student(<span class="string">"s--001"</span>));</span><br><span class="line">        studentTreeSet.add(<span class="keyword">new</span> Student(<span class="string">"s--002"</span>));</span><br><span class="line">        studentTreeSet.add(<span class="keyword">new</span> Student(<span class="string">"s--003"</span>));</span><br><span class="line">        Iterator&lt;Student&gt; studentIterator = studentTreeSet.iterator();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (studentIterator.hasNext()) &#123;</span><br><span class="line">            System.out.println(studentIterator.next().getName());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 构造函数中传入的泛型是Worker，后面的参数就可以传入以Worker的父类作为泛型的比较器</span></span><br><span class="line">        TreeSet&lt;Worker&gt; workerTreeSet = <span class="keyword">new</span> TreeSet&lt;Worker&gt;(<span class="keyword">new</span> AllPersonComp());</span><br><span class="line">        workerTreeSet.add(<span class="keyword">new</span> Worker(<span class="string">"w--001"</span>));</span><br><span class="line">        workerTreeSet.add(<span class="keyword">new</span> Worker(<span class="string">"w--002"</span>));</span><br><span class="line">        workerTreeSet.add(<span class="keyword">new</span> Worker(<span class="string">"w--003"</span>));</span><br><span class="line"></span><br><span class="line">        Iterator&lt;Worker&gt; workerIterator = workerTreeSet.iterator();</span><br><span class="line">        <span class="keyword">while</span> (workerIterator.hasNext()) &#123;</span><br><span class="line">            System.out.println(workerIterator.next().getName());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果与上面相同</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/11/mysql问题/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bruce Liu">
+      <meta itemprop="description" content="Bruce Liu个人站，主要涉及前端知识共享、实践教程、前沿技术共同学习等方面">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bruce Liu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/03/11/mysql问题/" class="post-title-link" itemprop="http://yoursite.com/page/2/index.html">mysql问题</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-11 11:42:02" itemprop="dateCreated datePublished" datetime="2019-03-11T11:42:02+08:00">2019-03-11</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-09-14 00:22:44" itemprop="dateModified" datetime="2019-09-14T00:22:44+08:00">2019-09-14</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li><p>提示时区错误</p>
+<p>具体报错如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">The server time zone value &apos;ÖÐ¹ú±ê×¼Ê±¼ä&apos; is unrecognized or represents more than one time zone</span><br></pre></td></tr></table></figure>
+<p>有两种解决方法</p>
+<p>a. 在数据库路径的后面增加时区配置选项</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">url: jdbc:mysql://localhost:3306/sell?characterEncoding=utf-8&amp;useSSL=<span class="literal">false</span>&amp;serverTimezone=GMT%2B8</span><br></pre></td></tr></table></figure>
+<p>b. 增加全局配置的选项</p>
+<p>使用下面的语句查看当前的时区配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SHOW VARIABLES LIKE <span class="string">'%time_zone%'</span></span><br></pre></td></tr></table></figure>
+<p>输出结果如下</p>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Variable_name</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">system_time_zone</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">time_zone</td>
+<td>SYSTEM</td>
+</tr>
+</tbody>
+</table>
+<p>   将时区设置为 <code>+8</code> 区</p>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SET GLOBAL time_zone = &apos;+8:00&apos;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/20/git远程分支/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bruce Liu">
+      <meta itemprop="description" content="Bruce Liu个人站，主要涉及前端知识共享、实践教程、前沿技术共同学习等方面">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bruce Liu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/02/20/git远程分支/" class="post-title-link" itemprop="http://yoursite.com/page/2/index.html">git远程分支</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-02-20 19:55:22" itemprop="dateCreated datePublished" datetime="2019-02-20T19:55:22+08:00">2019-02-20</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-09-14 00:22:44" itemprop="dateModified" datetime="2019-09-14T00:22:44+08:00">2019-09-14</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="推送"><a href="#推送" class="headerlink" title="推送"></a>推送</h2><p>当你想要公开分享一个分支时，需要将其推送到有写入权限的远程仓库上。 本地的分支并不会自动与远程仓库同步 - 你必须显式地推送想要分享的分支。 这样，你就可以把不愿意分享的内容放到私人分支上，而将需要和别人协作的内容推送到公开分支。</p>
+<p>如果希望和别人一起在名为 serverfix 的分支上工作，你可以像推送第一个分支那样推送它。 运行 git push (remote) (branch):</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin serverfix</span><br><span class="line">Counting objects: 24, <span class="keyword">done</span>.</span><br><span class="line">Delta compression using up to 8 threads.</span><br><span class="line">Compressing objects: 100% (15/15), <span class="keyword">done</span>.</span><br><span class="line">Writing objects: 100% (24/24), 1.91 KiB | 0 bytes/s, <span class="keyword">done</span>.</span><br><span class="line">Total 24 (delta 2), reused 0 (delta 0)</span><br><span class="line">To https://github.com/schacon/simplegit</span><br><span class="line"> * [new branch]      serverfix -&gt; serverfix</span><br></pre></td></tr></table></figure>
+<p>这里有些工作被简化了。 Git 自动将 serverfix 分支名字展开为 refs/heads/serverfix:refs/heads/serverfix，那意味着，“推送本地的 serverfix 分支来更新远程仓库上的 serverfix 分支。” 我们将会详细学习 Git 内部原理 的 refs/heads/ 部分，但是现在可以先把它放在儿。 你也可以运行 git push origin serverfix:serverfix，它会做同样的事 - 相当于它说，“推送本地的 serverfix 分支，将其作为远程仓库的 serverfix 分支” 可以通过这种格式来推送本地分支到一个命名不相同的远程分支。 如果并不想让远程仓库上的分支叫做 serverfix，可以运行 git push origin serverfix:awesomebranch 来将本地的 serverfix 分支推送到远程仓库上的 awesomebranch 分支。</p>
+<p>下一次其他协作者从服务器上抓取数据时，他们会在本地生成一个远程分支 origin/serverfix，指向服务器的 serverfix 分支的引用：</p>
+<p>需要特别注意的是 可以通过 git push origin serverfix:awsomeserverfix 命令，将本地的 serverfix 分支的内容，推送到远程awsomeserverfix 分支上。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ git fetch origin</span><br><span class="line">remote: Counting objects: 7, <span class="keyword">done</span>.</span><br><span class="line">remote: Compressing objects: 100% (2/2), <span class="keyword">done</span>.</span><br><span class="line">remote: Total 3 (delta 0), reused 3 (delta 0)</span><br><span class="line">Unpacking objects: 100% (3/3), <span class="keyword">done</span>.</span><br><span class="line">From https://github.com/schacon/simplegit</span><br><span class="line"> * [new branch]      serverfix    -&gt; origin/serverfix</span><br></pre></td></tr></table></figure>
+<p>要特别注意的一点是当抓取到新的远程跟踪分支时，本地不会自动生成一份可编辑的副本（拷贝）。 换一句话说，这种情况下，不会有一个新的 serverfix 分支 - 只有一个不可以修改的 origin/serverfix 指针。</p>
+<p>可以运行 git merge origin/serverfix 将这些工作合并到当前所在的分支。 如果想要在自己的 serverfix 分支上工作，可以将其建立在远程跟踪分支之上：</p>
+<p>$ git checkout -b serverfix origin/serverfix<br>Branch serverfix set up to track remote branch serverfix from origin.<br>Switched to a new branch ‘serverfix’<br>这会给你一个用于工作的本地分支，并且起点位于 origin/serverfix。</p>
+<h2 id="拉取"><a href="#拉取" class="headerlink" title="拉取"></a>拉取</h2><p>当 <code>git fetch</code> 命令从服务器上抓取本地没有的数据时，它并不会修改工作目录中的内容。 它只会获取数据然后让你自己合并。 然而，有一个命令叫作 <code>git pull</code> 在大多数情况下它的含义是一个 <code>git fetch</code> 紧接着一个 <code>git merge</code> 命令。 如果有一个像之前章节中演示的设置好的跟踪分支，不管它是显式地设置还是通过 <code>clone</code> 或 <code>checkout</code> 命令为你创建的，<code>git pull</code> 都会查找当前分支所跟踪的服务器与分支，从服务器上抓取数据然后尝试合并入那个远程分支。</p>
+<p>由于 git pull 的魔法经常令人困惑所以通常单独显式地使用 fetch 与 merge 命令会更好一些。</p>
+<h2 id="删除远程分支"><a href="#删除远程分支" class="headerlink" title="删除远程分支"></a>删除远程分支</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin --delete serverfix</span><br></pre></td></tr></table></figure>
+<p>删除远程仓库的 serverfix 分支</p>
+<h2 id="默认跟踪分支"><a href="#默认跟踪分支" class="headerlink" title="默认跟踪分支"></a>默认跟踪分支</h2><p>下面的命令将本地的 <code>ccc</code> 分支与远程仓库 <code>origin</code> 的 <code>nihao</code> 分支建立跟踪关系</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch --set-upstream-to=origin/nihao ccc</span><br></pre></td></tr></table></figure>
+<p>如果不指定后面的 <code>ccc</code> 分支，则将当前所在分支与 <code>origin/nihao</code> 建立跟踪关系</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/01/tomcat配置虚拟目录/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bruce Liu">
+      <meta itemprop="description" content="Bruce Liu个人站，主要涉及前端知识共享、实践教程、前沿技术共同学习等方面">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bruce Liu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/02/01/tomcat配置虚拟目录/" class="post-title-link" itemprop="http://yoursite.com/page/2/index.html">tomcat配置虚拟目录</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-02-01 16:20:09" itemprop="dateCreated datePublished" datetime="2019-02-01T16:20:09+08:00">2019-02-01</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-09-14 00:22:44" itemprop="dateModified" datetime="2019-09-14T00:22:44+08:00">2019-09-14</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>项目中的文件我们经常会存储在其他的文件夹，而不是数据库，而 tomcat 服务器可以将 文件的相对路径映射为文件的绝对路径</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/31/javascript的apply和call方法，以及构造函数/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bruce Liu">
+      <meta itemprop="description" content="Bruce Liu个人站，主要涉及前端知识共享、实践教程、前沿技术共同学习等方面">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bruce Liu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/01/31/javascript的apply和call方法，以及构造函数/" class="post-title-link" itemprop="http://yoursite.com/page/2/index.html">javascript的apply和call方法，以及构造函数</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-01-31 15:42:59" itemprop="dateCreated datePublished" datetime="2019-01-31T15:42:59+08:00">2019-01-31</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-09-14 00:22:44" itemprop="dateModified" datetime="2019-09-14T00:22:44+08:00">2019-09-14</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><code>javascript</code> 的每个函数都包含两个非继承而来的方法：<code>apply()</code> 和 <code>call()</code>。这两个方法都是在特定的作用域中调用函数，<strong>实际上等于设置函数体内 <em>this</em> 对象的值</strong>。  </p>
+<h3 id="apply-函数"><a href="#apply-函数" class="headerlink" title="apply() 函数"></a>apply() 函数</h3><p>首先，apply() 方法接收两个参数：</p>
+<ol>
+<li>运行函数的作用域 ( <code>this</code> ) 的值。</li>
+<li>参数数组，这个参数可以是 <code>Array</code> 的实例，也可以是 <code>arguments</code> 对象。</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">num1, num2</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> num1 + num2;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">callSum1</span>(<span class="params">num1, num2</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> sum.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">callSum2</span>(<span class="params">num1, num2</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> sum.apply(<span class="keyword">this</span>,[num1, num2])</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(callSum1(<span class="number">10</span>, <span class="number">10</span>)); <span class="comment">// 20</span></span><br><span class="line"><span class="built_in">console</span>.log(callSum2(<span class="number">10</span>, <span class="number">10</span>)); <span class="comment">// 20</span></span><br></pre></td></tr></table></figure>
+<p>上面的例子中， <code>callSum1()</code> 在执行 <code>sum()</code> 函数时传入了 <code>this</code> 作为 <code>this</code> 值（因为是在全局作用域中调用的，所以传入的就是 <code>window</code> 对象） 和 <code>arguments</code> 对象。而 <code>callSum2</code> 同样也调用了 <code>sum()</code> 函数，但它传入的是 <code>this</code> 和一个参数数组。这两个函数都会正常返回结果。</p>
+<blockquote>
+<p>在严格模式下，未指定环境对象而调用函数，则 <code>this</code> 值不会转化为 <code>window</code> ，而是 <code>undefined</code>。</p>
+</blockquote>
+<h3 id="call-函数"><a href="#call-函数" class="headerlink" title="call() 函数"></a>call() 函数</h3><p><code>call()</code> 方法与 <code>apply()</code> 函数的作用相同，他们区别仅在于接收参数的方式不同。对于 <code>call()</code> 方法而言，第一个参数 <code>this</code> 值没有变化，变化的是其余参数都直接传递给函数。换句话说，在使用 <code>call</code> 方法时，传递给函数的参数必须逐个列举出来。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">cafunction sum(num1, num2) &#123;</span><br><span class="line">    <span class="keyword">return</span> num1 + num2;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">callSum</span>(<span class="params">num1, num2</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> sum.call(<span class="keyword">this</span>, num1, num2)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(callSum(<span class="number">10</span>, <span class="number">10</span>)); <span class="comment">//20</span></span><br></pre></td></tr></table></figure>
+<h3 id="对象的构造函数"><a href="#对象的构造函数" class="headerlink" title="对象的构造函数"></a>对象的构造函数</h3><p>下面是 <code>Person</code> 的构造函数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age, job</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.age = age;</span><br><span class="line">    <span class="keyword">this</span>.job = job;</span><br><span class="line">    <span class="keyword">this</span>.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      alert(<span class="keyword">this</span>.name) ; </span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> person = Person(<span class="string">"Bill Gates"</span>, <span class="number">65</span>, <span class="string">'Software Enginerr'</span>);</span><br><span class="line"><span class="keyword">var</span> person1 = <span class="keyword">new</span> Person(<span class="string">'梅西'</span>, <span class="number">29</span>, <span class="string">'football player'</span>);</span><br></pre></td></tr></table></figure>
+<p>上面第一种调用方法是 <code>javascript</code> 普通函数的调用方法，这里的 <code>Person()</code> 就是一个普通的 <code>javascirpt</code> 函数，调用过程中 <code>this</code> 是<code>window</code> 对象，这里不会返回任何的对象，最后<code>person</code> 的值是 <code>undefined</code>。</p>
+<p><img src="http://wx2.sinaimg.cn/mw690/730892e4ly1fzpvtfy1h1j20b108xmxf.jpg" alt="按普通函数调用"></p>
+<p>第二种调用方法主要经历了一下 4 个步骤：</p>
+<hr>
+<ol>
+<li>创建一个新对象，暂时命名为 person 。</li>
+<li>将构造函数的作用域附给了新的对象（如果使用 <code>call</code> 方法来调用，也就是 <code>Person.call(person,&#39;梅西&#39;, 29, &#39;football player&#39; )）</code>。</li>
+<li>执行构造函数中的代码。</li>
+<li>返回新的对象。   </li>
+</ol>
+<p>查看运行过程，我们发现 <code>this</code> 指向新创建的的 <code>person</code> 对象。</p>
+<p><img src="http://wx4.sinaimg.cn/mw690/730892e4ly1fzpvtj9hoij20ac091mx5.jpg" alt="按构造函数调用"></p>
+<p>任何函数，只要通过 <code>new</code> 操作符来调用，那就可以当做构造函数；而任何函数，如果不通过 <code>new</code> 操作符来调用，那它跟普通函数也不会有什么两样</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/25/javascript函数调用中的-call-和-apply-方法/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bruce Liu">
+      <meta itemprop="description" content="Bruce Liu个人站，主要涉及前端知识共享、实践教程、前沿技术共同学习等方面">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bruce Liu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/01/25/javascript函数调用中的-call-和-apply-方法/" class="post-title-link" itemprop="http://yoursite.com/page/2/index.html">javascript函数调用中的 call 和 apply 方法</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-01-25 20:27:57" itemprop="dateCreated datePublished" datetime="2019-01-25T20:27:57+08:00">2019-01-25</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-09-14 00:22:44" itemprop="dateModified" datetime="2019-09-14T00:22:44+08:00">2019-09-14</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>每个 javascript 函数都包含两个非继承而来的方法：<code>apply()</code> 和 <code>call()</code> 。这两个方法的用途都是在特定的作用域中调用函数，实际上等于设置函数体内 <code>this</code> 对象的值。<br>首先，<code>apply()</code> 方法接收两个参数：一个是在其中运行函数的的作用域，另一个是参数数组。其中第二个参数可以是 <code>Array</code> 的实例，也可以是 <code>arguments</code> 对象。<br>例如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">num1, num2</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> num1 + num2;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">callSum1</span>(<span class="params">num1, num2</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> sum.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">callSum2</span>(<span class="params">num1, num2</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> sum.apply(<span class="keyword">this</span>,[num1, num2]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(callSum1(<span class="number">10</span>, <span class="number">10</span>));</span><br><span class="line"><span class="built_in">console</span>.log(callSum2(<span class="number">10</span>, <span class="number">10</span>))</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/15/vscode使用技巧/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bruce Liu">
+      <meta itemprop="description" content="Bruce Liu个人站，主要涉及前端知识共享、实践教程、前沿技术共同学习等方面">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bruce Liu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/01/15/vscode使用技巧/" class="post-title-link" itemprop="http://yoursite.com/page/2/index.html">vscode使用技巧</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-01-15 18:11:07" itemprop="dateCreated datePublished" datetime="2019-01-15T18:11:07+08:00">2019-01-15</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-09-14 00:22:44" itemprop="dateModified" datetime="2019-09-14T00:22:44+08:00">2019-09-14</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1-打开-markdown-实时预览窗口"><a href="#1-打开-markdown-实时预览窗口" class="headerlink" title="1.打开 markdown 实时预览窗口"></a>1.打开 markdown 实时预览窗口</h2><p>在命令行中输入<br>open locked preview to the side</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/14/git基础/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bruce Liu">
+      <meta itemprop="description" content="Bruce Liu个人站，主要涉及前端知识共享、实践教程、前沿技术共同学习等方面">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bruce Liu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/01/14/git基础/" class="post-title-link" itemprop="http://yoursite.com/page/2/index.html">git基础</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-01-14 19:43:53" itemprop="dateCreated datePublished" datetime="2019-01-14T19:43:53+08:00">2019-01-14</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-09-14 00:22:44" itemprop="dateModified" datetime="2019-09-14T00:22:44+08:00">2019-09-14</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1-撤销提交"><a href="#1-撤销提交" class="headerlink" title="1. 撤销提交"></a>1. 撤销提交</h2><p>如果不小心运行了 <code>git add *</code> 把你不想跟踪的文件添加到了版本控制，使用如下命令撤销提交</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git reset HEAD &lt;File&gt;</span><br><span class="line">​`</span><br></pre></td></tr></table></figure>
+<h2 id="2-撤销对文件的修改"><a href="#2-撤销对文件的修改" class="headerlink" title="2.撤销对文件的修改"></a>2.撤销对文件的修改</h2><p>如果修改了某个文件，但是想还原使用如下命令</p>
+<p>​<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -- &lt;file&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="3-查看远程仓库列表"><a href="#3-查看远程仓库列表" class="headerlink" title="3.查看远程仓库列表"></a>3.查看远程仓库列表</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote</span><br></pre></td></tr></table></figure>
+<h2 id="3-添加远程仓库"><a href="#3-添加远程仓库" class="headerlink" title="3.添加远程仓库"></a>3.添加远程仓库</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add &lt;shortname&gt; &lt;url&gt;</span><br></pre></td></tr></table></figure>
+<p>例如</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ git remote add pb https://github.com/paulboone/ticgit</span><br><span class="line">$ git remote -v</span><br><span class="line">origin https://github.com/schacon/ticgit (fetch)</span><br><span class="line">origin https://github.com/schacon/ticgit (push)</span><br><span class="line">pb https://github.com/paulboone/ticgit (fetch)</span><br><span class="line">pb https://github.com/paulboone/ticgit (push)</span><br></pre></td></tr></table></figure>
+<h2 id="4-将本地修改提交到远程服务器"><a href="#4-将本地修改提交到远程服务器" class="headerlink" title="4.将本地修改提交到远程服务器"></a>4.将本地修改提交到远程服务器</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push &lt;remote&gt; &lt;branch&gt;</span><br></pre></td></tr></table></figure>
+<p>下面的命令的意思是 将本地 <code>master</code> 分支推送到 <code>server</code> 服务器上.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
+<h2 id="5-了解远程仓库的详细信息"><a href="#5-了解远程仓库的详细信息" class="headerlink" title="5.了解远程仓库的详细信息"></a>5.了解远程仓库的详细信息</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote show &lt;remotename&gt;</span><br></pre></td></tr></table></figure>
+<p>比如</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$ git remote show origin</span><br><span class="line">* remote origin</span><br><span class="line">  Fetch URL: git@github.com:lastdetective/myblogsourcecode.git</span><br><span class="line">  Push  URL: git@github.com:lastdetective/myblogsourcecode.git</span><br><span class="line">  HEAD branch: master</span><br><span class="line">  Remote branches:</span><br><span class="line">    master        tracked</span><br><span class="line">    smallcomputer tracked</span><br><span class="line">  Local branch configured <span class="keyword">for</span> <span class="string">'git pull'</span>:</span><br><span class="line">    master merges with remote master</span><br><span class="line">  Local refs configured <span class="keyword">for</span> <span class="string">'git push'</span>:</span><br><span class="line">    master        pushes to master        (up to date)</span><br><span class="line">    smallcomputer pushes to smallcomputer (up to date)</span><br></pre></td></tr></table></figure>
+<h2 id="6-远程仓库的移除与重命名"><a href="#6-远程仓库的移除与重命名" class="headerlink" title="6.远程仓库的移除与重命名"></a>6.远程仓库的移除与重命名</h2><p>重命名 将远程仓库由 pb 重命名 为 paul</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote rename pb paul</span><br></pre></td></tr></table></figure>
+<p>移除paul</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote rm paul</span><br></pre></td></tr></table></figure>
+<h2 id="7-直接添加和提交代码"><a href="#7-直接添加和提交代码" class="headerlink" title="7.直接添加和提交代码"></a>7.直接添加和提交代码</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -a -m <span class="string">'made a change'</span></span><br></pre></td></tr></table></figure>
+<h2 id="8-直接新建和转换分支"><a href="#8-直接新建和转换分支" class="headerlink" title="8.直接新建和转换分支"></a>8.直接新建和转换分支</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b hotfix</span><br></pre></td></tr></table></figure>
+<h2 id="9-pull-命令"><a href="#9-pull-命令" class="headerlink" title="9.  pull 命令"></a>9.  pull 命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin master</span><br></pre></td></tr></table></figure>
+<p>这里的 master 是指远程的 master 分支</p>
+<h2 id="10-push-命令"><a href="#10-push-命令" class="headerlink" title="10. push 命令"></a>10. push 命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
+<p>将本地的 master 分支的数据，推送到它对应的 远程分支上去 这个远程分支可能是 awsomemaster</p>
+<h2 id="11-git-回退版本"><a href="#11-git-回退版本" class="headerlink" title="11.git 回退版本"></a>11.git 回退版本</h2><p>如果当前版本是 <code>HEAD</code>， 那么上一个版本就是 <code>HEAD^</code>，上上一个版本就是 <code>HEAD^^</code> ，当然往上写100个 <code>^</code> 容易写不过来，所以写成 <code>HEAD~100</code>。我们要将当前版本回退到上一个版本，使用如下命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard HEAD^</span><br></pre></td></tr></table></figure></p>
+<p>如果我们知道版本号，还可以使用直接指定版本号</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard s7s6d734</span><br></pre></td></tr></table></figure>
+<h2 id="12-查看命令历史"><a href="#12-查看命令历史" class="headerlink" title="12.查看命令历史"></a>12.查看命令历史</h2><p>使用如下命令查看命令历史</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reflog</span><br></pre></td></tr></table></figure>
+<p>结果如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ git reflog</span><br><span class="line">a993996 (HEAD -&gt; master) HEAD@&#123;0&#125;: reset: moving to a993996</span><br><span class="line">286b286 HEAD@&#123;1&#125;: reset: moving to HEAD^</span><br><span class="line">a993996 (HEAD -&gt; master) HEAD@&#123;2&#125;: commit: sss</span><br><span class="line">286b286 HEAD@&#123;3&#125;: commit: 我再次看看</span><br><span class="line">eee6a49 HEAD@&#123;4&#125;: commit: 让我看看是修改了哪一个</span><br><span class="line">83f7fe8 HEAD@&#123;5&#125;: commit (initial): 初次提交</span><br></pre></td></tr></table></figure>
+<h2 id="13-比较命令"><a href="#13-比较命令" class="headerlink" title="13.比较命令"></a>13.比较命令</h2><p>不加参数，暂存区有文件未提交(commit)时，比较工作区和暂存区的文件</p>
+<p>当暂存区的文件已经提交时，则比较工作区与最近一次提交的版本,如下比较名为 <code>test1</code> 的文件。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff test1</span><br></pre></td></tr></table></figure>
+<p>如果同时你有一个分支叫做 <code>test1</code> 则以下命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff test1</span><br></pre></td></tr></table></figure>
+<p>则会出现如下的歧义</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fatal: ambiguous argument <span class="string">'test1'</span>: both revision and filename</span><br><span class="line">Use <span class="string">'--'</span> to separate paths from revisions, like this:</span><br><span class="line"><span class="string">'git &lt;command&gt; [&lt;revision&gt;...] -- [&lt;file&gt;...]'</span></span><br></pre></td></tr></table></figure>
+<p>这个时候需要制定版本号文件名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff test1 -- test1</span><br></pre></td></tr></table></figure>
+<p>上面的命令比较当前分支工作区的 <code>test1</code> 文件 与 <code>test1</code> 分支上最新版本的 <code>test1</code> 文件</p>
+<p>比较工作区与缓存区的文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff --cached 文件名</span><br></pre></td></tr></table></figure>
+<p>查看工作区和版本库里面最新版本的区别</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff HEAD 文件名</span><br></pre></td></tr></table></figure>
+<p>比较工作区与指定 <code>commit-id</code> 的区别</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff commit-id 文件名</span><br></pre></td></tr></table></figure>
+<p>比较两个 <code>commit-id</code> 之间的区别</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff [&lt;&gt;]</span><br></pre></td></tr></table></figure>
+<h2 id="14-git分支"><a href="#14-git分支" class="headerlink" title="14.git分支"></a>14.git分支</h2><p>查看分支</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch</span><br></pre></td></tr></table></figure>
+<p>创建分支</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch &lt;name&gt;</span><br></pre></td></tr></table></figure>
+<p>切换分支</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout &lt;name&gt;</span><br></pre></td></tr></table></figure>
+<p>创建+切换分支</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b &lt;name&gt;</span><br></pre></td></tr></table></figure>
+<p>删除分支</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -d &lt;name&gt;</span><br></pre></td></tr></table></figure>
+<p>合并分支</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge &lt;name&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="15-git的标签"><a href="#15-git的标签" class="headerlink" title="15.git的标签"></a>15.git的标签</h2><p>打标签</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag &lt;tagname&gt;</span><br></pre></td></tr></table></figure>
+<p>指定标签信息</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag -a &lt;tagname&gt; -m <span class="string">'bulabula'</span></span><br></pre></td></tr></table></figure>
+<p>查看所有的标签</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag</span><br></pre></td></tr></table></figure>
+<p>命令git push origin <tagname>可以推送一个本地标签；</tagname></p>
+<p>命令git push origin –tags可以推送全部未推送过的本地标签；</p>
+<p>命令git tag -d <tagname>可以删除一个本地标签；</tagname></p>
+<p>命令git push origin :refs/tags/<tagname>可以删除一个远程标签。</tagname></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/14/查看git日志的命令/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bruce Liu">
+      <meta itemprop="description" content="Bruce Liu个人站，主要涉及前端知识共享、实践教程、前沿技术共同学习等方面">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bruce Liu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/01/14/查看git日志的命令/" class="post-title-link" itemprop="http://yoursite.com/page/2/index.html">查看git日志的命令</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-01-14 19:30:54" itemprop="dateCreated datePublished" datetime="2019-01-14T19:30:54+08:00">2019-01-14</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-09-14 00:22:44" itemprop="dateModified" datetime="2019-09-14T00:22:44+08:00">2019-09-14</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>查看日志</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span></span><br></pre></td></tr></table></figure>
+<p>查看近两次提交的日志</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span> -2</span><br></pre></td></tr></table></figure>
+<p>查看近两周提交的日志</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span> --since=2.weeks</span><br></pre></td></tr></table></figure>
+<p>查看某一天提交的日志</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span> --since=2019--01--14</span><br></pre></td></tr></table></figure>
+<p>查看最近两年三个月前天3分钟的日志</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span> --since=<span class="string">"2 years 1 day 3 minutes ago"</span></span><br></pre></td></tr></table></figure>
+<p>log查看分支图</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span> --oneline --all --graph</span><br></pre></td></tr></table></figure>
+<p>显示提交的差异</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span> --patch</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/23/git问题处理/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bruce Liu">
+      <meta itemprop="description" content="Bruce Liu个人站，主要涉及前端知识共享、实践教程、前沿技术共同学习等方面">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bruce Liu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/12/23/git问题处理/" class="post-title-link" itemprop="http://yoursite.com/page/2/index.html">git问题处理</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-12-23 22:22:28" itemprop="dateCreated datePublished" datetime="2018-12-23T22:22:28+08:00">2018-12-23</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-09-14 00:22:44" itemprop="dateModified" datetime="2019-09-14T00:22:44+08:00">2019-09-14</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<h2 id="Q1"><a href="#Q1" class="headerlink" title="Q1"></a>Q1</h2><blockquote>
+<p>fatal: remote origin already exists.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote rm origin</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="Q2"><a href="#Q2" class="headerlink" title="Q2"></a>Q2</h2><p>取消文件跟踪</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rm -r --cached [filename]</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="Q3"><a href="#Q3" class="headerlink" title="Q3"></a>Q3</h2><blockquote>
+<p>fatal: refusing to merge unrelated histories</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin master --allow-unrelated-histories</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="Q4"><a href="#Q4" class="headerlink" title="Q4"></a>Q4</h2><p>git log查看分支图</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span> --oneline --decorate --graph --all</span><br></pre></td></tr></table></figure>
+<h2 id="Q5"><a href="#Q5" class="headerlink" title="Q5"></a>Q5</h2><p>查看跟踪的文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git ls-files</span><br></pre></td></tr></table></figure>
+<h2 id="Q6"><a href="#Q6" class="headerlink" title="Q6"></a>Q6</h2><p>Please move or remove them before you can merge</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard HEAD</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Bruce Liu</p>
+              <p class="site-description motion-element" itemprop="description">Bruce Liu个人站，主要涉及前端知识共享、实践教程、前沿技术共同学习等方面</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">30</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/lastdetective" title="GitHub &rarr; https://github.com/lastdetective" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:xlgjsj004@sina.com" title="E-Mail &rarr; mailto:xlgjsj004@sina.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bruce Liu</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v6.6.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.6.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.6.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.6.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.6.0"></script>
+
+
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.6.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

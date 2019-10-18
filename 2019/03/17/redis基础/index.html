@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.6.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.6.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.6.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.6.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="redis 简介redis 是高性能键值对数据库，支持键值数据类型：  字符串类型 列表类型 有序集合类 散列类型 集合类型  redis 的应用场景  缓存 任务队列 应用排行榜 网站访问统计 数据过期处理 分布式集群架构中的 session 分离  redis 五种数据类型  字符串(String) 哈希(hash) 字符串列表(list) 字符串集合(set) 有序字符串集合(sorted">
+<meta property="og:type" content="article">
+<meta property="og:title" content="redis基础">
+<meta property="og:url" content="http://yoursite.com/2019/03/17/redis基础/index.html">
+<meta property="og:site_name" content="Bruce Liu&#39;s Blog">
+<meta property="og:description" content="redis 简介redis 是高性能键值对数据库，支持键值数据类型：  字符串类型 列表类型 有序集合类 散列类型 集合类型  redis 的应用场景  缓存 任务队列 应用排行榜 网站访问统计 数据过期处理 分布式集群架构中的 session 分离  redis 五种数据类型  字符串(String) 哈希(hash) 字符串列表(list) 字符串集合(set) 有序字符串集合(sorted">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-09-13T16:22:44.717Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="redis基础">
+<meta name="twitter:description" content="redis 简介redis 是高性能键值对数据库，支持键值数据类型：  字符串类型 列表类型 有序集合类 散列类型 集合类型  redis 的应用场景  缓存 任务队列 应用排行榜 网站访问统计 数据过期处理 分布式集群架构中的 session 分离  redis 五种数据类型  字符串(String) 哈希(hash) 字符串列表(list) 字符串集合(set) 有序字符串集合(sorted">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/03/17/redis基础/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>redis基础 | Bruce Liu's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Bruce Liu's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Stay Hungry, Stay Foolish</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/17/redis基础/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bruce Liu">
+      <meta itemprop="description" content="Bruce Liu个人站，主要涉及前端知识共享、实践教程、前沿技术共同学习等方面">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bruce Liu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">redis基础
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-17 11:15:47" itemprop="dateCreated datePublished" datetime="2019-03-17T11:15:47+08:00">2019-03-17</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-09-14 00:22:44" itemprop="dateModified" datetime="2019-09-14T00:22:44+08:00">2019-09-14</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="redis-简介"><a href="#redis-简介" class="headerlink" title="redis 简介"></a>redis 简介</h2><p><code>redis</code> 是高性能键值对数据库，支持键值数据类型：</p>
+<ul>
+<li>字符串类型</li>
+<li>列表类型</li>
+<li>有序集合类</li>
+<li>散列类型</li>
+<li>集合类型</li>
+</ul>
+<p><code>redis</code> 的应用场景</p>
+<ul>
+<li>缓存</li>
+<li>任务队列</li>
+<li>应用排行榜</li>
+<li>网站访问统计</li>
+<li>数据过期处理</li>
+<li>分布式集群架构中的 <code>session</code> 分离</li>
+</ul>
+<p><code>redis</code> 五种数据类型</p>
+<ul>
+<li>字符串(String)</li>
+<li>哈希(hash)</li>
+<li>字符串列表(list)</li>
+<li>字符串集合(set)</li>
+<li>有序字符串集合(sorted set)</li>
+</ul>
+<p>存储 <code>String</code></p>
+<ul>
+<li>二进制安全的，存入和获取的数据相同。</li>
+<li><code>Value</code> 最多可以容纳的数据长度是 512M</li>
+</ul>
+<hr>
+<h2 id="redis-基本操作"><a href="#redis-基本操作" class="headerlink" title="redis 基本操作"></a>redis 基本操作</h2><h3 id="String-类型"><a href="#String-类型" class="headerlink" title="String 类型"></a>String 类型</h3><h3 id="Hash-类型"><a href="#Hash-类型" class="headerlink" title="Hash 类型"></a>Hash 类型</h3><p>存入键值对, 将 <code>username:jack</code> 存入 <code>myhash</code> 中</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hset myhash username jack</span><br><span class="line">hset myhash age 20</span><br></pre></td></tr></table></figure>
+<p>一次存入多个键值对</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hmset myhash2 username rose age 21</span><br></pre></td></tr></table></figure>
+<p>根据键获取值</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hget myhash username</span><br></pre></td></tr></table></figure>
+<p>返回</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"jack"</span></span><br></pre></td></tr></table></figure>
+<p>根据多个键获取值</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hmget myhash2 username age</span><br></pre></td></tr></table></figure>
+<p>返回</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1) <span class="string">"rose"</span></span><br><span class="line">2) <span class="string">"21"</span></span><br></pre></td></tr></table></figure>
+<p>获取所有键值对</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hgetall myhash</span><br></pre></td></tr></table></figure>
+<p>删除某个键值对</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hdel myhash2 username age</span><br></pre></td></tr></table></figure>
+<p>返回</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1) <span class="string">"username"</span></span><br><span class="line">2) <span class="string">"jack"</span></span><br><span class="line">3) <span class="string">"age"</span></span><br><span class="line">4) <span class="string">"20"</span></span><br></pre></td></tr></table></figure>
+<p>对某个数字进行增加:将 <code>age</code> 属性递增5。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hincrby myhash2 age 5</span><br></pre></td></tr></table></figure>
+<p>返回</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="built_in">integer</span>) 26</span><br></pre></td></tr></table></figure>
+<p>rose 的 <code>age</code> 属性由 <code>21</code> 增加到 <code>26</code></p>
+<p>判断某个set中是否含有某个键</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexists myhash username</span><br></pre></td></tr></table></figure>
+<p>获取 hash 中的所有键</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hkeys myhash</span><br></pre></td></tr></table></figure>
+<p>运行结果为：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1) <span class="string">"username"</span></span><br><span class="line">2) <span class="string">"age"</span></span><br></pre></td></tr></table></figure>
+<p>获取 hash 中的所有值 </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hvals myhash</span><br></pre></td></tr></table></figure>
+<p>运行结果为</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1) <span class="string">"jack"</span></span><br><span class="line">2) <span class="string">"20"</span></span><br></pre></td></tr></table></figure>
+<h3 id="List-类型"><a href="#List-类型" class="headerlink" title="List 类型"></a>List 类型</h3><p>往 <code>list</code> 中存储数据（从左侧添加，先进去的数据排在最后一位）</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lpush mylist a b c</span><br><span class="line">lpush mylist 1 2 3</span><br></pre></td></tr></table></figure>
+<p>从右侧添加 （从右侧添加）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rpush mylist2 a b c</span><br><span class="line">rpush mylist2 a b c</span><br></pre></td></tr></table></figure>
+<p>查看列表 表示从第一个到第六个元素</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lrange 0 5</span><br></pre></td></tr></table></figure>
+<p>运行结果如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1) <span class="string">"3"</span></span><br><span class="line">2) <span class="string">"2"</span></span><br><span class="line">3) <span class="string">"1"</span></span><br><span class="line">4) <span class="string">"c"</span></span><br><span class="line">5) <span class="string">"b"</span></span><br><span class="line">6) <span class="string">"a"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lrange mylist2 0 -1</span><br></pre></td></tr></table></figure>
+<p>表示从第一个到倒数第一个元素</p>
+<p>运行结果如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1) <span class="string">"a"</span></span><br><span class="line">2) <span class="string">"b"</span></span><br><span class="line">3) <span class="string">"c"</span></span><br><span class="line">4) <span class="string">"1"</span></span><br><span class="line">5) <span class="string">"2"</span></span><br><span class="line">6) <span class="string">"3"</span></span><br></pre></td></tr></table></figure>
+<p>左边弹出</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lpop mylist</span><br></pre></td></tr></table></figure>
+<p>运行结果</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"3"</span></span><br></pre></td></tr></table></figure>
+<p>右边弹出</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpop mylist2</span><br></pre></td></tr></table></figure>
+<p>运行结果</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"3"</span></span><br></pre></td></tr></table></figure>
+<p><code>lpushx</code> 和 <code>rpushx</code> 仅当需要操作的 list 中有值时才进行保存操作 </p>
+<p>现在 <code>mylist3</code> 的数据如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"> 1) <span class="string">"5"</span></span><br><span class="line"> 2) <span class="string">"3"</span></span><br><span class="line"> 3) <span class="string">"2"</span></span><br><span class="line"> 4) <span class="string">"3"</span></span><br><span class="line"> 5) <span class="string">"7"</span></span><br><span class="line"> 6) <span class="string">"6"</span></span><br><span class="line"> 7) <span class="string">"3"</span></span><br><span class="line"> 8) <span class="string">"5"</span></span><br><span class="line"> 9) <span class="string">"4"</span></span><br><span class="line">10) <span class="string">"2"</span></span><br><span class="line">11) <span class="string">"1"</span></span><br></pre></td></tr></table></figure>
+<p>移除命令 <code>lrem</code></p>
+<p>从左侧开始删除<strong>两个3</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lrem mylist3 2 3</span><br></pre></td></tr></table></figure>
+<p>运行后的 <code>mylist3</code> 结果</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1) <span class="string">"5"</span></span><br><span class="line">2) <span class="string">"2"</span></span><br><span class="line">3) <span class="string">"7"</span></span><br><span class="line">4) <span class="string">"6"</span></span><br><span class="line">5) <span class="string">"3"</span></span><br><span class="line">6) <span class="string">"5"</span></span><br><span class="line">7) <span class="string">"4"</span></span><br><span class="line">8) <span class="string">"2"</span></span><br><span class="line">9) <span class="string">"1"</span></span><br></pre></td></tr></table></figure>
+<p>从后边往前删除<strong>两个1</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lrem mylist3 -2 1</span><br></pre></td></tr></table></figure>
+<p>运行后的 <code>mylist3</code> 结果</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1) <span class="string">"5"</span></span><br><span class="line">2) <span class="string">"2"</span></span><br><span class="line">3) <span class="string">"7"</span></span><br><span class="line">4) <span class="string">"6"</span></span><br><span class="line">5) <span class="string">"3"</span></span><br><span class="line">6) <span class="string">"5"</span></span><br><span class="line">7) <span class="string">"4"</span></span><br><span class="line">8) <span class="string">"2"</span></span><br></pre></td></tr></table></figure>
+<p>删除<strong>所有2</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lrem mylist3 0 2</span><br></pre></td></tr></table></figure>
+<p>运行后的 <code>mylist3</code> 结果</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1) <span class="string">"5"</span></span><br><span class="line">2) <span class="string">"7"</span></span><br><span class="line">3) <span class="string">"6"</span></span><br><span class="line">4) <span class="string">"3"</span></span><br><span class="line">5) <span class="string">"5"</span></span><br><span class="line">6) <span class="string">"4"</span></span><br></pre></td></tr></table></figure>
+<p>给某个指定的角标位置的元素设置值</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lset mylist 3 haha</span><br></pre></td></tr></table></figure>
+<p>运行结果如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; lrange mylist 0 -1</span><br><span class="line">1) <span class="string">"2"</span></span><br><span class="line">2) <span class="string">"1"</span></span><br><span class="line">3) <span class="string">"c"</span></span><br><span class="line">4) <span class="string">"b"</span></span><br><span class="line">5) <span class="string">"a"</span></span><br><span class="line">127.0.0.1:6379&gt; lset mylist 3 haha</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt; lrange mylist 0 -1</span><br><span class="line">1) <span class="string">"2"</span></span><br><span class="line">2) <span class="string">"1"</span></span><br><span class="line">3) <span class="string">"c"</span></span><br><span class="line">4) <span class="string">"haha"</span></span><br><span class="line">5) <span class="string">"a"</span></span><br></pre></td></tr></table></figure>
+<p>新建一个 <code>list</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; lrange mylist4 0 -1</span><br><span class="line">1) <span class="string">"c"</span></span><br><span class="line">2) <span class="string">"b"</span></span><br><span class="line">3) <span class="string">"a"</span></span><br><span class="line">4) <span class="string">"c"</span></span><br><span class="line">5) <span class="string">"b"</span></span><br><span class="line">6) <span class="string">"a"</span></span><br><span class="line">7) <span class="string">"c"</span></span><br><span class="line">8) <span class="string">"b"</span></span><br><span class="line">9) <span class="string">"a"</span></span><br></pre></td></tr></table></figure>
+<p>在第一个 <code>b</code> 之前插入 11</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; LINSERT mylist4 before b 11</span><br><span class="line">(<span class="built_in">integer</span>) 10</span><br><span class="line">127.0.0.1:6379&gt; lrange mylist4 0 -1</span><br><span class="line"> 1) <span class="string">"c"</span></span><br><span class="line"> 2) <span class="string">"11"</span></span><br><span class="line"> 3) <span class="string">"b"</span></span><br><span class="line"> 4) <span class="string">"a"</span></span><br><span class="line"> 5) <span class="string">"c"</span></span><br><span class="line"> 6) <span class="string">"b"</span></span><br><span class="line"> 7) <span class="string">"a"</span></span><br><span class="line"> 8) <span class="string">"c"</span></span><br><span class="line"> 9) <span class="string">"b"</span></span><br><span class="line">10) <span class="string">"a"</span></span><br></pre></td></tr></table></figure>
+<p>在第一个 <code>b</code> 之后插入 22</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; LINSERT mylist4 after b 22</span><br><span class="line">(<span class="built_in">integer</span>) 11</span><br><span class="line">127.0.0.1:6379&gt; lrange mylist4 0 -1</span><br><span class="line"> 1) <span class="string">"c"</span></span><br><span class="line"> 2) <span class="string">"11"</span></span><br><span class="line"> 3) <span class="string">"b"</span></span><br><span class="line"> 4) <span class="string">"22"</span></span><br><span class="line"> 5) <span class="string">"a"</span></span><br><span class="line"> 6) <span class="string">"c"</span></span><br><span class="line"> 7) <span class="string">"b"</span></span><br><span class="line"> 8) <span class="string">"a"</span></span><br><span class="line"> 9) <span class="string">"c"</span></span><br><span class="line">10) <span class="string">"b"</span></span><br><span class="line">11) <span class="string">"a"</span></span><br></pre></td></tr></table></figure>
+<p>创建两个 <code>list</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; lrange mylist5 0 -1</span><br><span class="line">1) <span class="string">"c"</span></span><br><span class="line">2) <span class="string">"b"</span></span><br><span class="line">3) <span class="string">"a"</span></span><br><span class="line">127.0.0.1:6379&gt; lrange mylist6 0 -1</span><br><span class="line">1) <span class="string">"3"</span></span><br><span class="line">2) <span class="string">"2"</span></span><br><span class="line">3) <span class="string">"1"</span></span><br></pre></td></tr></table></figure>
+<p>现在讲 <code>mylist5</code> 右左边弹出，从左侧压入 <code>mylist6</code></p>
+<p><code>rpop</code> 和 <code>lpush</code> 用于消息队列</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; RPOPLPUSH mylist5 mylist6</span><br><span class="line"><span class="string">"a"</span></span><br><span class="line">127.0.0.1:6379&gt; lrange mylist5 0 -1</span><br><span class="line">1) <span class="string">"c"</span></span><br><span class="line">2) <span class="string">"b"</span></span><br><span class="line">127.0.0.1:6379&gt; lrange mylist6 0 -1</span><br><span class="line">1) <span class="string">"a"</span></span><br><span class="line">2) <span class="string">"3"</span></span><br><span class="line">3) <span class="string">"2"</span></span><br><span class="line">4) <span class="string">"1"</span></span><br></pre></td></tr></table></figure>
+<h3 id="Set-类型"><a href="#Set-类型" class="headerlink" title="Set 类型"></a>Set 类型</h3><p><code>set</code> 类型不允许出现相同的操作，<code>set</code> 通常用作</p>
+<ol>
+<li>跟踪一些唯一性数据</li>
+<li>用户维护数据对象之间的关联关系</li>
+</ol>
+<p>创建一个 <code>set</code> 并添加一个元素</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sadd myset a</span><br><span class="line">sadd myset 1 2 3</span><br><span class="line">sadd myset 1 2</span><br></pre></td></tr></table></figure>
+<p>查看所有元素发现没有重复元素</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; SMEMBERS myset</span><br><span class="line">1) <span class="string">"3"</span></span><br><span class="line">2) <span class="string">"1"</span></span><br><span class="line">3) <span class="string">"a"</span></span><br><span class="line">4) <span class="string">"2"</span></span><br></pre></td></tr></table></figure>
+<p>查看一个元素是否存在于某个集合</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; SISMEMBER myset a</span><br><span class="line">(integer) 1</span><br><span class="line">127.0.0.1:6379&gt; SISMEMBER myset x</span><br><span class="line">(integer) 0</span><br></pre></td></tr></table></figure>
+<p>说明 <code>myset</code> 中包含 <code>a</code>，但不包含  <code>x</code></p>
+<p>创建两个 <code>set</code> </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; SMEMBERS mya1</span><br><span class="line">1) <span class="string">"b"</span></span><br><span class="line">2) <span class="string">"c"</span></span><br><span class="line">3) <span class="string">"a"</span></span><br><span class="line">127.0.0.1:6379&gt; SMEMBERS myb1</span><br><span class="line">1) <span class="string">"2"</span></span><br><span class="line">2) <span class="string">"1"</span></span><br><span class="line">3) <span class="string">"c"</span></span><br><span class="line">4) <span class="string">"a"</span></span><br></pre></td></tr></table></figure>
+<p>找出 <code>mya1</code> 中有，但是 <code>myb1</code> 中没有的元素</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; sdiff mya1 myb1</span><br><span class="line">1) <span class="string">"b"</span></span><br></pre></td></tr></table></figure>
+<p>找出 <code>myb1</code> 中有，但是 <code>mya1</code> 中没有的元素</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; sdiff myb1 mya1</span><br><span class="line">1) <span class="string">"1"</span></span><br><span class="line">2) <span class="string">"2</span></span><br></pre></td></tr></table></figure>
+<p> 将 <code>sdiff</code> 产生的结果直接保存</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; SDIFFSTORE my1 mya1 myb1</span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br><span class="line">127.0.0.1:6379&gt; SMEMBERS my1</span><br><span class="line">1) <span class="string">"b"</span></span><br></pre></td></tr></table></figure>
+<p>找出 <code>mya1</code>  ,<code>myb1</code> 中都有的元素</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; SINTER mya1 myb1</span><br><span class="line">1) <span class="string">"c"</span></span><br><span class="line">2) <span class="string">"a"</span></span><br></pre></td></tr></table></figure>
+<p>将上面的结果直接存储</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; SINTERSTORE my2 mya1 myb1</span><br><span class="line">(<span class="built_in">integer</span>) 2</span><br><span class="line">127.0.0.1:6379&gt; SMEMBERS my2</span><br><span class="line">1) <span class="string">"a"</span></span><br><span class="line">2) <span class="string">"c"</span></span><br></pre></td></tr></table></figure>
+<p>列出 <code>mya1</code> 和 <code>myb1</code> 的所有元素</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; SUNION mya1 myb1</span><br><span class="line">1) <span class="string">"b"</span></span><br><span class="line">2) <span class="string">"c"</span></span><br><span class="line">3) <span class="string">"2"</span></span><br><span class="line">4) <span class="string">"a"</span></span><br><span class="line">5) <span class="string">"1"</span></span><br></pre></td></tr></table></figure>
+<p>将上面的结果直接保存</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; SUNIONSTORE my3 mya1 myb1</span><br><span class="line">(<span class="built_in">integer</span>) 5</span><br><span class="line">127.0.0.1:6379&gt; SMEMBERS my3</span><br><span class="line">1) <span class="string">"b"</span></span><br><span class="line">2) <span class="string">"c"</span></span><br><span class="line">3) <span class="string">"2"</span></span><br><span class="line">4) <span class="string">"a"</span></span><br><span class="line">5) <span class="string">"1"</span></span><br></pre></td></tr></table></figure>
+<p>查看 <code>set</code> 中元素的个数</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; SCARD mya1</span><br><span class="line">(<span class="built_in">integer</span>) 3</span><br></pre></td></tr></table></figure>
+<p>随机返回 <code>set</code> 中的一个元素</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; SRANDMEMBER mya1</span><br><span class="line"><span class="string">"b"</span></span><br><span class="line">127.0.0.1:6379&gt; SRANDMEMBER mya1</span><br><span class="line"><span class="string">"a"</span></span><br><span class="line">127.0.0.1:6379&gt; SRANDMEMBER mya1</span><br><span class="line"><span class="string">"c"</span></span><br></pre></td></tr></table></figure>
+<h3 id="sorted-set"><a href="#sorted-set" class="headerlink" title="sorted set"></a>sorted set</h3><p><code>sorted set</code> 中每一个元素都有一个分数与之关联，<code>redis</code> 正是通过这些分数来为 <code>set</code> 排序，<code>sorted set</code>  元素是有序的.</p>
+<p>可以用于：</p>
+<ol>
+<li>大型游戏的积分排行榜</li>
+<li>构建索引数据</li>
+</ol>
+<p>添加元素</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; ZADD mysort 70 zs 80 ls 90 ww</span><br><span class="line">(<span class="built_in">integer</span>) 3</span><br><span class="line">// 如果 <span class="built_in">set</span> 中已经包将要添加的元素，执行添加命令将覆盖原来的分数 </span><br><span class="line">127.0.0.1:6379&gt; ZADD mysort 100 zs</span><br><span class="line">(<span class="built_in">integer</span>) 0</span><br><span class="line">127.0.0.1:6379&gt; ZADD mysort 60 tom</span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br></pre></td></tr></table></figure>
+<p>展示元素的分数</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; ZSCORE mysort zs</span><br><span class="line"><span class="string">"100"</span></span><br></pre></td></tr></table></figure>
+<p>移除元素</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; zrem mysort tom ww</span><br><span class="line">(<span class="built_in">integer</span>) 2</span><br></pre></td></tr></table></figure>
+<p>查看元素的个数</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; ZCARD mysort</span><br><span class="line">(<span class="built_in">integer</span>) 2</span><br></pre></td></tr></table></figure>
+<p>再添加两个元素</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; zadd mysort 85 jack 95 rose</span><br><span class="line">(<span class="built_in">integer</span>) 2</span><br></pre></td></tr></table></figure>
+<p>展示所有元素</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; ZRANGE mysort 0 -1</span><br><span class="line">1) <span class="string">"ls"</span></span><br><span class="line">2) <span class="string">"jack"</span></span><br><span class="line">3) <span class="string">"rose"</span></span><br><span class="line">4) <span class="string">"zs"</span></span><br></pre></td></tr></table></figure>
+<p>展示所有元素和分数</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; ZRANGE mysort 0 -1 withscores</span><br><span class="line">1) <span class="string">"ls"</span></span><br><span class="line">2) <span class="string">"80"</span></span><br><span class="line">3) <span class="string">"jack"</span></span><br><span class="line">4) <span class="string">"85"</span></span><br><span class="line">5) <span class="string">"rose"</span></span><br><span class="line">6) <span class="string">"95"</span></span><br><span class="line">7) <span class="string">"zs"</span></span><br><span class="line">8) <span class="string">"100"</span></span><br></pre></td></tr></table></figure>
+<p>按分数从大到小排列</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; ZREVRANGE mysort 0 -1 withscores</span><br><span class="line">1) <span class="string">"zs"</span></span><br><span class="line">2) <span class="string">"100"</span></span><br><span class="line">3) <span class="string">"rose"</span></span><br><span class="line">4) <span class="string">"95"</span></span><br><span class="line">5) <span class="string">"jack"</span></span><br><span class="line">6) <span class="string">"85"</span></span><br><span class="line">7) <span class="string">"ls"</span></span><br><span class="line">8) <span class="string">"80"</span></span><br></pre></td></tr></table></figure>
+<p>删除排序从 0 到 3 的元素</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; ZRANGE mysort 0 -1</span><br><span class="line">1) <span class="string">"bruce"</span></span><br><span class="line">2) <span class="string">"perter"</span></span><br><span class="line">3) <span class="string">"clark"</span></span><br><span class="line">4) <span class="string">"arrow"</span></span><br><span class="line">5) <span class="string">"wonder"</span></span><br><span class="line">// 删除了排名 0 到 2 的元素</span><br><span class="line">127.0.0.1:6379&gt; ZREMRANGEBYRANK mysort 0 2</span><br><span class="line">(<span class="built_in">integer</span>) 3</span><br><span class="line">127.0.0.1:6379&gt; ZRANGE mysort 0 -1</span><br><span class="line">1) <span class="string">"arrow"</span></span><br><span class="line">2) <span class="string">"wonder"</span></span><br></pre></td></tr></table></figure>
+<p>新增几个元素</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; zrange mysort 0 -1 withscores</span><br><span class="line"> 1) <span class="string">"arrow"</span></span><br><span class="line"> 2) <span class="string">"40"</span></span><br><span class="line"> 3) <span class="string">"wonder"</span></span><br><span class="line"> 4) <span class="string">"50"</span></span><br><span class="line"> 5) <span class="string">"bruce"</span></span><br><span class="line"> 6) <span class="string">"60"</span></span><br><span class="line"> 7) <span class="string">"clark"</span></span><br><span class="line"> 8) <span class="string">"70"</span></span><br><span class="line"> 9) <span class="string">"peter"</span></span><br><span class="line">10) <span class="string">"80"</span></span><br></pre></td></tr></table></figure>
+<p>查找分数在 40 到 70 分区间的前两个元素</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; ZRANGEBYSCORE mysort 40 70 withscores <span class="built_in">limit</span> 0 2</span><br><span class="line">1) <span class="string">"arrow"</span></span><br><span class="line">2) <span class="string">"40"</span></span><br><span class="line">3) <span class="string">"wonder"</span></span><br><span class="line">4) <span class="string">"50"</span></span><br></pre></td></tr></table></figure>
+<p>增加分数</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; ZINCRBY mysort 7 arrow</span><br><span class="line"><span class="string">"47"</span></span><br></pre></td></tr></table></figure>
+<p>查找某个分数段内元素的个数</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; ZCOUNT mysort 50 80</span><br><span class="line">(<span class="built_in">integer</span>) 4</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="redis的keys基本操作"><a href="#redis的keys基本操作" class="headerlink" title="redis的keys基本操作"></a>redis的keys基本操作</h2><p> 查找所有的 <code>keys</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; keys *</span><br><span class="line"> 1) <span class="string">"myhash2"</span></span><br><span class="line"> 2) <span class="string">"hahaha"</span></span><br><span class="line"> 3) <span class="string">"mylist2"</span></span><br><span class="line"> 4) <span class="string">"myhashset2"</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>查看以 <code>my</code> 开头的所有的 key</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; keys my?</span><br><span class="line">1) <span class="string">"my3"</span></span><br><span class="line">2) <span class="string">"my2"</span></span><br><span class="line">3) <span class="string">"my1"</span></span><br></pre></td></tr></table></figure>
+<p>删除 keys</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; del my1 my2 my3</span><br><span class="line">(<span class="built_in">integer</span>) 3</span><br></pre></td></tr></table></figure>
+<p>判断某个 key 是否存在</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; EXISTS hahahs</span><br><span class="line">(<span class="built_in">integer</span>) 0</span><br><span class="line">127.0.0.1:6379&gt; EXISTS mysort</span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br></pre></td></tr></table></figure>
+<p>重命名key</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; get compnay</span><br><span class="line"><span class="string">"immooc"</span></span><br><span class="line">127.0.0.1:6379&gt; RENAME compnay</span><br><span class="line">(error) ERR wrong number of arguments <span class="keyword">for</span> <span class="string">'rename'</span> <span class="built_in">command</span></span><br><span class="line">127.0.0.1:6379&gt; RENAME compnay newcompany</span><br><span class="line">OK</span><br><span class="line">// 重命名之后就获取不到了</span><br><span class="line">127.0.0.1:6379&gt; get compnay</span><br><span class="line">(nil)</span><br><span class="line">// 使用新的名字获取</span><br><span class="line">127.0.0.1:6379&gt; get newcompany</span><br><span class="line"><span class="string">"immooc"</span></span><br></pre></td></tr></table></figure>
+<p>设置超时时间 单位秒</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; EXPIRE newcompany 1000</span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br><span class="line">// 查看剩余超时时间</span><br><span class="line">127.0.0.1:6379&gt; ttl newcompany</span><br><span class="line">(<span class="built_in">integer</span>) 989</span><br></pre></td></tr></table></figure>
+<p>查看 key 的类型</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; <span class="built_in">type</span> newcompany</span><br><span class="line">string</span><br><span class="line">127.0.0.1:6379&gt; <span class="built_in">type</span> mylist</span><br><span class="line">list</span><br><span class="line">127.0.0.1:6379&gt; <span class="built_in">type</span> myhash</span><br><span class="line"><span class="built_in">hash</span></span><br><span class="line">127.0.0.1:6379&gt; <span class="built_in">type</span> mysort</span><br><span class="line">zset</span><br><span class="line">127.0.0.1:6379&gt; <span class="built_in">type</span> myset</span><br><span class="line"><span class="built_in">set</span></span><br></pre></td></tr></table></figure>
+<h2 id="redis-的事务"><a href="#redis-的事务" class="headerlink" title="redis 的事务"></a>redis 的事务</h2><p>一个 redis 实例可以包含 <strong>15</strong> 个数据库，下标是从 0-15，默认选择第 0 号数据库</p>
+<p>切换数据库命令如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; select 1</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379[1]&gt; keys *</span><br><span class="line">(empty list or <span class="built_in">set</span>)</span><br></pre></td></tr></table></figure>
+<p>可以看到 1 号数据库中没有保存任何的key</p>
+<p>将 0 号数据库中的一个 key 移动到 1 号数据库</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; MOVE mysort 1</span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br><span class="line">127.0.0.1:6379&gt; select 1</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379[1]&gt; keys *</span><br><span class="line">1) <span class="string">"mysort"</span></span><br></pre></td></tr></table></figure>
+<p><code>multi</code> 相当于开启事务</p>
+<p>开启事务后，输入的命令将被保存的队列中</p>
+<p><code>exec</code> 相当于 <code>commit</code> </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; get num</span><br><span class="line"><span class="string">"65"</span></span><br><span class="line">127.0.0.1:6379&gt; multi</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt; incr num</span><br><span class="line">QUEUED</span><br><span class="line">127.0.0.1:6379&gt; incr num</span><br><span class="line">QUEUED</span><br><span class="line">127.0.0.1:6379&gt; <span class="built_in">exec</span></span><br><span class="line">1) (<span class="built_in">integer</span>) 66</span><br><span class="line">2) (<span class="built_in">integer</span>) 67</span><br><span class="line">127.0.0.1:6379&gt;</span><br></pre></td></tr></table></figure>
+<p>执行之后命令队列中的命令将会被全部执行</p>
+<p><code>discard</code> 相当于 <code>rollerback</code></p>
+<h2 id="redis-持久化概述"><a href="#redis-持久化概述" class="headerlink" title="redis 持久化概述"></a>redis 持久化概述</h2><p><code>redis</code> 之所以效率很高是因为数据都保存在内存中，为了使 <code>redis</code> 重启之后数据不丢失，就需要将 <code>redis</code> 数据保存到硬盘上。</p>
+<p><code>redis</code> 持久化有两种方式：</p>
+<ul>
+<li>RDB 方式</li>
+<li>AOF 方式</li>
+</ul>
+<p>持久化的使用方式</p>
+<ul>
+<li>RDB 持久化：定期保存 <code>redis</code> 的快照到硬盘</li>
+<li>AOF 通过日志记录 <code>redis</code> 的命令，每次重启之后读取这个文件来重现 <code>redis</code> 之前的状态</li>
+<li>无持久化：单纯将 <code>redis</code> 作为一个缓存服务</li>
+<li>同时使用 RDB 和 AOF</li>
+</ul>
+<h3 id="RDB-方式"><a href="#RDB-方式" class="headerlink" title="RDB 方式"></a>RDB 方式</h3><p>在 <code>redis.conf</code> 文件中可以指定保存快照的时机</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">save 900 1</span><br><span class="line">save 300 10</span><br><span class="line">save 60 10000</span><br></pre></td></tr></table></figure>
+<p>AOF 方式</p>
+<p>需要在 <code>redis.conf</code> 中打开配置</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> aof 是否打开 默认是关闭的 需要改为 yes</span></span><br><span class="line">appendonly yes</span><br><span class="line">appendfilename "appendonly.aof"</span><br><span class="line"><span class="meta">#</span><span class="bash"> 每次操作都同步日志</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> appendfsync always</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 每秒同步记录一次</span></span><br><span class="line">appendfsync everysec</span><br><span class="line"><span class="meta">#</span><span class="bash"> 不同步</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> appendfsync no</span></span><br></pre></td></tr></table></figure>
+<h2 id="SringBoot-Redis-重要注解"><a href="#SringBoot-Redis-重要注解" class="headerlink" title="SringBoot Redis 重要注解"></a>SringBoot Redis 重要注解</h2><p><code>Spring-boot</code> 引入 <code>redis</code> 缓存机制，首先需要在启动类上增加一个注解</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@EnableCaching</span></span><br></pre></td></tr></table></figure>
+<p>在 <code>controller</code> 的方法上增加  <code>@Cacheable</code> 注解，一般用于查询接口</p>
+<p><code>@Cacheable(cacheNames = &quot;product&quot;, key = &#39;#sellerId&#39;, condition=&quot;#sellerId.length&gt;3&quot;, unless = &quot;#result.getCode()!=0&quot;)</code></p>
+<p><code>#sellerId</code> 的写法成为 <code>spel</code> 表达式，获取参数 <code>sellerId的值</code></p>
+<p>当 <code>sellerId</code> 的字符长度大于 3 ，而且 除了 返回的 code!=0（也就是等于0都缓存）</p>
+<p>当数据改变之后表用 <code>@Cacheput</code> 注解修改缓存，通常用于保存或者修改方法</p>
+<p><code>@CachePut</code> </p>
+<p>要使用上面两个注解更新缓存 必须保证方法的返回值一致</p>
+<p>如果上面两个注解的 key 不填或者为空，则key默认为方法的参数，这就会导致 key不一致的问题（即使方法的返回值一致）</p>
+<p>可以把 <code>cacheName</code> 属性移到 类注解 <code>@CacheConfig(cacheNames=&quot;product&quot;)</code></p>
+<p><code>@CacheEvict（cacheNames = &quot;product&quot;，key=&quot;123&quot;）</code></p>
+<p>清除缓存</p>
+<p>使用上面的缓存必须实现序列化</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>您的支持是我继续创作的最大动力,非常感谢您的支持</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="Bruce Liu 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="Bruce Liu 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/14/Java泛型/" rel="next" title="Java泛型">
+                <i class="fa fa-chevron-left"></i> Java泛型
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/18/spring-cloud基础/" rel="prev" title="spring-cloud基础">
+                spring-cloud基础 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Bruce Liu</p>
+              <p class="site-description motion-element" itemprop="description">Bruce Liu个人站，主要涉及前端知识共享、实践教程、前沿技术共同学习等方面</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">30</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/lastdetective" title="GitHub &rarr; https://github.com/lastdetective" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:xlgjsj004@sina.com" title="E-Mail &rarr; mailto:xlgjsj004@sina.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#redis-简介"><span class="nav-number">1.</span> <span class="nav-text">redis 简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#redis-基本操作"><span class="nav-number">2.</span> <span class="nav-text">redis 基本操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#String-类型"><span class="nav-number">2.1.</span> <span class="nav-text">String 类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hash-类型"><span class="nav-number">2.2.</span> <span class="nav-text">Hash 类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#List-类型"><span class="nav-number">2.3.</span> <span class="nav-text">List 类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Set-类型"><span class="nav-number">2.4.</span> <span class="nav-text">Set 类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sorted-set"><span class="nav-number">2.5.</span> <span class="nav-text">sorted set</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#redis的keys基本操作"><span class="nav-number">3.</span> <span class="nav-text">redis的keys基本操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#redis-的事务"><span class="nav-number">4.</span> <span class="nav-text">redis 的事务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#redis-持久化概述"><span class="nav-number">5.</span> <span class="nav-text">redis 持久化概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RDB-方式"><span class="nav-number">5.1.</span> <span class="nav-text">RDB 方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SringBoot-Redis-重要注解"><span class="nav-number">6.</span> <span class="nav-text">SringBoot Redis 重要注解</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bruce Liu</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v6.6.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.6.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.6.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.6.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.6.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.6.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.6.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.6.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
