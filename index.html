@@ -400,9 +400,13 @@
                 
               
 
-              <time title="创建时间：2019-11-03 14:17:00" itemprop="dateCreated datePublished" datetime="2019-11-03T14:17:00+08:00">2019-11-03</time>
+              <time title="创建时间：2019-11-03 14:17:00 / 修改时间：15:17:47" itemprop="dateCreated datePublished" datetime="2019-11-03T14:17:00+08:00">2019-11-03</time>
             
 
+            
+              
+
+              
             
           </span>
 
@@ -436,7 +440,27 @@
       
         
           
-            
+            <ol>
+<li><p>拉取 <code>docker</code> 镜像</p>
+<p>这里使用的 网易云的镜像</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull hub.c.163.com/library/rabbitmq:latest</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动容器</p>
+<p>5762 是服务的端口，15762 是管理控制台的端口</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 5672:5672 -p 15672:15672 --name rabbitmq hub.c.163.com/library/rabbitmq:latest</span><br></pre></td></tr></table></figure>
+<p>启动好后，访问 <code>rabbitmq</code> 的控制台，发现无法访问，需要开启管理插件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://ip:15762/</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>进入 <code>rabbitmq</code> 的命令行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it rabbitmq bash</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>执行以下命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rabbitmq-plugins <span class="built_in">enable</span> rabbitmq_management</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>再次访问 <code>ip:15762</code> 即可以正常访问控制台</p>
+<p>初始用户名和密码是 <code>guest</code> <code>guest</code></p>
+
           
         
       
@@ -1972,6 +1996,19 @@
 
               
 
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
               
             </nav>
           
