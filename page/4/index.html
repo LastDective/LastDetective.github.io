@@ -108,24 +108,23 @@
 
 
 
-  <meta name="description" content="项目中的文件我们经常会存储在其他的文件夹，而不是数据库，而 tomcat 服务器可以将 文件的相对路径映射为文件的绝对路径">
-<meta property="og:type" content="article">
-<meta property="og:title" content="tomcat配置虚拟目录">
-<meta property="og:url" content="http://yoursite.com/2019/02/01/tomcat配置虚拟目录/index.html">
+  <meta name="description" content="Bruce Liu个人站，主要涉及前端知识共享、实践教程、前沿技术共同学习等方面">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Bruce Liu&#39;s Blog">
+<meta property="og:url" content="http://yoursite.com/page/4/index.html">
 <meta property="og:site_name" content="Bruce Liu&#39;s Blog">
-<meta property="og:description" content="项目中的文件我们经常会存储在其他的文件夹，而不是数据库，而 tomcat 服务器可以将 文件的相对路径映射为文件的绝对路径">
+<meta property="og:description" content="Bruce Liu个人站，主要涉及前端知识共享、实践教程、前沿技术共同学习等方面">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-13T16:22:44.719Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="tomcat配置虚拟目录">
-<meta name="twitter:description" content="项目中的文件我们经常会存储在其他的文件夹，而不是数据库，而 tomcat 服务器可以将 文件的相对路径映射为文件的绝对路径">
+<meta name="twitter:title" content="Bruce Liu&#39;s Blog">
+<meta name="twitter:description" content="Bruce Liu个人站，主要涉及前端知识共享、实践教程、前沿技术共同学习等方面">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/02/01/tomcat配置虚拟目录/">
+  <link rel="canonical" href="http://yoursite.com/page/4/">
 
 
 
@@ -135,7 +134,7 @@
   };
 </script>
 
-  <title>tomcat配置虚拟目录 | Bruce Liu's Blog</title>
+  <title>Bruce Liu's Blog</title>
   
 
 
@@ -184,7 +183,8 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <div class="container sidebar-position-left 
+  page-home">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -338,9 +338,9 @@
           
           <div id="content" class="content">
             
-
-  <div id="posts" class="posts-expand">
+  <section id="posts" class="posts-expand">
     
+      
 
   
 
@@ -355,7 +355,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/01/tomcat配置虚拟目录/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/01/线程安全/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Bruce Liu">
@@ -372,7 +372,10 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">tomcat配置虚拟目录
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/11/01/线程安全/" class="post-title-link" itemprop="http://yoursite.com/page/4/index.html">线程安全</a>
               
             
           </h1>
@@ -397,7 +400,7 @@
                 
               
 
-              <time title="创建时间：2019-02-01 16:20:09" itemprop="dateCreated datePublished" datetime="2019-02-01T16:20:09+08:00">2019-02-01</time>
+              <time title="创建时间：2018-11-01 23:45:21" itemprop="dateCreated datePublished" datetime="2018-11-01T23:45:21+08:00">2018-11-01</time>
             
 
             
@@ -447,8 +450,27 @@
       
 
       
-        <p>项目中的文件我们经常会存储在其他的文件夹，而不是数据库，而 tomcat 服务器可以将 文件的相对路径映射为文件的绝对路径</p>
+        
+          
+            <h1 id="ThreadSafe-and-NotThreadSafe"><a href="#ThreadSafe-and-NotThreadSafe" class="headerlink" title="ThreadSafe and NotThreadSafe"></a>ThreadSafe and NotThreadSafe</h1><blockquote>
+<p>Thread safety can be unexpectedly subtle because, in the absence of sufﬁcient<br>synchronization, the ordering of operations in multiple threads is unpredictable<br>and sometimes surprising.</p>
+</blockquote>
+<p>线程安全因为没有足够的同步机制可能会产生不可预测甚至出人意料的效果，下面的代码在多线程中可能产生异常。<br>代码的本意是产生一个整型数字序列，但是多线程的情况下可能出现数字重复的情况<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@NotThreadSafe</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UnsafeSequence</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> value;</span><br><span class="line">   </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getNext</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> value++;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>figure 1.1展示了多线程情况下可能出现的问题<br><img src="http://wx2.sinaimg.cn/mw690/730892e4ly1fwt029kgkxj20px09pq3c.jpg" alt="figure 1.1"></p>
+<blockquote>
+<p>The problem with UnsafeSequence is that with some unlucky timing, two<br>  threads could call getNext and receive the same value. Figure 1.1 shows how this<br>  can happen. The increment notation, someVariable++,may appear to be a single<br>  operation, but is in fact three separate operations: read the value, add one to<br>  it, and write out the new value. Since operations in multiple threads may be<br>  arbitrarily interleaved by the runtime, it is possible for two threads to read the<br>  value at the same time, both see the same value, and then both add one to it.<br>  The result is that the same sequence number is returned from multiple calls in<br>  different threads.</p>
+</blockquote>
+<p>自增1的操作，看以来像是一个操作，其实分为三部分：</p>
+<ol>
+<li>读数值   </li>
+<li>将读出的数值加1</li>
+<li>写数值</li>
+</ol>
+<p>如果两个线程在同一时间读出了相同的数值，则加1之后会出现两个相同的数字</p>
+<hr>
 
+          
+        
       
     </div>
 
@@ -464,35 +486,6 @@
        
     
     
-      <div>
-        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
-  <div>您的支持是我继续创作的最大动力,非常感谢您的支持</div>
-  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
-    <span>打赏</span>
-  </button>
-  <div id="QR" style="display: none;">
-
-    
-      <div id="wechat" style="display: inline-block">
-        <img id="wechat_qr" src="/images/wechatpay.png" alt="Bruce Liu 微信支付">
-        <p>微信支付</p>
-      </div>
-    
-
-    
-      <div id="alipay" style="display: inline-block">
-        <img id="alipay_qr" src="/images/alipay.png" alt="Bruce Liu 支付宝">
-        <p>支付宝</p>
-      </div>
-    
-
-    
-
-  </div>
-</div>
-
-      </div>
-    
 
     
 
@@ -500,32 +493,12 @@
       
 
       
-      
+
       
 
       
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2019/01/31/javascript的apply和call方法，以及构造函数/" rel="next" title="javascript的apply和call方法，以及构造函数">
-                <i class="fa fa-chevron-left"></i> javascript的apply和call方法，以及构造函数
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/02/20/git远程分支/" rel="prev" title="git远程分支">
-                git远程分支 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
       
-
-      
+        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -535,15 +508,18 @@
   </article>
 
 
-  </div>
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
+  </nav>
+
 
 
           </div>
           
-
-  
-
-
 
         </div>
         
@@ -770,10 +746,6 @@
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.6.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=6.6.0"></script>
-
-
 
   
 
