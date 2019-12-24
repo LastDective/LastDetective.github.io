@@ -108,25 +108,24 @@
 
 
 
-  <meta name="description" content="拉取 docker 镜像 这里使用的 网易云的镜像 1docker pull hub.c.163.com/library/rabbitmq:latest  启动容器 5762 是服务的端口，15762 是管理控制台的端口 1docker run -d -p 5672:5672 -p 15672:15672 --name rabbitmq hub.c.163.com/library/rabbitm">
-<meta name="keywords" content="docker">
+  <meta name="description" content="基础知识交换机（exchange）的属性 autodelete 当最后一个绑定到 Exchange 上的队列删除后，自动删除该 Exchange。 internal 当前Exchange 是否用于 RabbitMq 内部使用，默认为 false。 arguments 扩展参数，用于 AMQP 协议自制订化使用 消息如何保障 100 % 的投递成功什么是生产端的可靠性投递 保障消息成功发出。 保障M">
 <meta property="og:type" content="article">
-<meta property="og:title" content="docker安装rabbitmq">
-<meta property="og:url" content="http://yoursite.com/2019/11/03/docker安装rabbitmq/index.html">
+<meta property="og:title" content="rabbitmq进阶">
+<meta property="og:url" content="http://yoursite.com/2019/12/07/rabbitmq进阶/index.html">
 <meta property="og:site_name" content="Bruce Liu&#39;s Blog">
-<meta property="og:description" content="拉取 docker 镜像 这里使用的 网易云的镜像 1docker pull hub.c.163.com/library/rabbitmq:latest  启动容器 5762 是服务的端口，15762 是管理控制台的端口 1docker run -d -p 5672:5672 -p 15672:15672 --name rabbitmq hub.c.163.com/library/rabbitm">
+<meta property="og:description" content="基础知识交换机（exchange）的属性 autodelete 当最后一个绑定到 Exchange 上的队列删除后，自动删除该 Exchange。 internal 当前Exchange 是否用于 RabbitMq 内部使用，默认为 false。 arguments 扩展参数，用于 AMQP 协议自制订化使用 消息如何保障 100 % 的投递成功什么是生产端的可靠性投递 保障消息成功发出。 保障M">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-03T07:17:47.023Z">
+<meta property="og:updated_time" content="2019-12-07T10:24:45.451Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="docker安装rabbitmq">
-<meta name="twitter:description" content="拉取 docker 镜像 这里使用的 网易云的镜像 1docker pull hub.c.163.com/library/rabbitmq:latest  启动容器 5762 是服务的端口，15762 是管理控制台的端口 1docker run -d -p 5672:5672 -p 15672:15672 --name rabbitmq hub.c.163.com/library/rabbitm">
+<meta name="twitter:title" content="rabbitmq进阶">
+<meta name="twitter:description" content="基础知识交换机（exchange）的属性 autodelete 当最后一个绑定到 Exchange 上的队列删除后，自动删除该 Exchange。 internal 当前Exchange 是否用于 RabbitMq 内部使用，默认为 false。 arguments 扩展参数，用于 AMQP 协议自制订化使用 消息如何保障 100 % 的投递成功什么是生产端的可靠性投递 保障消息成功发出。 保障M">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/11/03/docker安装rabbitmq/">
+  <link rel="canonical" href="http://yoursite.com/2019/12/07/rabbitmq进阶/">
 
 
 
@@ -136,7 +135,7 @@
   };
 </script>
 
-  <title>docker安装rabbitmq | Bruce Liu's Blog</title>
+  <title>rabbitmq进阶 | Bruce Liu's Blog</title>
   
 
 
@@ -356,7 +355,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/03/docker安装rabbitmq/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/07/rabbitmq进阶/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Bruce Liu">
@@ -373,7 +372,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">docker安装rabbitmq
+          <h1 class="post-title" itemprop="name headline">rabbitmq进阶
               
             
           </h1>
@@ -398,7 +397,7 @@
                 
               
 
-              <time title="创建时间：2019-11-03 14:17:00 / 修改时间：15:17:47" itemprop="dateCreated datePublished" datetime="2019-11-03T14:17:00+08:00">2019-11-03</time>
+              <time title="创建时间：2019-12-07 16:42:40 / 修改时间：18:24:45" itemprop="dateCreated datePublished" datetime="2019-12-07T16:42:40+08:00">2019-12-07</time>
             
 
             
@@ -436,26 +435,61 @@
       
 
       
-        <ol>
-<li><p>拉取 <code>docker</code> 镜像</p>
-<p>这里使用的 网易云的镜像</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull hub.c.163.com/library/rabbitmq:latest</span><br></pre></td></tr></table></figure>
+        <h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><p>交换机（exchange）的属性</p>
+<p><code>autodelete</code> 当最后一个绑定到 Exchange 上的队列删除后，自动删除该 Exchange。</p>
+<p>internal 当前Exchange 是否用于 RabbitMq 内部使用，默认为 false。</p>
+<p>arguments 扩展参数，用于 AMQP 协议自制订化使用</p>
+<h2 id="消息如何保障-100-的投递成功"><a href="#消息如何保障-100-的投递成功" class="headerlink" title="消息如何保障 100 % 的投递成功"></a>消息如何保障 100 % 的投递成功</h2><h3 id="什么是生产端的可靠性投递"><a href="#什么是生产端的可靠性投递" class="headerlink" title="什么是生产端的可靠性投递"></a>什么是生产端的可靠性投递</h3><ol>
+<li>保障消息成功发出。</li>
+<li>保障MQ 节点的成功接收。</li>
+<li>发送端到MQ节点的（Broker）确认应答。</li>
+<li>完善的消息进行补偿机制。</li>
+</ol>
+<p>解决方法</p>
+<ol>
+<li><p>消息落库，对消息状态进行打标</p>
+<p>发送消息时，将消息持久化到数据库，并设置一个状态，客户端会送应答之后进行状态变更。</p>
 </li>
-<li><p>启动容器</p>
-<p>5762 是服务的端口，15762 是管理控制台的端口</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 5672:5672 -p 15672:15672 --name rabbitmq hub.c.163.com/library/rabbitmq:latest</span><br></pre></td></tr></table></figure>
-<p>启动好后，访问 <code>rabbitmq</code> 的控制台，发现无法访问，需要开启管理插件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://ip:15762/</span><br></pre></td></tr></table></figure>
+<li><p>消息的延迟投递，做二次确认，回调检查。</p>
+<ol>
+<li><p>业务数据入库</p>
 </li>
-<li><p>进入 <code>rabbitmq</code> 的命令行</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it rabbitmq bash</span><br></pre></td></tr></table></figure>
+<li><p>发送业务消息，并生成二次检查的消息</p>
 </li>
-<li><p>执行以下命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rabbitmq-plugins <span class="built_in">enable</span> rabbitmq_management</span><br></pre></td></tr></table></figure>
+<li><p>消费端收到这个消息正确处理之后，再生成一条消息，该消息由 call-back 进行监听，callback将其入库</p>
+</li>
+<li><p>生产段 经过几分钟之后 发送二次检查消息到 call-back，查看刚才的业务是否处理成功，如果成功则不进行任何操作，如果失败 call-back 会发起一个 rpc 请求，让生产端进行重发。</p>
 </li>
 </ol>
-<p>再次访问 <code>ip:15762</code> 即可以正常访问控制台</p>
-<p>初始用户名和密码是 <code>guest</code> <code>guest</code></p>
+</li>
+</ol>
+<h2 id="幂等性的概念"><a href="#幂等性的概念" class="headerlink" title="幂等性的概念"></a>幂等性的概念</h2><p>可以借鉴数据库乐观锁的机制</p>
+<p>比如执行如下的一条sql</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span> t_reps <span class="keyword">set</span> <span class="keyword">count</span> = <span class="keyword">count</span><span class="number">-1</span>,<span class="keyword">version</span>=<span class="keyword">version</span>+<span class="number">1</span> <span class="keyword">where</span> <span class="keyword">id</span>=<span class="string">'xiaomi9'</span></span><br></pre></td></tr></table></figure>
+<p>如果现在某个手机在数据库中 <code>count=1</code>, 而且 <code>version=1</code>,在执行上面的 <code>sql</code> 的时候，应该首先查询数据库,多个进程应该查询数据库</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">count</span>,<span class="keyword">version</span> <span class="keyword">from</span> t_reps <span class="keyword">where</span> <span class="keyword">id</span> =<span class="string">'xiaomi9'</span>;</span><br></pre></td></tr></table></figure>
+<p>多个消费者进程可能都会查到这条数据，假设 count = 1, version=1</p>
+<p>将上面的 sql 更改为</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span> t_reps <span class="keyword">set</span> <span class="keyword">count</span> = <span class="keyword">count</span><span class="number">-1</span>,<span class="keyword">version</span>=<span class="keyword">version</span>+<span class="number">1</span> <span class="keyword">where</span> <span class="keyword">id</span>=<span class="string">'xiaomi9'</span> <span class="keyword">and</span> <span class="keyword">version</span> = <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>可以避免多个进程的重复操作。</p>
+<h2 id="消费端-幂等性保障"><a href="#消费端-幂等性保障" class="headerlink" title="消费端-幂等性保障"></a>消费端-幂等性保障</h2><ol>
+<li><p>唯一id+指纹码 机制</p>
+<p>唯一id + 指纹码机制，利用数据库主键去重</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">count</span>(*) <span class="keyword">from</span> t_order <span class="keyword">where</span> <span class="keyword">id</span> = 唯一<span class="keyword">id</span>+指纹码</span><br></pre></td></tr></table></figure>
+<p>好处 实现简单</p>
+<p>坏处 高并发下有数据库写入的性能瓶颈</p>
+<p>解决方案 数据库路由</p>
+</li>
+</ol>
+<ol start="2">
+<li><p>使用 redis 的原子性特性</p>
+<p>redis 进行幂等，需要考虑的问题：</p>
+<ol>
+<li>我们是否要进行数据的落库，如果落库的话，关键问题是数据库和缓存如何做到原子性</li>
+<li>如果不进行落库，那么都存储到缓存中，如何设置定时的同步策略。</li>
+</ol>
+</li>
+</ol>
 
       
     </div>
@@ -506,12 +540,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/docker/" rel="tag"># docker</a>
-          
-        </div>
-      
 
       
       
@@ -521,8 +549,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/10/18/fastdfs安装遇到的问题/" rel="next" title="fastdfs安装遇到的问题">
-                <i class="fa fa-chevron-left"></i> fastdfs安装遇到的问题
+              <a href="/2019/11/30/rabbitmq基础/" rel="next" title="rabbitmq基础">
+                <i class="fa fa-chevron-left"></i> rabbitmq基础
               </a>
             
           </div>
@@ -531,8 +559,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/11/04/Docker安装Elastic-Search/" rel="prev" title="Docker安装Elastic-Search">
-                Docker安装Elastic-Search <i class="fa fa-chevron-right"></i>
+              <a href="/2019/12/22/java初始化值/" rel="prev" title="java初始化值">
+                java初始化值 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -578,8 +606,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -662,6 +699,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基础知识"><span class="nav-number">1.</span> <span class="nav-text">基础知识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#消息如何保障-100-的投递成功"><span class="nav-number">2.</span> <span class="nav-text">消息如何保障 100 % 的投递成功</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是生产端的可靠性投递"><span class="nav-number">2.1.</span> <span class="nav-text">什么是生产端的可靠性投递</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#幂等性的概念"><span class="nav-number">3.</span> <span class="nav-text">幂等性的概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#消费端-幂等性保障"><span class="nav-number">4.</span> <span class="nav-text">消费端-幂等性保障</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

@@ -355,6 +355,548 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/24/Kali-Linux-中文乱码解决/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bruce Liu">
+      <meta itemprop="description" content="Bruce Liu个人站，主要涉及前端知识共享、实践教程、前沿技术共同学习等方面">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bruce Liu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/12/24/Kali-Linux-中文乱码解决/" class="post-title-link" itemprop="http://yoursite.com/index.html">Kali Linux 中文乱码解决</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-12-24 14:48:56 / 修改时间：14:54:37" itemprop="dateCreated datePublished" datetime="2019-12-24T14:48:56+08:00">2019-12-24</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>设置字符集，安装字体</p>
+<ol>
+<li>在命令行输入”dpkg-reconfigure locales”。进入图形化界面之后，（空格是选择，Tab是切换，*是选中），选中en_US.UTF-8和zh_CN.UTF-8，确定后，将en_US.UTF-8选为默认。</li>
+<li>安装中文字体，”apt-get install xfonts-intl-chinese “和” apt-get install ttf-wqy-microhei”，这时发现网页不乱码，系统也不乱码。</li>
+<li>重启</li>
+</ol>
+<p>如果遇到 安装失败的情况</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unable to loacte package xxx</span><br></pre></td></tr></table></figure>
+<p>需要更换 <code>apt-get</code> 的软件源</p>
+<p>修改 <code>/etc/apt/sources.list</code></p>
+<p>根据个人需要加入如下软件地址</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">#中科大</span><br><span class="line">deb http://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib</span><br><span class="line">deb-src http://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib</span><br><span class="line"> </span><br><span class="line">#阿里云</span><br><span class="line">deb http://mirrors.aliyun.com/kali kali-rolling main non-free contrib</span><br><span class="line">deb-src http://mirrors.aliyun.com/kali kali-rolling main non-free contrib</span><br><span class="line"> </span><br><span class="line">#清华大学</span><br><span class="line">deb http://mirrors.tuna.tsinghua.edu.cn/kali kali-rolling main contrib non-free</span><br><span class="line">deb-src https://mirrors.tuna.tsinghua.edu.cn/kali kali-rolling main contrib non-free</span><br><span class="line"> </span><br><span class="line">#浙大</span><br><span class="line">deb http://mirrors.zju.edu.cn/kali kali-rolling main contrib non-free</span><br><span class="line">deb-src http://mirrors.zju.edu.cn/kali kali-rolling main contrib non-free</span><br><span class="line"> </span><br><span class="line">#东软大学</span><br><span class="line">deb http://mirrors.neusoft.edu.cn/kali kali-rolling/main non-free contrib</span><br><span class="line">deb-src http://mirrors.neusoft.edu.cn/kali kali-rolling/main non-free contrib</span><br><span class="line"> </span><br><span class="line">#官方源</span><br><span class="line">deb http://http.kali.org/kali kali-rolling main non-free contrib</span><br><span class="line">deb-src http://http.kali.org/kali kali-rolling main non-free contrib</span><br><span class="line"> </span><br><span class="line">#重庆大学</span><br><span class="line">deb http://http.kali.org/kali kali-rolling main non-free contrib</span><br><span class="line">deb-src http://http.kali.org/kali kali-rolling main non-free contrib</span><br></pre></td></tr></table></figure>
+<p>保存之后执行</p>
+<p><code>apt-get update</code> </p>
+<p>之后即可安装软件</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/22/java初始化值/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bruce Liu">
+      <meta itemprop="description" content="Bruce Liu个人站，主要涉及前端知识共享、实践教程、前沿技术共同学习等方面">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bruce Liu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/12/22/java初始化值/" class="post-title-link" itemprop="http://yoursite.com/index.html">java初始化值</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-12-22 16:13:24 / 修改时间：16:17:01" itemprop="dateCreated datePublished" datetime="2019-12-22T16:13:24+08:00">2019-12-22</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在类的成员变量中，<code>java</code>的基本数据（此处包含 <code>String</code>）类型将会赋初值</p>
+<table>
+<thead>
+<tr>
+<th><strong>Data Type</strong></th>
+<th><strong>Default Value (for fields)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>byte</td>
+<td>0</td>
+</tr>
+<tr>
+<td>short</td>
+<td>0</td>
+</tr>
+<tr>
+<td>int</td>
+<td>0</td>
+</tr>
+<tr>
+<td>long</td>
+<td>0L</td>
+</tr>
+<tr>
+<td>float</td>
+<td>0.0f</td>
+</tr>
+<tr>
+<td>double</td>
+<td>0.0d</td>
+</tr>
+<tr>
+<td>char</td>
+<td>‘\u0000’</td>
+</tr>
+<tr>
+<td>String (or any object)</td>
+<td>null</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>false</td>
+</tr>
+</tbody>
+</table>
+<p>局部变量略有不同。编译器永远不会将默认值分配给未初始化的局部变量。如果您无法在声明它的地方初始化本地变量，请确保在尝试使用它之前为其分配一个值。访问未初始化的局部变量将导致编译时错误。</p>
+<p><a href="https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html" target="_blank" rel="noopener">官方文档</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/07/rabbitmq进阶/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bruce Liu">
+      <meta itemprop="description" content="Bruce Liu个人站，主要涉及前端知识共享、实践教程、前沿技术共同学习等方面">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bruce Liu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/12/07/rabbitmq进阶/" class="post-title-link" itemprop="http://yoursite.com/index.html">rabbitmq进阶</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-12-07 16:42:40 / 修改时间：18:24:45" itemprop="dateCreated datePublished" datetime="2019-12-07T16:42:40+08:00">2019-12-07</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><p>交换机（exchange）的属性</p>
+<p><code>autodelete</code> 当最后一个绑定到 Exchange 上的队列删除后，自动删除该 Exchange。</p>
+<p>internal 当前Exchange 是否用于 RabbitMq 内部使用，默认为 false。</p>
+<p>arguments 扩展参数，用于 AMQP 协议自制订化使用</p>
+<h2 id="消息如何保障-100-的投递成功"><a href="#消息如何保障-100-的投递成功" class="headerlink" title="消息如何保障 100 % 的投递成功"></a>消息如何保障 100 % 的投递成功</h2><h3 id="什么是生产端的可靠性投递"><a href="#什么是生产端的可靠性投递" class="headerlink" title="什么是生产端的可靠性投递"></a>什么是生产端的可靠性投递</h3><ol>
+<li>保障消息成功发出。</li>
+<li>保障MQ 节点的成功接收。</li>
+<li>发送端到MQ节点的（Broker）确认应答。</li>
+<li>完善的消息进行补偿机制。</li>
+</ol>
+<p>解决方法</p>
+<ol>
+<li><p>消息落库，对消息状态进行打标</p>
+<p>发送消息时，将消息持久化到数据库，并设置一个状态，客户端会送应答之后进行状态变更。</p>
+</li>
+<li><p>消息的延迟投递，做二次确认，回调检查。</p>
+<ol>
+<li><p>业务数据入库</p>
+</li>
+<li><p>发送业务消息，并生成二次检查的消息</p>
+</li>
+<li><p>消费端收到这个消息正确处理之后，再生成一条消息，该消息由 call-back 进行监听，callback将其入库</p>
+</li>
+<li><p>生产段 经过几分钟之后 发送二次检查消息到 call-back，查看刚才的业务是否处理成功，如果成功则不进行任何操作，如果失败 call-back 会发起一个 rpc 请求，让生产端进行重发。</p>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="幂等性的概念"><a href="#幂等性的概念" class="headerlink" title="幂等性的概念"></a>幂等性的概念</h2><p>可以借鉴数据库乐观锁的机制</p>
+<p>比如执行如下的一条sql</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span> t_reps <span class="keyword">set</span> <span class="keyword">count</span> = <span class="keyword">count</span><span class="number">-1</span>,<span class="keyword">version</span>=<span class="keyword">version</span>+<span class="number">1</span> <span class="keyword">where</span> <span class="keyword">id</span>=<span class="string">'xiaomi9'</span></span><br></pre></td></tr></table></figure>
+<p>如果现在某个手机在数据库中 <code>count=1</code>, 而且 <code>version=1</code>,在执行上面的 <code>sql</code> 的时候，应该首先查询数据库,多个进程应该查询数据库</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">count</span>,<span class="keyword">version</span> <span class="keyword">from</span> t_reps <span class="keyword">where</span> <span class="keyword">id</span> =<span class="string">'xiaomi9'</span>;</span><br></pre></td></tr></table></figure>
+<p>多个消费者进程可能都会查到这条数据，假设 count = 1, version=1</p>
+<p>将上面的 sql 更改为</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span> t_reps <span class="keyword">set</span> <span class="keyword">count</span> = <span class="keyword">count</span><span class="number">-1</span>,<span class="keyword">version</span>=<span class="keyword">version</span>+<span class="number">1</span> <span class="keyword">where</span> <span class="keyword">id</span>=<span class="string">'xiaomi9'</span> <span class="keyword">and</span> <span class="keyword">version</span> = <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>可以避免多个进程的重复操作。</p>
+<h2 id="消费端-幂等性保障"><a href="#消费端-幂等性保障" class="headerlink" title="消费端-幂等性保障"></a>消费端-幂等性保障</h2><ol>
+<li><p>唯一id+指纹码 机制</p>
+<p>唯一id + 指纹码机制，利用数据库主键去重</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">count</span>(*) <span class="keyword">from</span> t_order <span class="keyword">where</span> <span class="keyword">id</span> = 唯一<span class="keyword">id</span>+指纹码</span><br></pre></td></tr></table></figure>
+<p>好处 实现简单</p>
+<p>坏处 高并发下有数据库写入的性能瓶颈</p>
+<p>解决方案 数据库路由</p>
+</li>
+</ol>
+<ol start="2">
+<li><p>使用 redis 的原子性特性</p>
+<p>redis 进行幂等，需要考虑的问题：</p>
+<ol>
+<li>我们是否要进行数据的落库，如果落库的话，关键问题是数据库和缓存如何做到原子性</li>
+<li>如果不进行落库，那么都存储到缓存中，如何设置定时的同步策略。</li>
+</ol>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/30/rabbitmq基础/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -417,7 +959,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-12-01 15:43:13" itemprop="dateModified" datetime="2019-12-01T15:43:13+08:00">2019-12-01</time>
+                <time title="修改时间：2019-12-07 21:31:33" itemprop="dateModified" datetime="2019-12-07T21:31:33+08:00">2019-12-07</time>
               
             
           </span>
@@ -523,7 +1065,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Recv2</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String EXCHANGE_NAME = <span class="string">"test_exchange_direct"</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String QUEUE_NAME = <span class="string">"test_queue_direct_2"</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException, TimeoutException </span>&#123;</span><br><span class="line">        Connection connection = ConnectionUtils.getConnection();</span><br><span class="line">        Channel channel = connection.createChannel();</span><br><span class="line">        channel.queueDeclare(QUEUE_NAME, <span class="keyword">false</span>, <span class="keyword">false</span>, <span class="keyword">false</span>, <span class="keyword">null</span>);</span><br><span class="line">        channel.basicQos(<span class="number">1</span>);</span><br><span class="line">        <span class="comment">// 这里指定 接收 routingKey 为 "error" 或者 "info" 的消息 </span></span><br><span class="line">        channel.queueBind(QUEUE_NAME, EXCHANGE_NAME, <span class="string">"error"</span>);</span><br><span class="line">        channel.queueBind(QUEUE_NAME, EXCHANGE_NAME, <span class="string">"info"</span>);</span><br><span class="line">        channel.basicQos(<span class="number">1</span>);</span><br><span class="line">        DefaultConsumer consumer = <span class="keyword">new</span> DefaultConsumer(channel) &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleDelivery</span><span class="params">(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, <span class="keyword">byte</span>[] body)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">                String msg = <span class="keyword">new</span> String(body, <span class="string">"UTF-8"</span>);</span><br><span class="line">                System.out.println(<span class="string">"RECV2  ----&gt;"</span> + msg);</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    Thread.sleep(<span class="number">2000</span>);</span><br><span class="line">                &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">                    System.out.println(<span class="string">"RECV2 DONE!"</span>);</span><br><span class="line">                    channel.basicAck(envelope.getDeliveryTag(), <span class="keyword">false</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="keyword">boolean</span> autoAck = <span class="keyword">false</span>;</span><br><span class="line">        channel.basicConsume(QUEUE_NAME, autoAck, consumer);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>现象 当生产者 发送消息时 <code>routingKey</code> = <code>error</code> 时，两个 消费者都能收到</p>
 <p>当生产者 发送消息时 <code>routingKey</code> = <code>info</code> 时，只有消费者 <strong>2</strong> 能收到消息</p>
-<h2 id="主题模式"><a href="#主题模式" class="headerlink" title="主题模式"></a>主题模式</h2><p><img src="https://www.rabbitmq.com/img/tutorials/python-five.png" alt=""></p>
+<h2 id="主题模式-topic"><a href="#主题模式-topic" class="headerlink" title="主题模式 topic"></a>主题模式 topic</h2><p><img src="https://www.rabbitmq.com/img/tutorials/python-five.png" alt=""></p>
 <p>使用匹配符 <code>*</code> 匹配一项，<code>#</code> 匹配多项</p>
 <p>生产者</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Send</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String EXCHANGE_NAME = <span class="string">"test_exchange_topic"</span>;</span><br><span class="line">    <span class="comment">//public static final String QUEUE_NAME = "test_queue_fanout_email";</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException, TimeoutException </span>&#123;</span><br><span class="line">        Connection connection = ConnectionUtils.getConnection();</span><br><span class="line">        Channel channel = connection.createChannel();</span><br><span class="line">        channel.exchangeDeclare(EXCHANGE_NAME, ExchangeTypes.TOPIC);</span><br><span class="line">        String msg = <span class="string">"商品。。。"</span>;</span><br><span class="line">        <span class="comment">// 匹配商品的新增业务</span></span><br><span class="line">        channel.basicPublish(EXCHANGE_NAME, <span class="string">"goods.add"</span>,</span><br><span class="line">                <span class="keyword">null</span>, msg.getBytes());</span><br><span class="line">        System.out.println(<span class="string">"---send"</span> + msg);</span><br><span class="line">        channel.close();</span><br><span class="line">        connection.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -552,7 +1094,32 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Send3</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String QUEUE_NAME = <span class="string">"test_queue_confirm3"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException, TimeoutException </span>&#123;</span><br><span class="line">        Connection connection = ConnectionUtils.getConnection();</span><br><span class="line">        Channel channel = connection.createChannel();</span><br><span class="line">        channel.queueDeclare(QUEUE_NAME, <span class="keyword">false</span>, <span class="keyword">false</span>, <span class="keyword">false</span>, <span class="keyword">null</span>);</span><br><span class="line"></span><br><span class="line">        channel.confirmSelect();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">final</span> SortedSet&lt;Long&gt; confirmSet = Collections.synchronizedSortedSet(<span class="keyword">new</span> TreeSet&lt;Long&gt;());</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 添加一个监听</span></span><br><span class="line">        channel.addConfirmListener(<span class="keyword">new</span> ConfirmListener() &#123;</span><br><span class="line">            <span class="comment">// 正常收到 确认消息</span></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleAck</span><span class="params">(<span class="keyword">long</span> deliveryTag, <span class="keyword">boolean</span> multiple)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">                <span class="keyword">if</span> (multiple) &#123;</span><br><span class="line">                    System.out.println(<span class="string">"-----handleAck-------multiple"</span>);</span><br><span class="line">                    confirmSet.headSet(deliveryTag + <span class="number">1</span>).clear();</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    System.out.println(<span class="string">"-----handleAck-------multiple false"</span>);</span><br><span class="line">                    confirmSet.remove(deliveryTag);</span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleNack</span><span class="params">(<span class="keyword">long</span> deliveryTag, <span class="keyword">boolean</span> multiple)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">                <span class="keyword">if</span> (multiple) &#123;</span><br><span class="line">                    System.out.println(<span class="string">"-----handleNAck-------multiple"</span>);</span><br><span class="line">                    confirmSet.headSet(deliveryTag + <span class="number">1</span>).clear();</span><br><span class="line"></span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    System.out.println(<span class="string">"-----handleNAck-------multiple false"</span>);</span><br><span class="line">                    confirmSet.remove(deliveryTag);</span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        String msg = <span class="string">"ssssssss"</span>;</span><br><span class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">            <span class="keyword">long</span> seqNo = channel.getNextPublishSeqNo();</span><br><span class="line">            channel.basicPublish(<span class="string">""</span>, QUEUE_NAME, <span class="keyword">null</span>, msg.getBytes());</span><br><span class="line">            confirmSet.add(seqNo);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>消费者</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Recv3</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String QUEUE_NAME = <span class="string">"test_queue_confirm3"</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException, TimeoutException </span>&#123;</span><br><span class="line">        Connection connection = ConnectionUtils.getConnection();</span><br><span class="line">        Channel channel = connection.createChannel();</span><br><span class="line">        channel.queueDeclare(QUEUE_NAME, <span class="keyword">false</span>, <span class="keyword">false</span>, <span class="keyword">false</span>, <span class="keyword">null</span>);</span><br><span class="line">        channel.basicConsume(QUEUE_NAME, <span class="keyword">true</span>, <span class="keyword">new</span> DefaultConsumer(channel) &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleDelivery</span><span class="params">(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, <span class="keyword">byte</span>[] body)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">                System.out.println(<span class="string">"recv confirm"</span> + <span class="keyword">new</span> String(body, <span class="string">"utf-8"</span>));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<h2 id="Return-消息机制"><a href="#Return-消息机制" class="headerlink" title="Return 消息机制"></a>Return 消息机制</h2><p><code>return listener</code> 用户处理一些不可路由的消息</p>
+<p>某些情况下，会出现不可达的消息，这时候就需要使用 Return Listener</p>
+<p><code>mandatory</code> 如果为 true，则监听器会收到路由不可达的消息，然后进行后续的处理，如果为 <code>false</code>,则服务器会自动删除该消息。</p>
+<h2 id="消费端限流"><a href="#消费端限流" class="headerlink" title="消费端限流"></a>消费端限流</h2><p>防止消费端收到大量的消息，而使服务端挂掉</p>
+<p><code>RabbitMQ</code> 提供了一种 qos（服务质量保证） 功能，即在非自动确认消息的前提下，如果一定数目的消息（通过基于consume 或者 channel 设置qos 的值）未被确认前，不进行消费新的消息。</p>
+<p>在consumer 端有如下的函数来设置参数</p>
+<p><code>void basicQos</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">channel.basicNack(envelope.getDeliveryTag(), <span class="keyword">false</span>, <span class="keyword">true</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="TTL-time-to-live"><a href="#TTL-time-to-live" class="headerlink" title="TTL time to live"></a>TTL time to live</h2><ol>
+<li>在消息上加过期时间</li>
+<li>在队列上加超时时间</li>
+</ol>
+<h2 id="DLX-死信队列（交换机）"><a href="#DLX-死信队列（交换机）" class="headerlink" title="DLX 死信队列（交换机）"></a>DLX 死信队列（交换机）</h2><p>消息变为私信有以下几种情况</p>
+<ol>
+<li>消息被拒绝（basic.reject/basic.nack）并且 requeue=false</li>
+<li>消息 TTL 过期</li>
+<li>当队列长度达到队列长度</li>
+</ol>
+<p>DLX 也是一个正常的Exchange，和一般的Exchange没有区别，他能在任何的队列上被指定，实际上就是设置某个队列的属性</p>
+<p>当这个队列中有死信时，RabbitMq 就会自动地将这个消息重新发布到设置的Exchange中去，进而被路由到另外一个队列死信队列的 exchange 和 queue,，然后进行绑定</p>
+<h3 id="声明一个死信队列"><a href="#声明一个死信队列" class="headerlink" title="声明一个死信队列"></a>声明一个死信队列</h3><p>Exchange: dlx.exchnage</p>
+<p>Queue: dlx.queue</p>
+<p>RoutingKey: #</p>
+<p>然后正常声明交换机、队列、绑定，只不过需要在队列上加一个参数</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arguments.put(<span class="string">"x-dead-letter-exchange"</span>,<span class="string">"dlx.exchange"</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="Springboot-Spring-AMQP实战"><a href="#Springboot-Spring-AMQP实战" class="headerlink" title="Springboot Spring AMQP实战"></a>Springboot Spring AMQP实战</h2>
           
         
       
@@ -656,6 +1223,22 @@
               <time title="创建时间：2019-11-27 11:10:53" itemprop="dateCreated datePublished" datetime="2019-11-27T11:10:53+08:00">2019-11-27</time>
             
 
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-12-22 16:13:33" itemprop="dateModified" datetime="2019-12-22T16:13:33+08:00">2019-12-22</time>
+              
             
           </span>
 
@@ -1523,483 +2106,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/06/java8学习笔记/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bruce Liu">
-      <meta itemprop="description" content="Bruce Liu个人站，主要涉及前端知识共享、实践教程、前沿技术共同学习等方面">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Bruce Liu's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/05/06/java8学习笔记/" class="post-title-link" itemprop="http://yoursite.com/index.html">java8学习笔记</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-05-06 10:11:40" itemprop="dateCreated datePublished" datetime="2019-05-06T10:11:40+08:00">2019-05-06</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-09-14 00:22:44" itemprop="dateModified" datetime="2019-09-14T00:22:44+08:00">2019-09-14</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Lambda-表达式"><a href="#Lambda-表达式" class="headerlink" title="Lambda 表达式"></a>Lambda 表达式</h2><h2 id="三、Lambda-表达式"><a href="#三、Lambda-表达式" class="headerlink" title="三、Lambda 表达式"></a>三、Lambda 表达式</h2><h3 id="5-类型检查、类型推断以及限制"><a href="#5-类型检查、类型推断以及限制" class="headerlink" title="5. 类型检查、类型推断以及限制"></a>5. 类型检查、类型推断以及限制</h3><h4 id="使用局部变量"><a href="#使用局部变量" class="headerlink" title="使用局部变量"></a>使用局部变量</h4><p>Lambda 可以没有限制地捕获（也就是在其主体中引用）实例变量和静态变量。但是局部变量必须显式申明为 <code>final</code>， 或者事实上是<code>final</code>。</p>
-<blockquote>
-<p>Variable used in lambda expression should be final or effectively final</p>
-</blockquote>
-<p>例如下面的 代码是可以编译的</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> portNumber = <span class="number">1337</span>;</span><br><span class="line">Runnable r = () -&gt; System.out.println(portNumber);</span><br></pre></td></tr></table></figure>
-<p>上面的代码在 <code>Lambda</code> 中引用了局部变量 <code>portNumber</code>，虽然这个变量没有声明为 <code>final</code> ，但是在其声明赋初值之后，并没有试图去改变这个变量的值，所以这个变量事实上是 <code>final</code> 状态。</p>
-<p>下面的代码不能通过编译</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> portNumber = <span class="number">1337</span>;</span><br><span class="line">Runnable r = () -&gt; System.out.println(portNumber);</span><br><span class="line">portNumber = <span class="number">31337</span>;</span><br></pre></td></tr></table></figure>
-<p>上面的代码在第三行试图修改 <code>portNumber</code> 的值，所以这个变量并不是事实上 <code>final</code></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-       
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/29/springboot2-0深度实践/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bruce Liu">
-      <meta itemprop="description" content="Bruce Liu个人站，主要涉及前端知识共享、实践教程、前沿技术共同学习等方面">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Bruce Liu's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/03/29/springboot2-0深度实践/" class="post-title-link" itemprop="http://yoursite.com/index.html">springboot2.0深度实践</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-03-29 19:37:12" itemprop="dateCreated datePublished" datetime="2019-03-29T19:37:12+08:00">2019-03-29</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-09-14 00:22:44" itemprop="dateModified" datetime="2019-09-14T00:22:44+08:00">2019-09-14</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="核心特性"><a href="#核心特性" class="headerlink" title="核心特性"></a>核心特性</h2><p>Spring Boot 三大特性</p>
-<ol>
-<li>组件自动装配：Web Mvc、Web Flux、JDBC</li>
-<li>嵌入式WEB容器：Tomcat、Jetty 以及 Undertow</li>
-<li>生产准备特性：指标、健康检查、外部化配置</li>
-</ol>
-<h3 id="Spring-Boot-Bean-源码解读"><a href="#Spring-Boot-Bean-源码解读" class="headerlink" title="Spring Boot Bean 源码解读"></a>Spring Boot Bean 源码解读</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SpringApplicationBootstrap</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 在 run 方法中可以填入带有 @SpringBootApplication 的注解的类</span></span><br><span class="line">      <span class="comment">// SpringApplication.run(ApplicationTest.class, args);</span></span><br><span class="line">        <span class="comment">// 引导类的配置</span></span><br><span class="line">        Set&lt;String&gt; sources =  <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">        sources.add(ApplicationTest.class.getName());</span><br><span class="line">        SpringApplication springApplication = <span class="keyword">new</span> SpringApplication();</span><br><span class="line">        springApplication.setSources(sources);</span><br><span class="line">        ConfigurableApplicationContext context = springApplication.run(args);</span><br><span class="line">        System.out.println(<span class="string">"Bean "</span>+context.getBean(ApplicationTest.class));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@SpringBootApplication</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span>  <span class="class"><span class="keyword">class</span> <span class="title">ApplicationTest</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Spring 可以通断出当前应用的类型，主要是在 <code>SpringApplication</code> 中的 <code>org.springframework.boot.SpringApplication#setApplicationContextClass</code> 方法中</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-       
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/27/部署spring-boot项目/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bruce Liu">
-      <meta itemprop="description" content="Bruce Liu个人站，主要涉及前端知识共享、实践教程、前沿技术共同学习等方面">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Bruce Liu's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/03/27/部署spring-boot项目/" class="post-title-link" itemprop="http://yoursite.com/index.html">部署spring-boot项目</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-03-27 19:19:24" itemprop="dateCreated datePublished" datetime="2019-03-27T19:19:24+08:00">2019-03-27</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-09-14 00:22:44" itemprop="dateModified" datetime="2019-09-14T00:22:44+08:00">2019-09-14</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-       
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2047,7 +2153,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">34</span>
+                    <span class="site-state-item-count">37</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
