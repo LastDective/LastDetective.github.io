@@ -355,6 +355,362 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/11/mysql问题/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bruce Liu">
+      <meta itemprop="description" content="Bruce Liu个人站，主要涉及前端知识共享、实践教程、前沿技术共同学习等方面">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bruce Liu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/03/11/mysql问题/" class="post-title-link" itemprop="http://yoursite.com/page/3/index.html">mysql问题</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-11 11:42:02" itemprop="dateCreated datePublished" datetime="2019-03-11T11:42:02+08:00">2019-03-11</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-09-14 00:22:44" itemprop="dateModified" datetime="2019-09-14T00:22:44+08:00">2019-09-14</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li><p>提示时区错误</p>
+<p>具体报错如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">The server time zone value &apos;ÖÐ¹ú±ê×¼Ê±¼ä&apos; is unrecognized or represents more than one time zone</span><br></pre></td></tr></table></figure>
+<p>有两种解决方法</p>
+<p>a. 在数据库路径的后面增加时区配置选项</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">url: jdbc:mysql://localhost:3306/sell?characterEncoding=utf-8&amp;useSSL=<span class="literal">false</span>&amp;serverTimezone=GMT%2B8</span><br></pre></td></tr></table></figure>
+<p>b. 增加全局配置的选项</p>
+<p>使用下面的语句查看当前的时区配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SHOW VARIABLES LIKE <span class="string">'%time_zone%'</span></span><br></pre></td></tr></table></figure>
+<p>输出结果如下</p>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Variable_name</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">system_time_zone</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">time_zone</td>
+<td>SYSTEM</td>
+</tr>
+</tbody>
+</table>
+<p>   将时区设置为 <code>+8</code> 区</p>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SET GLOBAL time_zone = &apos;+8:00&apos;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/20/git远程分支/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bruce Liu">
+      <meta itemprop="description" content="Bruce Liu个人站，主要涉及前端知识共享、实践教程、前沿技术共同学习等方面">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bruce Liu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/02/20/git远程分支/" class="post-title-link" itemprop="http://yoursite.com/page/3/index.html">git远程分支</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-02-20 19:55:22" itemprop="dateCreated datePublished" datetime="2019-02-20T19:55:22+08:00">2019-02-20</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-09-14 00:22:44" itemprop="dateModified" datetime="2019-09-14T00:22:44+08:00">2019-09-14</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="推送"><a href="#推送" class="headerlink" title="推送"></a>推送</h2><p>当你想要公开分享一个分支时，需要将其推送到有写入权限的远程仓库上。 本地的分支并不会自动与远程仓库同步 - 你必须显式地推送想要分享的分支。 这样，你就可以把不愿意分享的内容放到私人分支上，而将需要和别人协作的内容推送到公开分支。</p>
+<p>如果希望和别人一起在名为 serverfix 的分支上工作，你可以像推送第一个分支那样推送它。 运行 git push (remote) (branch):</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin serverfix</span><br><span class="line">Counting objects: 24, <span class="keyword">done</span>.</span><br><span class="line">Delta compression using up to 8 threads.</span><br><span class="line">Compressing objects: 100% (15/15), <span class="keyword">done</span>.</span><br><span class="line">Writing objects: 100% (24/24), 1.91 KiB | 0 bytes/s, <span class="keyword">done</span>.</span><br><span class="line">Total 24 (delta 2), reused 0 (delta 0)</span><br><span class="line">To https://github.com/schacon/simplegit</span><br><span class="line"> * [new branch]      serverfix -&gt; serverfix</span><br></pre></td></tr></table></figure>
+<p>这里有些工作被简化了。 Git 自动将 serverfix 分支名字展开为 refs/heads/serverfix:refs/heads/serverfix，那意味着，“推送本地的 serverfix 分支来更新远程仓库上的 serverfix 分支。” 我们将会详细学习 Git 内部原理 的 refs/heads/ 部分，但是现在可以先把它放在儿。 你也可以运行 git push origin serverfix:serverfix，它会做同样的事 - 相当于它说，“推送本地的 serverfix 分支，将其作为远程仓库的 serverfix 分支” 可以通过这种格式来推送本地分支到一个命名不相同的远程分支。 如果并不想让远程仓库上的分支叫做 serverfix，可以运行 git push origin serverfix:awesomebranch 来将本地的 serverfix 分支推送到远程仓库上的 awesomebranch 分支。</p>
+<p>下一次其他协作者从服务器上抓取数据时，他们会在本地生成一个远程分支 origin/serverfix，指向服务器的 serverfix 分支的引用：</p>
+<p>需要特别注意的是 可以通过 git push origin serverfix:awsomeserverfix 命令，将本地的 serverfix 分支的内容，推送到远程awsomeserverfix 分支上。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ git fetch origin</span><br><span class="line">remote: Counting objects: 7, <span class="keyword">done</span>.</span><br><span class="line">remote: Compressing objects: 100% (2/2), <span class="keyword">done</span>.</span><br><span class="line">remote: Total 3 (delta 0), reused 3 (delta 0)</span><br><span class="line">Unpacking objects: 100% (3/3), <span class="keyword">done</span>.</span><br><span class="line">From https://github.com/schacon/simplegit</span><br><span class="line"> * [new branch]      serverfix    -&gt; origin/serverfix</span><br></pre></td></tr></table></figure>
+<p>要特别注意的一点是当抓取到新的远程跟踪分支时，本地不会自动生成一份可编辑的副本（拷贝）。 换一句话说，这种情况下，不会有一个新的 serverfix 分支 - 只有一个不可以修改的 origin/serverfix 指针。</p>
+<p>可以运行 git merge origin/serverfix 将这些工作合并到当前所在的分支。 如果想要在自己的 serverfix 分支上工作，可以将其建立在远程跟踪分支之上：</p>
+<p>$ git checkout -b serverfix origin/serverfix<br>Branch serverfix set up to track remote branch serverfix from origin.<br>Switched to a new branch ‘serverfix’<br>这会给你一个用于工作的本地分支，并且起点位于 origin/serverfix。</p>
+<h2 id="拉取"><a href="#拉取" class="headerlink" title="拉取"></a>拉取</h2><p>当 <code>git fetch</code> 命令从服务器上抓取本地没有的数据时，它并不会修改工作目录中的内容。 它只会获取数据然后让你自己合并。 然而，有一个命令叫作 <code>git pull</code> 在大多数情况下它的含义是一个 <code>git fetch</code> 紧接着一个 <code>git merge</code> 命令。 如果有一个像之前章节中演示的设置好的跟踪分支，不管它是显式地设置还是通过 <code>clone</code> 或 <code>checkout</code> 命令为你创建的，<code>git pull</code> 都会查找当前分支所跟踪的服务器与分支，从服务器上抓取数据然后尝试合并入那个远程分支。</p>
+<p>由于 git pull 的魔法经常令人困惑所以通常单独显式地使用 fetch 与 merge 命令会更好一些。</p>
+<h2 id="删除远程分支"><a href="#删除远程分支" class="headerlink" title="删除远程分支"></a>删除远程分支</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin --delete serverfix</span><br></pre></td></tr></table></figure>
+<p>删除远程仓库的 serverfix 分支</p>
+<h2 id="默认跟踪分支"><a href="#默认跟踪分支" class="headerlink" title="默认跟踪分支"></a>默认跟踪分支</h2><p>下面的命令将本地的 <code>ccc</code> 分支与远程仓库 <code>origin</code> 的 <code>nihao</code> 分支建立跟踪关系</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch --set-upstream-to=origin/nihao ccc</span><br></pre></td></tr></table></figure>
+<p>如果不指定后面的 <code>ccc</code> 分支，则将当前所在分支与 <code>origin/nihao</code> 建立跟踪关系</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/01/tomcat配置虚拟目录/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1722,462 +2078,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/11/新建一个Vue项目/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bruce Liu">
-      <meta itemprop="description" content="Bruce Liu个人站，主要涉及前端知识共享、实践教程、前沿技术共同学习等方面">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Bruce Liu's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/12/11/新建一个Vue项目/" class="post-title-link" itemprop="http://yoursite.com/page/3/index.html">新建一个Vue项目</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-12-11 19:18:01" itemprop="dateCreated datePublished" datetime="2018-12-11T19:18:01+08:00">2018-12-11</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-09-14 00:22:44" itemprop="dateModified" datetime="2019-09-14T00:22:44+08:00">2019-09-14</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>以下操作步骤基于 Vue CLI 3.0  （@vue/cli）</p>
-<h2 id="0、安装Vue脚手架"><a href="#0、安装Vue脚手架" class="headerlink" title="0、安装Vue脚手架"></a>0、安装Vue脚手架</h2><p>使用下面的命令全局安装 Vue CLI</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g @vue/cli</span><br></pre></td></tr></table></figure>
-<p>安装完成之后，可以使用下面的命令来检查是否安装正确</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue -version</span><br></pre></td></tr></table></figure>
-<h2 id="1-新建一个项目"><a href="#1-新建一个项目" class="headerlink" title="1. 新建一个项目"></a>1. 新建一个项目</h2><p>使用下面的命令新建一个名为 <code>vue-playlist</code> 的项目</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue create vue-playlist</span><br></pre></td></tr></table></figure>
-<p>创建成功之后会提示安装的组件，这里可以选择默认</p>
-<p><img src="http://wx2.sinaimg.cn/mw690/730892e4ly1fy31paki06j20it0cajrz.jpg" alt="选择默认"></p>
-<p>也可以手动选择组件</p>
-<p><img src="http://wx2.sinaimg.cn/mw690/730892e4ly1fy31pa44igj20it0cajrv.jpg" alt="手动选择组件"></p>
-<p>安装成功之后，使用下面的命令进入目录</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> vue-playlist</span><br></pre></td></tr></table></figure>
-<p>然后运行下面的命令启动程序</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run serve</span><br></pre></td></tr></table></figure>
-<p>启动成功后，在 <code>http://localhost:8080</code> 即可看到</p>
-<p><img src="http://wx2.sinaimg.cn/mw690/730892e4ly1fy32gaq090j20q00jc0ti.jpg" alt="访问成功"></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-       
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/11/Vuex基础/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bruce Liu">
-      <meta itemprop="description" content="Bruce Liu个人站，主要涉及前端知识共享、实践教程、前沿技术共同学习等方面">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Bruce Liu's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/12/11/Vuex基础/" class="post-title-link" itemprop="http://yoursite.com/page/3/index.html">Vuex基础</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-12-11 18:56:28" itemprop="dateCreated datePublished" datetime="2018-12-11T18:56:28+08:00">2018-12-11</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-09-14 00:22:44" itemprop="dateModified" datetime="2019-09-14T00:22:44+08:00">2019-09-14</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p> Vuex 是一个专门为 Vue.js 应用程序开发的状态管理模式。它采用集中式存储管理应用的所有组件状态。</p>
-</blockquote>
-<p>也就是将 Vue.js 程序中各个页面公用的数据和获取、改变这些数据的方法抽离出来，方便各个页面调用，以及页面之间的数据传输。</p>
-<p>下面通过一个例子来讲解Vuex</p>
-<p>我们首先<a href="https://iambruceliu.top/2018/12/11/新建一个Vue项目/" target="_blank" rel="noopener">创建一个Vue工程</a>。</p>
-<p>我们假设有两个富豪榜，这两个富豪榜分属两个界面，通过组件注册，在一个主界面。</p>
-<h2 id="一、使用-props-属性传递参数"><a href="#一、使用-props-属性传递参数" class="headerlink" title="一、使用 props 属性传递参数"></a>一、使用 props 属性传递参数</h2><p>页面结构如下：</p>
-<p><img src="http://wx1.sinaimg.cn/mw690/730892e4ly1fy4dlzbfq5j205z09b0sp.jpg" alt="目录结构"></p>
-<p>我们在父页面 <code>App.vue</code> 的 <code>data</code> 属性中加入人员列表，并引入两个子页面，通过 <code>v-bind</code> 指令将 <code>data</code> 传递给子页面。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line">    &lt;!-- 将 data 元素传递给子页面  --&gt;</span><br><span class="line">    &lt;salary-list-one v-bind:sendedSalaryList=<span class="string">"salaryList"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">salary-list-one</span>&gt;</span></span></span><br><span class="line">    &lt;salary-list-two v-bind:sendedSalaryList="salaryList"&gt;&lt;/salary-list-two&gt;</span><br><span class="line"><span class="xml">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span></span><br><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="keyword">import</span> salarylist1 <span class="keyword">from</span> <span class="string">'./components/salarylist1'</span>;</span><br><span class="line">  <span class="keyword">import</span> salarylist2 <span class="keyword">from</span> <span class="string">'./components/salarylist2'</span>;</span><br><span class="line">  <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    name: <span class="string">"app"</span>,</span><br><span class="line">    data() &#123;</span><br><span class="line">      <span class="keyword">return</span> &#123;</span><br><span class="line">        salaryList: [&#123;</span><br><span class="line">            name: <span class="string">"马云"</span>,</span><br><span class="line">            salaryAmount: <span class="number">1000</span></span><br><span class="line">          &#125;,</span><br><span class="line">          &#123;</span><br><span class="line">            name: <span class="string">"马化腾"</span>,</span><br><span class="line">            salaryAmount: <span class="number">900</span></span><br><span class="line">          &#125;,</span><br><span class="line">          &#123;</span><br><span class="line">            name: <span class="string">"李彦宏"</span>,</span><br><span class="line">            salaryAmount: <span class="number">800</span></span><br><span class="line">          &#125;</span><br><span class="line">        ]</span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;,</span><br><span class="line">    components: &#123;</span><br><span class="line">      <span class="string">'salary-list-one'</span>: salarylist1,</span><br><span class="line">      <span class="string">'salary-list-two'</span>: salarylist2</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">&lt;style scoped&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>style&gt;</span><br></pre></td></tr></table></figure>
-<p>子页面通过 <code>props</code> 属性接收父页面传递过来的参数，并展示出来。</p>
-<p><code>salarylist1.vue</code> 代码如下</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div id=<span class="string">"salary-list-fisrt"</span>&gt;</span><br><span class="line">        &lt;h2&gt;财富榜&lt;<span class="regexp">/h2&gt;</span></span><br><span class="line"><span class="regexp">        &lt;ol&gt;</span></span><br><span class="line"><span class="regexp">            /</span><span class="regexp">/ 通过 v-for 命令将其展示出来</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">            &lt;li v-for="salary in sendedSalaryList"&gt;</span></span><br><span class="line"><span class="regexp">                &#123;&#123;salary.name&#125;&#125;的工资是：&#123;&#123;salary.salaryAmount&#125;&#125;</span></span><br><span class="line"><span class="regexp">            &lt;/</span>li&gt;</span><br><span class="line">        &lt;<span class="regexp">/ol&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">&lt;<span class="regexp">/template&gt;</span></span><br><span class="line"><span class="regexp">&lt;script&gt;</span></span><br><span class="line"><span class="regexp">    export default &#123;</span></span><br><span class="line"><span class="regexp">        name: "salary-listfirst",</span></span><br><span class="line"><span class="regexp">        /</span><span class="regexp">/ 通过 props 属性接收父页面传来的参数</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">        props: &#123;</span></span><br><span class="line"><span class="regexp">            sendedSalaryList: &#123;</span></span><br><span class="line"><span class="regexp">                type: Array,</span></span><br><span class="line"><span class="regexp">                required: true</span></span><br><span class="line"><span class="regexp">            &#125;</span></span><br><span class="line"><span class="regexp">        &#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&lt;/</span>script&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line"></span><br><span class="line">&lt;<span class="regexp">/style&gt;</span></span><br></pre></td></tr></table></figure>
-<p><code>salarylist2.vue</code> 代码和上面的代码基本相似</p>
-<p>运行结果如下：</p>
-<p><img src="http://wx2.sinaimg.cn/mw690/730892e4ly1fy4dlzp8yfj20bg09fq2x.jpg" alt="运行结果"></p>
-<h2 id="二、使用-Vuex-简化数据传递"><a href="#二、使用-Vuex-简化数据传递" class="headerlink" title="二、使用 Vuex 简化数据传递"></a>二、使用 Vuex 简化数据传递</h2><p>虽然页面之间可以使用 <code>props</code>, <code>$emit</code> 等传递参数，但是这种参数的传递会面临以下问题</p>
-<blockquote>
-<p>问题一 ：多个视图依赖于同一状态。</p>
-<p>问题二 ：来自不同视图的行为需要变更同一状态。</p>
-<p>对于问题一，传参的方法对于多层嵌套的组件将会非常繁琐，并且对于兄弟组件间的状态传递无能为力。</p>
-<p>对于问题二，我们经常会采用父子组件直接引用或者通过事件来变更和同步状态的多份拷贝。以上的这些模式非常脆弱，通常会导致无法维护的代码。</p>
-<p>因此，我们为什么不把组件的共享状态抽取出来，以一个全局单例模式管理呢？</p>
-<p>在这种模式下，我们的组件树构成了一个巨大的“视图”，不管在树的哪个位置，任何组件都能获取状态或者触发行为！</p>
-<p>另外，通过定义和隔离状态管理中的各种概念并强制遵守一定的规则，我们的代码将会变得更结构化且易维护</p>
-</blockquote>
-<p>如果之前没有安装 vuex，使用下面的命令安装</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install vuex --save</span><br></pre></td></tr></table></figure>
-<p>在项目根目录下新建 <code>store/store.js</code> 文件，这个文件中保存的就是这个应用中需要共享的内容， 而且整个应用中只有一个。 </p>
-<p>在 <code>main.js</code> 文件中引入 vuex</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">'./App.vue'</span></span><br><span class="line"><span class="keyword">import</span> &#123;store&#125; <span class="keyword">from</span> <span class="string">'./store/store'</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Vue.config.productionTip = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  store:store,</span><br><span class="line">  render: <span class="function"><span class="params">h</span> =&gt;</span> h(App),</span><br><span class="line">&#125;).$mount(<span class="string">'#app'</span>)</span><br></pre></td></tr></table></figure>
-<h3 id="1-State"><a href="#1-State" class="headerlink" title="1. State"></a>1. State</h3><p><code>state</code> 类似于 Vue 实例中的 <code>data</code> 属性，不同的是 <code>state</code> 是共享的。</p>
-<p>现在将刚才 <code>App.vue</code> 中的 <code>data</code> 保存在<code>store.js</code> 中，将 <code>App.vue</code> 中保存的数据移除。</p>
-<p>现在，两个财富榜都没有了数据，如图：</p>
-<p><img src="http://wx1.sinaimg.cn/mw690/730892e4ly1fy4dm1uukzj207a08c3yb.jpg" alt="没有数据"></p>
-<p>现在改为从 <code>store</code> 请求数据</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// store.js</span></span><br><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span>;</span><br><span class="line"><span class="keyword">import</span> Vuex <span class="keyword">from</span> <span class="string">'vuex'</span>;</span><br><span class="line"></span><br><span class="line">Vue.use(Vuex);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> store = <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">    state: &#123;</span><br><span class="line">        storeSalaryList: [&#123;</span><br><span class="line">                name: <span class="string">"马云"</span>,</span><br><span class="line">                salaryAmount: <span class="number">1000</span></span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                name: <span class="string">"马化腾"</span>,</span><br><span class="line">                salaryAmount: <span class="number">900</span></span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                name: <span class="string">"李彦宏"</span>,</span><br><span class="line">                salaryAmount: <span class="number">800</span></span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>在 财富榜2 中引入获取 store </p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;!--salarylist2.vue --&gt;</span><br><span class="line">    &lt;div id=<span class="string">"salary-list-fisrt"</span>&gt;</span><br><span class="line">        &lt;h2&gt;财富榜<span class="number">2</span>&lt;<span class="regexp">/h2&gt;</span></span><br><span class="line"><span class="regexp">        &lt;ol&gt;</span></span><br><span class="line"><span class="regexp">            &lt;li v-for="salary in salaryList "&gt;</span></span><br><span class="line"><span class="regexp">                &#123;&#123;salary.name&#125;&#125;的工资是：&#123;&#123;salary.salaryAmount&#125;&#125;</span></span><br><span class="line"><span class="regexp">            &lt;/</span>li&gt;</span><br><span class="line">        &lt;<span class="regexp">/ol&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">&lt;<span class="regexp">/template&gt;</span></span><br><span class="line"><span class="regexp">&lt;script&gt;</span></span><br><span class="line"><span class="regexp">    export default &#123;</span></span><br><span class="line"><span class="regexp">        name: "salary-list-first",</span></span><br><span class="line"><span class="regexp">        computed: &#123;</span></span><br><span class="line"><span class="regexp">            salaryList() &#123;</span></span><br><span class="line"><span class="regexp">                /</span><span class="regexp">/ 通过 computed 属性，获取到 store.js 中的数据，并返回</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">                return this.$store.state.storeSalaryList;</span></span><br><span class="line"><span class="regexp">            &#125;</span></span><br><span class="line"><span class="regexp">        &#125;</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&lt;/</span>script&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line"></span><br><span class="line">&lt;<span class="regexp">/style&gt;</span></span><br></pre></td></tr></table></figure>
-<p>在 App.vue 中去掉 <code>v-bind</code> 指令</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line">    &lt;salary-list-one &gt;<span class="xml"><span class="tag">&lt;/<span class="name">salary-list-one</span>&gt;</span></span></span><br><span class="line">    &lt;salary-list-two &gt;&lt;/salary-list-two&gt;</span><br><span class="line"><span class="xml">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span></span><br><span class="line">&lt;script&gt;</span><br><span class="line"><span class="keyword">import</span> salarylist1 <span class="keyword">from</span>  <span class="string">'./components/salarylist1'</span>;</span><br><span class="line"><span class="keyword">import</span> salarylist2 <span class="keyword">from</span> <span class="string">'./components/salarylist2'</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  name: <span class="string">"app"</span>,</span><br><span class="line">  data() &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line"></span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  components:&#123;</span><br><span class="line">    <span class="string">'salary-list-one'</span>:salarylist1,</span><br><span class="line">    <span class="string">'salary-list-two'</span>:salarylist2</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">&lt;style scoped&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>style&gt;</span><br></pre></td></tr></table></figure>
-<p>运行结果如下：</p>
-<p><img src="http://wx2.sinaimg.cn/mw690/730892e4ly1fy4dm1fzkij2092083a9y.jpg" alt="财富榜2有数据"></p>
-<p>如果在 salarylist1.vue 中也加入上面的 store 引用，就可以连个财富榜就可以全部展示。</p>
-<h3 id="2-getter"><a href="#2-getter" class="headerlink" title="2.getter"></a>2.getter</h3><p>在一些情况下，当获取到 <code>state</code> 的数据之后，我们希望进行一些加工处理再进行展示。</p>
-<p>现在，我们将上面每个人的<strong>工资翻倍</strong>，再增加 <strong>美元（$）</strong>符号。</p>
-<p>修改 <code>salarylist1.vue</code> 和 <code>salarylist2.vue</code> 代码，在 <code>computed</code> 属性中增加，<code>doubleSalary</code> 属性</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div id=<span class="string">"salary-list-fisrt"</span>&gt;</span><br><span class="line">        &lt;h2&gt;财富榜&lt;<span class="regexp">/h2&gt;</span></span><br><span class="line"><span class="regexp">        &lt;ol&gt;</span></span><br><span class="line"><span class="regexp">            &lt;li v-for="salary in doubleSalary"&gt;</span></span><br><span class="line"><span class="regexp">                &#123;&#123;salary.name&#125;&#125;的工资是：&#123;&#123;salary.salaryAmount&#125;&#125;</span></span><br><span class="line"><span class="regexp">            &lt;/</span>li&gt;</span><br><span class="line">        &lt;<span class="regexp">/ol&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">&lt;<span class="regexp">/template&gt;</span></span><br><span class="line"><span class="regexp">&lt;script&gt;</span></span><br><span class="line"><span class="regexp">    export default &#123;</span></span><br><span class="line"><span class="regexp">        computed: &#123;</span></span><br><span class="line"><span class="regexp">            salaryList() &#123;</span></span><br><span class="line"><span class="regexp">                return this.$store.state.storeSalaryList;</span></span><br><span class="line"><span class="regexp">            &#125;,</span></span><br><span class="line"><span class="regexp">            /</span><span class="regexp">/ doubleSalary 属性对每个人 state 的数据加工后进行返回</span></span><br><span class="line"><span class="regexp">            doubleSalary() &#123;</span></span><br><span class="line"><span class="regexp">                var afterDoubleSalary = </span></span><br><span class="line"><span class="regexp">                     this.$store.state.storeSalaryList.map(salary =&gt; &#123;</span></span><br><span class="line"><span class="regexp">                    return &#123;</span></span><br><span class="line"><span class="regexp">                        name: salary.name,</span></span><br><span class="line"><span class="regexp">                        salaryAmount: salary.salaryAmount * 2 + " " + "$"</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">                    &#125;;</span></span><br><span class="line"><span class="regexp">                &#125;);</span></span><br><span class="line"><span class="regexp">                return afterDoubleSalary;</span></span><br><span class="line"><span class="regexp">            &#125;</span></span><br><span class="line"><span class="regexp">        &#125;,</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&lt;/</span>script&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line"></span><br><span class="line">&lt;<span class="regexp">/style&gt;</span></span><br></pre></td></tr></table></figure>
-<p>运行结果如下</p>
-<p><img src="http://wx3.sinaimg.cn/mw690/730892e4ly1fy4dm07tavj207h08lweh.jpg" alt="工资翻倍"></p>
-<p>以上的代码虽然对 <code>state</code> 属性进行了加工之后返回，但是有一定的局限性，如果有100个页面都要这样处理，是不是就要将 <code>doubleSalary</code> 属性写100遍？这样显然是不合理的，为了解决这个问题，可以 <code>doubleSalary</code> 属性写进 <code>store.js</code>  作为一个 <code>getter</code> 方法。</p>
-<p>在 <code>store.js</code> 中增加一个<code>getter</code> 方法</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span>;</span><br><span class="line"><span class="keyword">import</span> Vuex <span class="keyword">from</span> <span class="string">'vuex'</span>;</span><br><span class="line"></span><br><span class="line">Vue.use(Vuex);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> store = <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">    state: &#123;</span><br><span class="line">        storeSalaryList: [&#123;</span><br><span class="line">                name: <span class="string">"马云"</span>,</span><br><span class="line">                salaryAmount: <span class="number">1000</span></span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                name: <span class="string">"马化腾"</span>,</span><br><span class="line">                salaryAmount: <span class="number">900</span></span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                name: <span class="string">"李彦宏"</span>,</span><br><span class="line">                salaryAmount: <span class="number">800</span></span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    getters: &#123;</span><br><span class="line">        <span class="comment">// 增加一个 getter 方法，用于返回加工后的 工资</span></span><br><span class="line">        doubleSalaryGetter: <span class="function">(<span class="params">state</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">var</span> afterDoubleSalary = </span><br><span class="line">                state.storeSalaryList.map(<span class="function"><span class="params">salary</span> =&gt;</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> &#123;</span><br><span class="line">                    name: salary.name,</span><br><span class="line">                    salaryAmount: salary.salaryAmount * <span class="number">2</span> + <span class="string">" "</span> + <span class="string">"$"</span></span><br><span class="line"></span><br><span class="line">                &#125;;</span><br><span class="line">            &#125;);</span><br><span class="line">            <span class="keyword">return</span> afterDoubleSalary;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>修改 <code>salarylist1.vue</code> 和 <code>salarylist2.vue</code> 代码，在 <code>computed</code> 属性中增加，<code>doubleSalaryByGetter</code> 属性，在这个属性中，调用 <code>store.js</code> 中的 <code>getter</code> 返回结果。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div id=<span class="string">"salary-list-fisrt"</span>&gt;</span><br><span class="line">        &lt;h2&gt;财富榜&lt;<span class="regexp">/h2&gt;</span></span><br><span class="line"><span class="regexp">        &lt;ol&gt;</span></span><br><span class="line"><span class="regexp">            &lt;li v-for="salary in doubleSalaryByGetter"&gt;</span></span><br><span class="line"><span class="regexp">                &#123;&#123;salary.name&#125;&#125;的工资是：&#123;&#123;salary.salaryAmount&#125;&#125;</span></span><br><span class="line"><span class="regexp">            &lt;/</span>li&gt;</span><br><span class="line">        &lt;<span class="regexp">/ol&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">&lt;<span class="regexp">/template&gt;</span></span><br><span class="line"><span class="regexp">&lt;script&gt;</span></span><br><span class="line"><span class="regexp">    export default &#123;</span></span><br><span class="line"><span class="regexp">        computed: &#123;</span></span><br><span class="line"><span class="regexp">            salaryList() &#123;</span></span><br><span class="line"><span class="regexp">                return this.$store.state.storeSalaryList;</span></span><br><span class="line"><span class="regexp">            &#125;,</span></span><br><span class="line"><span class="regexp">            /</span><span class="regexp">/ 在这里调用 store.js 中的方法。</span></span><br><span class="line"><span class="regexp">            doubleSalaryByGetter() &#123;</span></span><br><span class="line"><span class="regexp">                return this.$store.getters.doubleSalaryGetter;</span></span><br><span class="line"><span class="regexp">            &#125;</span></span><br><span class="line"><span class="regexp">        &#125;,</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&lt;/</span>script&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">&lt;<span class="regexp">/style&gt;</span></span><br></pre></td></tr></table></figure>
-<p> <img src="http://wx3.sinaimg.cn/mw690/730892e4ly1fy4dm07tavj207h08lweh.jpg" alt="工资翻倍"></p>
-<p>如果我们 还有一个需求：计算工资总额，可以在 <code>getter</code> 新增加一个 <code>totalSalary</code> 方法</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span>;</span><br><span class="line"><span class="keyword">import</span> Vuex <span class="keyword">from</span> <span class="string">'vuex'</span>;</span><br><span class="line"></span><br><span class="line">Vue.use(Vuex);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> store = <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">    state: &#123;</span><br><span class="line">        storeSalaryList: [&#123;</span><br><span class="line">                name: <span class="string">"马云"</span>,</span><br><span class="line">                salaryAmount: <span class="number">1000</span></span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                name: <span class="string">"马化腾"</span>,</span><br><span class="line">                salaryAmount: <span class="number">900</span></span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                name: <span class="string">"李彦宏"</span>,</span><br><span class="line">                salaryAmount: <span class="number">800</span></span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    getters: &#123;</span><br><span class="line">        doubleSalaryGetter: <span class="function">(<span class="params">state</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">var</span> afterDoubleSalary = state.storeSalaryList.map(<span class="function"><span class="params">salary</span> =&gt;</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> &#123;</span><br><span class="line">                    name: salary.name,</span><br><span class="line">                    salaryAmount: salary.salaryAmount * <span class="number">2</span> + <span class="string">" "</span> + <span class="string">"$"</span></span><br><span class="line"></span><br><span class="line">                &#125;;</span><br><span class="line">            &#125;);</span><br><span class="line">            <span class="keyword">return</span> afterDoubleSalary;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="comment">// 在这里增加一个 计算工资总额的方法</span></span><br><span class="line"></span><br><span class="line">        totalSalary: <span class="function">(<span class="params">state</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">var</span> sum = <span class="number">0</span></span><br><span class="line">            state.storeSalaryList.forEach(<span class="function"><span class="params">element</span> =&gt;</span> &#123;</span><br><span class="line">                sum += element.salaryAmount;</span><br><span class="line">            &#125;);</span><br><span class="line">            <span class="keyword">return</span> sum*<span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>修改 <code>salarylist1.vue</code>  代码，在 <code>computed</code> 属性中增加，<code>totalSalaryByGetter</code> 属性，在这个属性中，调用 <code>store.js</code> 中的 <code>getter</code> 返回结果。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div id=<span class="string">"salary-list-fisrt"</span>&gt;</span><br><span class="line">        &lt;h2&gt;财富榜&lt;<span class="regexp">/h2&gt;</span></span><br><span class="line"><span class="regexp">        &lt;ol&gt;</span></span><br><span class="line"><span class="regexp">            &lt;li v-for="salary in doubleSalaryByGetter"&gt;</span></span><br><span class="line"><span class="regexp">                &#123;&#123;salary.name&#125;&#125;的工资是：&#123;&#123;salary.salaryAmount&#125;&#125;</span></span><br><span class="line"><span class="regexp">            &lt;/</span>li&gt;</span><br><span class="line">        &lt;<span class="regexp">/ol&gt;</span></span><br><span class="line"><span class="regexp">        &lt;span&gt;工资总额是： &#123;&#123;totalSalaryByGetter&#125;&#125;&lt;/</span>span&gt;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">        computed: &#123;</span><br><span class="line">            salaryList() &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">this</span>.$store.state.storeSalaryList;</span><br><span class="line">            &#125;,</span><br><span class="line">            doubleSalaryByGetter() &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">this</span>.$store.getters.doubleSalaryGetter;</span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="comment">// 增加获取工资总额的方法</span></span><br><span class="line">            totalSalaryByGetter() &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">this</span>.$store.getters.totalSalary;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">&lt;style&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>style&gt;</span><br></pre></td></tr></table></figure>
-<p><img src="http://wx4.sinaimg.cn/mw690/730892e4ly1fy4dm2hz18j208k0a53yj.jpg" alt="工资总额"></p>
-<p>我们通过在当前页面调用 <code>store.js</code> 的 <code>getter</code> 方法，可以返回想要的结果。但是发现，在每个页面中，都要写调用写一个方法来调用 <code>getter</code> 也不是很方便。</p>
-<p>Vuex 为我们提供了一个  <code>mapGetters</code>  辅助函数，可以用来获取<code>getter</code></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div id=<span class="string">"salary-list-fisrt"</span>&gt;</span><br><span class="line">        &lt;h2&gt;财富榜<span class="number">2</span>&lt;<span class="regexp">/h2&gt;</span></span><br><span class="line"><span class="regexp">        &lt;!--</span></span><br><span class="line"><span class="regexp">        &lt;ol&gt;</span></span><br><span class="line"><span class="regexp">            &lt;li v-for="salary in doubleSalaryGetter "&gt;</span></span><br><span class="line"><span class="regexp">                &#123;&#123;salary.name&#125;&#125;的工资是：&#123;&#123;salary.salaryAmount&#125;&#125;</span></span><br><span class="line"><span class="regexp">            &lt;/</span>li&gt;</span><br><span class="line">        &lt;<span class="regexp">/ol&gt;</span></span><br><span class="line"><span class="regexp">        &lt;span&gt;工资总额是：&#123;&#123;totalSalary&#125;&#125;&lt;/</span>span&gt;</span><br><span class="line">        --&gt;</span><br><span class="line">        &lt;ol&gt;</span><br><span class="line">            &lt;li v-<span class="keyword">for</span>=<span class="string">"salary in myDoubleSalaryGetter "</span>&gt;</span><br><span class="line">                &#123;&#123;salary.name&#125;&#125;的工资是：&#123;&#123;salary.salaryAmount&#125;&#125;</span><br><span class="line">            &lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">        &lt;/</span>ol&gt;</span><br><span class="line">        &lt;span&gt;工资总额是：&#123;&#123;myTotalSalary&#125;&#125;&lt;<span class="regexp">/span&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">&lt;<span class="regexp">/template&gt;</span></span><br><span class="line"><span class="regexp">&lt;script&gt;</span></span><br><span class="line"><span class="regexp">    import &#123;</span></span><br><span class="line"><span class="regexp">        mapGetters</span></span><br><span class="line"><span class="regexp">    &#125; from 'vuex';</span></span><br><span class="line"><span class="regexp">    export default &#123;</span></span><br><span class="line"><span class="regexp">        name: "salary-list-two",</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">        computed: &#123;</span></span><br><span class="line"><span class="regexp">            salaryList() &#123;</span></span><br><span class="line"><span class="regexp">                return this.$store.state.storeSalaryList;</span></span><br><span class="line"><span class="regexp">            &#125;,</span></span><br><span class="line"><span class="regexp">            doubleSalaryByGetter() &#123;</span></span><br><span class="line"><span class="regexp">                return this.$store.getters.doubleSalaryGetter;</span></span><br><span class="line"><span class="regexp">            &#125;,</span></span><br><span class="line"><span class="regexp">            /</span>** </span><br><span class="line">            ...mapGetters(</span><br><span class="line">                <span class="comment">// 注意这里是个数组</span></span><br><span class="line">                [</span><br><span class="line">                    <span class="string">'doubleSalaryGetter'</span>,<span class="string">'totalSalary'</span></span><br><span class="line">                ]</span><br><span class="line">            )*<span class="regexp">/</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">            /</span><span class="regexp">/ ...mapGetters的另一种写法,通过这种方法可以给 getter 起别名</span></span><br><span class="line"><span class="regexp">            ...mapGetters(</span></span><br><span class="line"><span class="regexp">                /</span><span class="regexp">/ 注意这里是一个对象</span></span><br><span class="line"><span class="regexp">                &#123;</span></span><br><span class="line"><span class="regexp">                    myDoubleSalaryGetter: 'doubleSalaryGetter',</span></span><br><span class="line"><span class="regexp">                    myTotalSalary: 'totalSalary'</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">                &#125;)</span></span><br><span class="line"><span class="regexp">        &#125;</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&lt;/</span>script&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">&lt;<span class="regexp">/style&gt;</span></span><br></pre></td></tr></table></figure>
-<p>运行结果如下：</p>
-<p><img src="http://wx3.sinaimg.cn/mw690/730892e4ly1fy4dm0v6wsj208m0agt8r.jpg" alt="运行结果"></p>
-<h3 id="3-mutations"><a href="#3-mutations" class="headerlink" title="3.mutations"></a>3.mutations</h3><p>现在我们添加一个按钮，这个按钮的作用是，给 <code>state</code> 中的 <code>storeSalaryList</code> 增加工资，首先可以使用一个方法来改变 <code>state</code> </p>
-<p>App.vue</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line">    &lt;salary-list-one&gt;<span class="xml"><span class="tag">&lt;/<span class="name">salary-list-one</span>&gt;</span></span></span><br><span class="line">    &lt;salary-list-two&gt;&lt;/salary-list-two&gt;</span><br><span class="line">    &lt;button @click="moreSalary()"&gt;加工资&lt;/button&gt;</span><br><span class="line">    &lt;button @click="getAmount()"&gt;显示工资&lt;/button&gt;</span><br><span class="line"></span><br><span class="line"><span class="xml">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span></span><br><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="keyword">import</span> salarylist1 <span class="keyword">from</span> <span class="string">'./components/salarylist1'</span>;</span><br><span class="line">  <span class="keyword">import</span> salarylist2 <span class="keyword">from</span> <span class="string">'./components/salarylist2'</span>;</span><br><span class="line">  <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    name: <span class="string">"app"</span>,</span><br><span class="line">    data() &#123;</span><br><span class="line">      <span class="keyword">return</span> &#123;</span><br><span class="line"></span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;,</span><br><span class="line">    components: &#123;</span><br><span class="line">      <span class="string">'salary-list-one'</span>: salarylist1,</span><br><span class="line">      <span class="string">'salary-list-two'</span>: salarylist2</span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">      <span class="comment">// 这个方法用来只增加工资</span></span><br><span class="line"></span><br><span class="line">      moreSalary() &#123;</span><br><span class="line">        <span class="keyword">this</span>.$store.state.storeSalaryList.forEach(<span class="function"><span class="params">element</span> =&gt;</span> &#123;</span><br><span class="line">          element.salaryAmount += <span class="number">100</span>;</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="comment">// 这个方法用来显示 state 的工资内容</span></span><br><span class="line"></span><br><span class="line">      getAmount() &#123;</span><br><span class="line">        <span class="keyword">this</span>.$store.state.storeSalaryList.forEach(<span class="function"><span class="params">element</span> =&gt;</span> &#123;</span><br><span class="line">          <span class="built_in">console</span>.log(element.salaryAmount);</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">&lt;style scoped&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;/</span>style&gt;</span><br></pre></td></tr></table></figure>
-<p>运行结果：</p>
-<p>分别点击 <strong>加工资</strong> 和 <strong>显示工资</strong> 按钮</p>
-<p><img src="http://wx1.sinaimg.cn/mw690/730892e4ly1fy5mbv1pqyj20ab0lfaas.jpg" alt="加工资"></p>
-<p>（注：这里之所以点击一下<strong>加工资</strong>按钮每个人的工资增加 200 是因为，在两个子页面用的属性是 <code>doubleSalaryGetter</code>），由此可见 <code>state</code> 可见发生了变化。</p>
-<p>但是直接调用方法，无法记录 <code>store</code> 中各种属性的变化，如果用 <code>mutatios</code> ，就可以使用 vue 的开发工具 Vue.js devtools，可以直观地观察 <code>store</code> 中的属性值变化。</p>
-<p>在 <code>store.js</code> 增加一个 <code>mutations</code> 节点，并增加一个 <code>moreSalaryMutation</code> 属性</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span>;</span><br><span class="line"><span class="keyword">import</span> Vuex <span class="keyword">from</span> <span class="string">'vuex'</span>;</span><br><span class="line"></span><br><span class="line">Vue.use(Vuex);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> store = <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">    state: &#123;</span><br><span class="line">        storeSalaryList: [&#123;</span><br><span class="line">                name: <span class="string">"马云"</span>,</span><br><span class="line">                salaryAmount: <span class="number">1000</span></span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                name: <span class="string">"马化腾"</span>,</span><br><span class="line">                salaryAmount: <span class="number">900</span></span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                name: <span class="string">"李彦宏"</span>,</span><br><span class="line">                salaryAmount: <span class="number">800</span></span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    getters: &#123;</span><br><span class="line">        doubleSalaryGetter: <span class="function">(<span class="params">state</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">var</span> afterDoubleSalary = state.storeSalaryList.map(<span class="function"><span class="params">salary</span> =&gt;</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> &#123;</span><br><span class="line">                    name: salary.name,</span><br><span class="line">                    salaryAmount: salary.salaryAmount * <span class="number">2</span> + <span class="string">" "</span> + <span class="string">"$"</span></span><br><span class="line"></span><br><span class="line">                &#125;;</span><br><span class="line">            &#125;);</span><br><span class="line">            <span class="keyword">return</span> afterDoubleSalary;</span><br><span class="line">        &#125;,</span><br><span class="line">        totalSalary: <span class="function">(<span class="params">state</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">var</span> sum = <span class="number">0</span></span><br><span class="line">            state.storeSalaryList.forEach(<span class="function"><span class="params">element</span> =&gt;</span> &#123;</span><br><span class="line">                sum += element.salaryAmount;</span><br><span class="line">            &#125;);</span><br><span class="line">            <span class="keyword">return</span> sum * <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    mutations: &#123;</span><br><span class="line">        <span class="comment">// 这个方法用来更改 state </span></span><br><span class="line"></span><br><span class="line">        moreSalaryMutation: <span class="function">(<span class="params">state</span>) =&gt;</span> &#123;</span><br><span class="line">            state.storeSalaryList.forEach(<span class="function"><span class="params">element</span>=&gt;</span>&#123;</span><br><span class="line">                element.salaryAmount += <span class="number">100</span>;</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p> 现在再增加一个按钮，<code>使用mutations增加工资</code></p>
-<p>AppVue</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line">    &lt;salary-list-one&gt;<span class="xml"><span class="tag">&lt;/<span class="name">salary-list-one</span>&gt;</span></span></span><br><span class="line">    &lt;salary-list-two&gt;&lt;/salary-list-two&gt;</span><br><span class="line">    &lt;button @click="moreSalary()"&gt;加工资&lt;/button&gt;</span><br><span class="line">    &lt;button @click="getAmount()"&gt;显示工资&lt;/button&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &lt;button @click="moreSalaryByMutatios()"&gt;使用matatios增加工资&lt;/button&gt;</span><br><span class="line"></span><br><span class="line"><span class="xml">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span></span><br><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="keyword">import</span> salarylist1 <span class="keyword">from</span> <span class="string">'./components/salarylist1'</span>;</span><br><span class="line">  <span class="keyword">import</span> salarylist2 <span class="keyword">from</span> <span class="string">'./components/salarylist2'</span>;</span><br><span class="line">  <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    name: <span class="string">"app"</span>,</span><br><span class="line">    data() &#123;</span><br><span class="line">      <span class="keyword">return</span> &#123;</span><br><span class="line"></span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;,</span><br><span class="line">    components: &#123;</span><br><span class="line">      <span class="string">'salary-list-one'</span>: salarylist1,</span><br><span class="line">      <span class="string">'salary-list-two'</span>: salarylist2</span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">      moreSalary() &#123;</span><br><span class="line">        <span class="keyword">this</span>.$store.state.storeSalaryList.forEach(<span class="function"><span class="params">element</span> =&gt;</span> &#123;</span><br><span class="line">          element.salaryAmount += <span class="number">100</span>;</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;,</span><br><span class="line">      getAmount() &#123;</span><br><span class="line">        <span class="keyword">this</span>.$store.state.storeSalaryList.forEach(<span class="function"><span class="params">element</span> =&gt;</span> &#123;</span><br><span class="line">          <span class="built_in">console</span>.log(element.salaryAmount);</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="comment">// 这个方法调用 commit 来更改 state</span></span><br><span class="line"></span><br><span class="line">      moreSalaryByMutatios() &#123;</span><br><span class="line">        <span class="keyword">this</span>.$store.commit(<span class="string">"moreSalaryMutation"</span>);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">&lt;style scoped&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;/</span>style&gt;</span><br></pre></td></tr></table></figure>
-<p>运行结果如下：</p>
-<p><img src="http://wx4.sinaimg.cn/mw690/730892e4ly1fy5mbuobv7j210v0nzq53.jpg" alt="可以使用vue-tools观察store"></p>
-<p>值得注意的是，使用 <code>commit</code> 来更改 <code>state</code> ，我们可以借助Vue.js devtools很清晰地观测 <code>state</code> 的变化。</p>
-<p>在Vuex的官方文档中有一句话</p>
-<blockquote>
-<p>The only way to actually change state in a Vuex store is by committing a mutation.</p>
-<p>更改 Vuex 的 store 中的状态的唯一方法是提交 mutation。</p>
-</blockquote>
-<p>在上面的例子中，我们发现不仅 <code>commit</code> 可以修改 <code>state</code>的值，通过一个普通的函数调用 <code>moreSalary</code> 方法也可以更改 <code>state</code> 的值，这好像和文档描述不相符。但是，如果在 <code>store</code> 创建的时候，申明为严格模式，再次调用moreSalary方法，就会报错。</p>
-<p>store.js</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span>;</span><br><span class="line"><span class="keyword">import</span> Vuex <span class="keyword">from</span> <span class="string">'vuex'</span>;</span><br><span class="line"></span><br><span class="line">Vue.use(Vuex);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> store = <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">    <span class="comment">// 在这里增加 严格模式</span></span><br><span class="line">    strict:<span class="literal">true</span>,</span><br><span class="line"></span><br><span class="line">    state: &#123;</span><br><span class="line"></span><br><span class="line">        storeSalaryList: [&#123;</span><br><span class="line">                name: <span class="string">"马云"</span>,</span><br><span class="line">                salaryAmount: <span class="number">1000</span></span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                name: <span class="string">"马化腾"</span>,</span><br><span class="line">                salaryAmount: <span class="number">900</span></span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                name: <span class="string">"李彦宏"</span>,</span><br><span class="line">                salaryAmount: <span class="number">800</span></span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    getters: &#123;</span><br><span class="line">        doubleSalaryGetter: <span class="function">(<span class="params">state</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">var</span> afterDoubleSalary = state.storeSalaryList.map(<span class="function"><span class="params">salary</span> =&gt;</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> &#123;</span><br><span class="line">                    name: salary.name,</span><br><span class="line">                    salaryAmount: salary.salaryAmount * <span class="number">2</span> + <span class="string">" "</span> + <span class="string">"$"</span></span><br><span class="line"></span><br><span class="line">                &#125;;</span><br><span class="line">            &#125;);</span><br><span class="line">            <span class="keyword">return</span> afterDoubleSalary;</span><br><span class="line">        &#125;,</span><br><span class="line">        totalSalary: <span class="function">(<span class="params">state</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">var</span> sum = <span class="number">0</span></span><br><span class="line">            state.storeSalaryList.forEach(<span class="function"><span class="params">element</span> =&gt;</span> &#123;</span><br><span class="line">                sum += element.salaryAmount;</span><br><span class="line">            &#125;);</span><br><span class="line">            <span class="keyword">return</span> sum * <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    mutations: &#123;</span><br><span class="line">        moreSalaryMutation: <span class="function">(<span class="params">state</span>) =&gt;</span> &#123;</span><br><span class="line">            state.storeSalaryList.forEach(<span class="function"><span class="params">element</span>=&gt;</span>&#123;</span><br><span class="line">                element.salaryAmount += <span class="number">100</span>;</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>再次点击加工资，就会出现报错</p>
-<p><img src="http://wx1.sinaimg.cn/mw690/730892e4ly1fy5mbua6r3j20xt0fpgn4.jpg" alt="严格模式"></p>
-<h3 id="4-actions"><a href="#4-actions" class="headerlink" title="4. actions"></a>4. actions</h3><blockquote>
-<p>Action 类似于 mutation，不同在于：</p>
-<ul>
-<li><p>Action 提交的是 mutation，而不是直接变更状态。</p>
-<blockquote>
-<ul>
-<li>Action 可以包含任意异步操作。</li>
-</ul>
-</blockquote>
-</li>
-</ul>
-</blockquote>
-<p>现在我们将点击 <code>使用matatios增加工资</code> 改为5秒后产生效果。<br>store.js</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span>;</span><br><span class="line"><span class="keyword">import</span> Vuex <span class="keyword">from</span> <span class="string">'vuex'</span>;</span><br><span class="line"></span><br><span class="line">Vue.use(Vuex);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> store = <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">    strict:<span class="literal">true</span>,</span><br><span class="line"></span><br><span class="line">    state: &#123;</span><br><span class="line"></span><br><span class="line">        storeSalaryList: [&#123;</span><br><span class="line">                name: <span class="string">"马云"</span>,</span><br><span class="line">                salaryAmount: <span class="number">1000</span></span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                name: <span class="string">"马化腾"</span>,</span><br><span class="line">                salaryAmount: <span class="number">900</span></span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                name: <span class="string">"李彦宏"</span>,</span><br><span class="line">                salaryAmount: <span class="number">800</span></span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    getters: &#123;</span><br><span class="line">        doubleSalaryGetter: <span class="function">(<span class="params">state</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">var</span> afterDoubleSalary = state.storeSalaryList.map(<span class="function"><span class="params">salary</span> =&gt;</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> &#123;</span><br><span class="line">                    name: salary.name,</span><br><span class="line">                    salaryAmount: salary.salaryAmount * <span class="number">2</span> + <span class="string">" "</span> + <span class="string">"$"</span></span><br><span class="line"></span><br><span class="line">                &#125;;</span><br><span class="line">            &#125;);</span><br><span class="line">            <span class="keyword">return</span> afterDoubleSalary;</span><br><span class="line">        &#125;,</span><br><span class="line">        totalSalary: <span class="function">(<span class="params">state</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">var</span> sum = <span class="number">0</span></span><br><span class="line">            state.storeSalaryList.forEach(<span class="function"><span class="params">element</span> =&gt;</span> &#123;</span><br><span class="line">                sum += element.salaryAmount;</span><br><span class="line">            &#125;);</span><br><span class="line">            <span class="keyword">return</span> sum * <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    mutations: &#123;</span><br><span class="line">        moreSalaryMutation: <span class="function"><span class="params">state</span>  =&gt;</span> &#123;</span><br><span class="line">        <span class="comment">// 五秒之后加工资。</span></span><br><span class="line"></span><br><span class="line">            setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">                state.storeSalaryList.forEach(<span class="function"><span class="params">element</span>=&gt;</span>&#123;</span><br><span class="line">                    element.salaryAmount += <span class="number">100</span>;</span><br><span class="line">                &#125;)</span><br><span class="line">            &#125;,<span class="number">5000</span>)</span><br><span class="line">            <span class="comment">/*/state.storeSalaryList.forEach(element=&gt;&#123;</span></span><br><span class="line"><span class="comment">                element.salaryAmount += 100;</span></span><br><span class="line"><span class="comment">            &#125;)*/</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>运行结果如下，等待5秒之后，虽然页面数值发生了变化，但是Vue.js dev-tools 却没有发生变化，而且还报错了。</p>
-<p><img src="http://wx3.sinaimg.cn/mw690/730892e4ly1fy5mbtwky5j211x0kbmz4.jpg" alt="没有变化"></p>
-<p>报错如下</p>
-<p><img src="http://wx4.sinaimg.cn/mw690/730892e4ly1fy5mbtipg9j20tk0m4ac7.jpg" alt="报错"></p>
-<p>对此 Evan You 亲自给出了解释</p>
-<p><img src="http://wx1.sinaimg.cn/mw690/730892e4ly1fy5mbt2eejj20r906h3yz.jpg" alt="给出解释"></p>
-<p>在 <code>store.js</code> 中增加 actions 节点，并增加一个 <code>moreSalaryAction</code> 方法</p>
-<p>store.js</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span>;</span><br><span class="line"><span class="keyword">import</span> Vuex <span class="keyword">from</span> <span class="string">'vuex'</span>;</span><br><span class="line"></span><br><span class="line">Vue.use(Vuex);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> store = <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">    strict:<span class="literal">true</span>,</span><br><span class="line"></span><br><span class="line">    state: &#123;</span><br><span class="line"></span><br><span class="line">        storeSalaryList: [&#123;</span><br><span class="line">                name: <span class="string">"马云"</span>,</span><br><span class="line">                salaryAmount: <span class="number">1000</span></span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                name: <span class="string">"马化腾"</span>,</span><br><span class="line">                salaryAmount: <span class="number">900</span></span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                name: <span class="string">"李彦宏"</span>,</span><br><span class="line">                salaryAmount: <span class="number">800</span></span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    getters: &#123;</span><br><span class="line">        doubleSalaryGetter: <span class="function">(<span class="params">state</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">var</span> afterDoubleSalary = state.storeSalaryList.map(<span class="function"><span class="params">salary</span> =&gt;</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> &#123;</span><br><span class="line">                    name: salary.name,</span><br><span class="line">                    salaryAmount: salary.salaryAmount * <span class="number">2</span> + <span class="string">" "</span> + <span class="string">"$"</span></span><br><span class="line"></span><br><span class="line">                &#125;;</span><br><span class="line">            &#125;);</span><br><span class="line">            <span class="keyword">return</span> afterDoubleSalary;</span><br><span class="line">        &#125;,</span><br><span class="line">        totalSalary: <span class="function">(<span class="params">state</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">var</span> sum = <span class="number">0</span></span><br><span class="line">            state.storeSalaryList.forEach(<span class="function"><span class="params">element</span> =&gt;</span> &#123;</span><br><span class="line">                sum += element.salaryAmount;</span><br><span class="line">            &#125;);</span><br><span class="line">            <span class="keyword">return</span> sum * <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    mutations: &#123;</span><br><span class="line">        moreSalaryMutation: <span class="function"><span class="params">state</span>  =&gt;</span> &#123;</span><br><span class="line">          <span class="comment">//  setTimeout(function()&#123;</span></span><br><span class="line">                state.storeSalaryList.forEach(<span class="function"><span class="params">element</span>=&gt;</span>&#123;</span><br><span class="line">                    element.salaryAmount += <span class="number">100</span>;</span><br><span class="line">                &#125;)</span><br><span class="line">         <span class="comment">//   &#125;,5000)</span></span><br><span class="line">            <span class="comment">/*/state.storeSalaryList.forEach(element=&gt;&#123;</span></span><br><span class="line"><span class="comment">                element.salaryAmount += 100;</span></span><br><span class="line"><span class="comment">            &#125;)*/</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    actions:&#123;</span><br><span class="line">        <span class="comment">// 这个方法调用上面的 mutations 里边的 moreSalaryMutation</span></span><br><span class="line">        <span class="comment">// 点击3秒之后，运行mutation</span></span><br><span class="line"></span><br><span class="line">        moreSalaryAction:<span class="function">(<span class="params">context</span>)=&gt;</span>&#123;</span><br><span class="line">            setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">                context.commit(<span class="string">"moreSalaryMutation"</span>);</span><br><span class="line"></span><br><span class="line">            &#125;,<span class="number">3000</span>)</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>在 App.vue 中增加一个按钮 和 方法，点击按钮通过方法访问action</p>
-<p>App.vue</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line">    &lt;salary-list-one&gt;<span class="xml"><span class="tag">&lt;/<span class="name">salary-list-one</span>&gt;</span></span></span><br><span class="line">    &lt;salary-list-two&gt;&lt;/salary-list-two&gt;</span><br><span class="line">    &lt;button @click="moreSalary()"&gt;加工资&lt;/button&gt;</span><br><span class="line">    &lt;button @click="getAmount()"&gt;显示工资&lt;/button&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &lt;button @click="moreSalaryByMutatios()"&gt;使用matatios增加工资&lt;/button&gt;</span><br><span class="line">    &lt;!-- 增加方法来调用 action --&gt;</span><br><span class="line"></span><br><span class="line">    &lt;button @click="moreSalaryByActions()"&gt;使用actions增加工资&lt;/button&gt;</span><br><span class="line"></span><br><span class="line"><span class="xml">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span></span><br><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="keyword">import</span> salarylist1 <span class="keyword">from</span> <span class="string">'./components/salarylist1'</span>;</span><br><span class="line">  <span class="keyword">import</span> salarylist2 <span class="keyword">from</span> <span class="string">'./components/salarylist2'</span>;</span><br><span class="line">  <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    name: <span class="string">"app"</span>,</span><br><span class="line">    data() &#123;</span><br><span class="line">      <span class="keyword">return</span> &#123;</span><br><span class="line"></span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;,</span><br><span class="line">    components: &#123;</span><br><span class="line">      <span class="string">'salary-list-one'</span>: salarylist1,</span><br><span class="line">      <span class="string">'salary-list-two'</span>: salarylist2</span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">      moreSalary() &#123;</span><br><span class="line">        <span class="keyword">this</span>.$store.state.storeSalaryList.forEach(<span class="function"><span class="params">element</span> =&gt;</span> &#123;</span><br><span class="line">          element.salaryAmount += <span class="number">100</span>;</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;,</span><br><span class="line">      getAmount() &#123;</span><br><span class="line">        <span class="keyword">this</span>.$store.state.storeSalaryList.forEach(<span class="function"><span class="params">element</span> =&gt;</span> &#123;</span><br><span class="line">          <span class="built_in">console</span>.log(element.salaryAmount);</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;,</span><br><span class="line">      moreSalaryByMutatios() &#123;</span><br><span class="line">       <span class="keyword">this</span>.$store.commit(<span class="string">"moreSalaryMutation"</span>);</span><br><span class="line">       <span class="comment">//this.$store.dispatch("moreSalaryAction");</span></span><br><span class="line">      &#125;,</span><br><span class="line">       moreSalaryByActions() &#123;</span><br><span class="line">       <span class="comment">// 通过此方法调用action</span></span><br><span class="line"></span><br><span class="line">       <span class="keyword">this</span>.$store.dispatch(<span class="string">"moreSalaryAction"</span>);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">&lt;style scoped&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;/</span>style&gt;</span><br></pre></td></tr></table></figure>
-<p>点击后我们发现 dev-tools 左边的方法记录和右边的 state 的值同时 改变，而且没有报错</p>
-<p><img src="http://wx1.sinaimg.cn/mw690/730892e4ly1fy5mbschdyj211r0hqtah.jpg" alt="没有报错"></p>
-<p>Action中也可以传递参数。</p>
-<p>我们设置一个工资增加的数目，通过 <code>playload</code> 来进行传递</p>
-<p>App.vue</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line">    &lt;salary-list-one&gt;<span class="xml"><span class="tag">&lt;/<span class="name">salary-list-one</span>&gt;</span></span></span><br><span class="line">    &lt;salary-list-two&gt;&lt;/salary-list-two&gt;</span><br><span class="line">    &lt;button @click="moreSalary()"&gt;加工资&lt;/button&gt;</span><br><span class="line">    &lt;button @click="getAmount()"&gt;显示工资&lt;/button&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &lt;button @click="moreSalaryByMutatios()"&gt;使用matatios增加工资&lt;/button&gt;</span><br><span class="line">    // 设置每次增加的数量</span><br><span class="line"></span><br><span class="line">    &lt;button @click="moreSalaryByActions(256)"&gt;使用actions增加工资&lt;/button&gt;</span><br><span class="line"></span><br><span class="line"><span class="xml">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span></span><br><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="keyword">import</span> salarylist1 <span class="keyword">from</span> <span class="string">'./components/salarylist1'</span>;</span><br><span class="line">  <span class="keyword">import</span> salarylist2 <span class="keyword">from</span> <span class="string">'./components/salarylist2'</span>;</span><br><span class="line">  <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    name: <span class="string">"app"</span>,</span><br><span class="line">    data() &#123;</span><br><span class="line">      <span class="keyword">return</span> &#123;</span><br><span class="line"></span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;,</span><br><span class="line">    components: &#123;</span><br><span class="line">      <span class="string">'salary-list-one'</span>: salarylist1,</span><br><span class="line">      <span class="string">'salary-list-two'</span>: salarylist2</span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">      moreSalary() &#123;</span><br><span class="line">        <span class="keyword">this</span>.$store.state.storeSalaryList.forEach(<span class="function"><span class="params">element</span> =&gt;</span> &#123;</span><br><span class="line">          element.salaryAmount += <span class="number">100</span>;</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;,</span><br><span class="line">      getAmount() &#123;</span><br><span class="line">        <span class="keyword">this</span>.$store.state.storeSalaryList.forEach(<span class="function"><span class="params">element</span> =&gt;</span> &#123;</span><br><span class="line">          <span class="built_in">console</span>.log(element.salaryAmount);</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;,</span><br><span class="line">      moreSalaryByMutatios() &#123;</span><br><span class="line">       <span class="keyword">this</span>.$store.commit(<span class="string">"moreSalaryMutation"</span>);</span><br><span class="line">       <span class="comment">//this.$store.dispatch("moreSalaryAction");</span></span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="comment">// 传递参数</span></span><br><span class="line"></span><br><span class="line">       moreSalaryByActions(amount) &#123;</span><br><span class="line"></span><br><span class="line">       <span class="keyword">this</span>.$store.dispatch(<span class="string">"moreSalaryAction"</span>, amount);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">&lt;style scoped&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;/</span>style&gt;</span><br></pre></td></tr></table></figure>
-<p>store.js</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span>;</span><br><span class="line"><span class="keyword">import</span> Vuex <span class="keyword">from</span> <span class="string">'vuex'</span>;</span><br><span class="line"></span><br><span class="line">Vue.use(Vuex);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> store = <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">    strict:<span class="literal">true</span>,</span><br><span class="line"></span><br><span class="line">    state: &#123;</span><br><span class="line"></span><br><span class="line">        storeSalaryList: [&#123;</span><br><span class="line">                name: <span class="string">"马云"</span>,</span><br><span class="line">                salaryAmount: <span class="number">1000</span></span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                name: <span class="string">"马化腾"</span>,</span><br><span class="line">                salaryAmount: <span class="number">900</span></span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                name: <span class="string">"李彦宏"</span>,</span><br><span class="line">                salaryAmount: <span class="number">800</span></span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    getters: &#123;</span><br><span class="line">        doubleSalaryGetter: <span class="function">(<span class="params">state</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">var</span> afterDoubleSalary = state.storeSalaryList.map(<span class="function"><span class="params">salary</span> =&gt;</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> &#123;</span><br><span class="line">                    name: salary.name,</span><br><span class="line">                    salaryAmount: salary.salaryAmount * <span class="number">2</span> + <span class="string">" "</span> + <span class="string">"$"</span></span><br><span class="line"></span><br><span class="line">                &#125;;</span><br><span class="line">            &#125;);</span><br><span class="line">            <span class="keyword">return</span> afterDoubleSalary;</span><br><span class="line">        &#125;,</span><br><span class="line">        totalSalary: <span class="function">(<span class="params">state</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">var</span> sum = <span class="number">0</span></span><br><span class="line">            state.storeSalaryList.forEach(<span class="function"><span class="params">element</span> =&gt;</span> &#123;</span><br><span class="line">                sum += element.salaryAmount;</span><br><span class="line">            &#125;);</span><br><span class="line">            <span class="keyword">return</span> sum * <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    mutations: &#123;</span><br><span class="line">        moreSalaryMutation: <span class="function">(<span class="params">state,amount</span>)  =&gt;</span> &#123;</span><br><span class="line">          <span class="comment">//  setTimeout(function()&#123;</span></span><br><span class="line">                state.storeSalaryList.forEach(<span class="function"><span class="params">element</span>=&gt;</span>&#123;</span><br><span class="line">                    element.salaryAmount += amount;</span><br><span class="line">                &#125;)</span><br><span class="line">         <span class="comment">//   &#125;,5000)</span></span><br><span class="line">            <span class="comment">/*/state.storeSalaryList.forEach(element=&gt;&#123;</span></span><br><span class="line"><span class="comment">                element.salaryAmount += 100;</span></span><br><span class="line"><span class="comment">            &#125;)*/</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    actions:&#123;</span><br><span class="line">        <span class="comment">// 传递参数</span></span><br><span class="line"></span><br><span class="line">        moreSalaryAction:<span class="function">(<span class="params">context,amount</span>)=&gt;</span>&#123;</span><br><span class="line">            setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">                context.commit(<span class="string">"moreSalaryMutation"</span>,amount);</span><br><span class="line"></span><br><span class="line">            &#125;,<span class="number">3000</span>)</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>运行结果：工资以指定数值增减， 通过vue-tools 可以观测到 playload的变化</p>
-<p><img src="http://wx1.sinaimg.cn/mw690/730892e4ly1fy5mbschdyj211r0hqtah.jpg" alt="指定数值"></p>
-<p>类似于 <code>mapGetters</code>, 可以调用 <code>mapActions</code> 来应对有很多 <code>action</code> 时的情况</p>
-<p>App.vue</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line">    &lt;salary-list-one&gt;<span class="xml"><span class="tag">&lt;/<span class="name">salary-list-one</span>&gt;</span></span></span><br><span class="line">    &lt;salary-list-two&gt;&lt;/salary-list-two&gt;</span><br><span class="line">    &lt;button @click="moreSalary()"&gt;加工资&lt;/button&gt;</span><br><span class="line">    &lt;button @click="getAmount()"&gt;显示工资&lt;/button&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &lt;button @click="moreSalaryByMutatios()"&gt;使用matatios增加工资&lt;/button&gt;</span><br><span class="line">    &lt;button @click="moreSalaryByActions(256)"&gt;使用actions增加工资&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!--</span><br><span class="line">    &lt;button @click="moreSalaryAction(256)"&gt;使用mapActions增加工资&lt;/button&gt;</span><br><span class="line">    --&gt;</span><br><span class="line">    &lt;button @click="myMoreSalaryAction(256)"&gt;使用mapActions增加工资&lt;/button&gt;</span><br><span class="line"></span><br><span class="line"><span class="xml">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span></span><br><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="keyword">import</span> salarylist1 <span class="keyword">from</span> <span class="string">'./components/salarylist1'</span>;</span><br><span class="line">  <span class="keyword">import</span> salarylist2 <span class="keyword">from</span> <span class="string">'./components/salarylist2'</span>;</span><br><span class="line">  <span class="keyword">import</span> &#123;</span><br><span class="line">    mapActions</span><br><span class="line">  &#125; <span class="keyword">from</span> <span class="string">'vuex'</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    name: <span class="string">"app"</span>,</span><br><span class="line">    data() &#123;</span><br><span class="line">      <span class="keyword">return</span> &#123;</span><br><span class="line"></span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    components: &#123;</span><br><span class="line">      <span class="string">'salary-list-one'</span>: salarylist1,</span><br><span class="line">      <span class="string">'salary-list-two'</span>: salarylist2</span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">      moreSalary() &#123;</span><br><span class="line">        <span class="keyword">this</span>.$store.state.storeSalaryList.forEach(<span class="function"><span class="params">element</span> =&gt;</span> &#123;</span><br><span class="line">          element.salaryAmount += <span class="number">100</span>;</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;,</span><br><span class="line">      getAmount() &#123;</span><br><span class="line">        <span class="keyword">this</span>.$store.state.storeSalaryList.forEach(<span class="function"><span class="params">element</span> =&gt;</span> &#123;</span><br><span class="line">          <span class="built_in">console</span>.log(element.salaryAmount);</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;,</span><br><span class="line">      moreSalaryByMutatios() &#123;</span><br><span class="line">        <span class="keyword">this</span>.$store.commit(<span class="string">"moreSalaryMutation"</span>);</span><br><span class="line">        <span class="comment">//this.$store.dispatch("moreSalaryAction");</span></span><br><span class="line">      &#125;,</span><br><span class="line">      moreSalaryByActions(amount) &#123;</span><br><span class="line">        <span class="keyword">this</span>.$store.dispatch(<span class="string">"moreSalaryAction"</span>, amount);</span><br><span class="line">      &#125;,</span><br><span class="line">      ...mapActions([</span><br><span class="line"></span><br><span class="line">        <span class="comment">// `mapActions` 也支持载荷：</span></span><br><span class="line">        <span class="string">'moreSalaryAction'</span> <span class="comment">// 将 `this.moreSalaryAction(amount)` 映射为 `this.$store.dispatch('moreSalaryAction', amount)`</span></span><br><span class="line">      ]),</span><br><span class="line">      <span class="comment">// mapActions 的 第二种写法</span></span><br><span class="line">      ...mapActions(&#123;</span><br><span class="line">        myMoreSalaryAction:<span class="string">'moreSalaryAction'</span></span><br><span class="line">      &#125;)</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">&lt;style scoped&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;/</span>style&gt;</span><br></pre></td></tr></table></figure>
-<p><img src="http://wx2.sinaimg.cn/mw690/730892e4ly1fy5mbsqfxqj21040jlq4g.jpg" alt="mapactions"></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-       
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2225,7 +2125,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">37</span>
+                    <span class="site-state-item-count">39</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
