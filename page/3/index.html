@@ -355,6 +355,967 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/18/spring-cloud基础/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bruce Liu">
+      <meta itemprop="description" content="Bruce Liu个人站，主要涉及前端知识共享、实践教程、前沿技术共同学习等方面">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bruce Liu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/03/18/spring-cloud基础/" class="post-title-link" itemprop="http://yoursite.com/page/3/index.html">spring-cloud基础</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-18 23:07:18" itemprop="dateCreated datePublished" datetime="2019-03-18T23:07:18+08:00">2019-03-18</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-09-14 00:22:44" itemprop="dateModified" datetime="2019-09-14T00:22:44+08:00">2019-09-14</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>服务端发现的两种方式</p>
+<ol>
+<li>客户端发现：Eureka</li>
+<li>客户端发现：Nginx, Zookeeper, Kubernetes</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/17/redis基础/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bruce Liu">
+      <meta itemprop="description" content="Bruce Liu个人站，主要涉及前端知识共享、实践教程、前沿技术共同学习等方面">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bruce Liu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/03/17/redis基础/" class="post-title-link" itemprop="http://yoursite.com/page/3/index.html">redis基础</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-17 11:15:47" itemprop="dateCreated datePublished" datetime="2019-03-17T11:15:47+08:00">2019-03-17</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-09-14 00:22:44" itemprop="dateModified" datetime="2019-09-14T00:22:44+08:00">2019-09-14</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="redis-简介"><a href="#redis-简介" class="headerlink" title="redis 简介"></a>redis 简介</h2><p><code>redis</code> 是高性能键值对数据库，支持键值数据类型：</p>
+<ul>
+<li>字符串类型</li>
+<li>列表类型</li>
+<li>有序集合类</li>
+<li>散列类型</li>
+<li>集合类型</li>
+</ul>
+<p><code>redis</code> 的应用场景</p>
+<ul>
+<li>缓存</li>
+<li>任务队列</li>
+<li>应用排行榜</li>
+<li>网站访问统计</li>
+<li>数据过期处理</li>
+<li>分布式集群架构中的 <code>session</code> 分离</li>
+</ul>
+<p><code>redis</code> 五种数据类型</p>
+<ul>
+<li>字符串(String)</li>
+<li>哈希(hash)</li>
+<li>字符串列表(list)</li>
+<li>字符串集合(set)</li>
+<li>有序字符串集合(sorted set)</li>
+</ul>
+<p>存储 <code>String</code></p>
+<ul>
+<li>二进制安全的，存入和获取的数据相同。</li>
+<li><code>Value</code> 最多可以容纳的数据长度是 512M</li>
+</ul>
+<hr>
+<h2 id="redis-基本操作"><a href="#redis-基本操作" class="headerlink" title="redis 基本操作"></a>redis 基本操作</h2><h3 id="String-类型"><a href="#String-类型" class="headerlink" title="String 类型"></a>String 类型</h3><h3 id="Hash-类型"><a href="#Hash-类型" class="headerlink" title="Hash 类型"></a>Hash 类型</h3><p>存入键值对, 将 <code>username:jack</code> 存入 <code>myhash</code> 中</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hset myhash username jack</span><br><span class="line">hset myhash age 20</span><br></pre></td></tr></table></figure>
+<p>一次存入多个键值对</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hmset myhash2 username rose age 21</span><br></pre></td></tr></table></figure>
+<p>根据键获取值</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hget myhash username</span><br></pre></td></tr></table></figure>
+<p>返回</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"jack"</span></span><br></pre></td></tr></table></figure>
+<p>根据多个键获取值</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hmget myhash2 username age</span><br></pre></td></tr></table></figure>
+<p>返回</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1) <span class="string">"rose"</span></span><br><span class="line">2) <span class="string">"21"</span></span><br></pre></td></tr></table></figure>
+<p>获取所有键值对</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hgetall myhash</span><br></pre></td></tr></table></figure>
+<p>删除某个键值对</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hdel myhash2 username age</span><br></pre></td></tr></table></figure>
+<p>返回</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1) <span class="string">"username"</span></span><br><span class="line">2) <span class="string">"jack"</span></span><br><span class="line">3) <span class="string">"age"</span></span><br><span class="line">4) <span class="string">"20"</span></span><br></pre></td></tr></table></figure>
+<p>对某个数字进行增加:将 <code>age</code> 属性递增5。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hincrby myhash2 age 5</span><br></pre></td></tr></table></figure>
+<p>返回</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="built_in">integer</span>) 26</span><br></pre></td></tr></table></figure>
+<p>rose 的 <code>age</code> 属性由 <code>21</code> 增加到 <code>26</code></p>
+<p>判断某个set中是否含有某个键</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexists myhash username</span><br></pre></td></tr></table></figure>
+<p>获取 hash 中的所有键</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hkeys myhash</span><br></pre></td></tr></table></figure>
+<p>运行结果为：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1) <span class="string">"username"</span></span><br><span class="line">2) <span class="string">"age"</span></span><br></pre></td></tr></table></figure>
+<p>获取 hash 中的所有值 </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hvals myhash</span><br></pre></td></tr></table></figure>
+<p>运行结果为</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1) <span class="string">"jack"</span></span><br><span class="line">2) <span class="string">"20"</span></span><br></pre></td></tr></table></figure>
+<h3 id="List-类型"><a href="#List-类型" class="headerlink" title="List 类型"></a>List 类型</h3><p>往 <code>list</code> 中存储数据（从左侧添加，先进去的数据排在最后一位）</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lpush mylist a b c</span><br><span class="line">lpush mylist 1 2 3</span><br></pre></td></tr></table></figure>
+<p>从右侧添加 （从右侧添加）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rpush mylist2 a b c</span><br><span class="line">rpush mylist2 a b c</span><br></pre></td></tr></table></figure>
+<p>查看列表 表示从第一个到第六个元素</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lrange 0 5</span><br></pre></td></tr></table></figure>
+<p>运行结果如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1) <span class="string">"3"</span></span><br><span class="line">2) <span class="string">"2"</span></span><br><span class="line">3) <span class="string">"1"</span></span><br><span class="line">4) <span class="string">"c"</span></span><br><span class="line">5) <span class="string">"b"</span></span><br><span class="line">6) <span class="string">"a"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lrange mylist2 0 -1</span><br></pre></td></tr></table></figure>
+<p>表示从第一个到倒数第一个元素</p>
+<p>运行结果如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1) <span class="string">"a"</span></span><br><span class="line">2) <span class="string">"b"</span></span><br><span class="line">3) <span class="string">"c"</span></span><br><span class="line">4) <span class="string">"1"</span></span><br><span class="line">5) <span class="string">"2"</span></span><br><span class="line">6) <span class="string">"3"</span></span><br></pre></td></tr></table></figure>
+<p>左边弹出</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lpop mylist</span><br></pre></td></tr></table></figure>
+<p>运行结果</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"3"</span></span><br></pre></td></tr></table></figure>
+<p>右边弹出</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpop mylist2</span><br></pre></td></tr></table></figure>
+<p>运行结果</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"3"</span></span><br></pre></td></tr></table></figure>
+<p><code>lpushx</code> 和 <code>rpushx</code> 仅当需要操作的 list 中有值时才进行保存操作 </p>
+<p>现在 <code>mylist3</code> 的数据如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"> 1) <span class="string">"5"</span></span><br><span class="line"> 2) <span class="string">"3"</span></span><br><span class="line"> 3) <span class="string">"2"</span></span><br><span class="line"> 4) <span class="string">"3"</span></span><br><span class="line"> 5) <span class="string">"7"</span></span><br><span class="line"> 6) <span class="string">"6"</span></span><br><span class="line"> 7) <span class="string">"3"</span></span><br><span class="line"> 8) <span class="string">"5"</span></span><br><span class="line"> 9) <span class="string">"4"</span></span><br><span class="line">10) <span class="string">"2"</span></span><br><span class="line">11) <span class="string">"1"</span></span><br></pre></td></tr></table></figure>
+<p>移除命令 <code>lrem</code></p>
+<p>从左侧开始删除<strong>两个3</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lrem mylist3 2 3</span><br></pre></td></tr></table></figure>
+<p>运行后的 <code>mylist3</code> 结果</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1) <span class="string">"5"</span></span><br><span class="line">2) <span class="string">"2"</span></span><br><span class="line">3) <span class="string">"7"</span></span><br><span class="line">4) <span class="string">"6"</span></span><br><span class="line">5) <span class="string">"3"</span></span><br><span class="line">6) <span class="string">"5"</span></span><br><span class="line">7) <span class="string">"4"</span></span><br><span class="line">8) <span class="string">"2"</span></span><br><span class="line">9) <span class="string">"1"</span></span><br></pre></td></tr></table></figure>
+<p>从后边往前删除<strong>两个1</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lrem mylist3 -2 1</span><br></pre></td></tr></table></figure>
+<p>运行后的 <code>mylist3</code> 结果</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1) <span class="string">"5"</span></span><br><span class="line">2) <span class="string">"2"</span></span><br><span class="line">3) <span class="string">"7"</span></span><br><span class="line">4) <span class="string">"6"</span></span><br><span class="line">5) <span class="string">"3"</span></span><br><span class="line">6) <span class="string">"5"</span></span><br><span class="line">7) <span class="string">"4"</span></span><br><span class="line">8) <span class="string">"2"</span></span><br></pre></td></tr></table></figure>
+<p>删除<strong>所有2</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lrem mylist3 0 2</span><br></pre></td></tr></table></figure>
+<p>运行后的 <code>mylist3</code> 结果</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1) <span class="string">"5"</span></span><br><span class="line">2) <span class="string">"7"</span></span><br><span class="line">3) <span class="string">"6"</span></span><br><span class="line">4) <span class="string">"3"</span></span><br><span class="line">5) <span class="string">"5"</span></span><br><span class="line">6) <span class="string">"4"</span></span><br></pre></td></tr></table></figure>
+<p>给某个指定的角标位置的元素设置值</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lset mylist 3 haha</span><br></pre></td></tr></table></figure>
+<p>运行结果如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; lrange mylist 0 -1</span><br><span class="line">1) <span class="string">"2"</span></span><br><span class="line">2) <span class="string">"1"</span></span><br><span class="line">3) <span class="string">"c"</span></span><br><span class="line">4) <span class="string">"b"</span></span><br><span class="line">5) <span class="string">"a"</span></span><br><span class="line">127.0.0.1:6379&gt; lset mylist 3 haha</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt; lrange mylist 0 -1</span><br><span class="line">1) <span class="string">"2"</span></span><br><span class="line">2) <span class="string">"1"</span></span><br><span class="line">3) <span class="string">"c"</span></span><br><span class="line">4) <span class="string">"haha"</span></span><br><span class="line">5) <span class="string">"a"</span></span><br></pre></td></tr></table></figure>
+<p>新建一个 <code>list</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; lrange mylist4 0 -1</span><br><span class="line">1) <span class="string">"c"</span></span><br><span class="line">2) <span class="string">"b"</span></span><br><span class="line">3) <span class="string">"a"</span></span><br><span class="line">4) <span class="string">"c"</span></span><br><span class="line">5) <span class="string">"b"</span></span><br><span class="line">6) <span class="string">"a"</span></span><br><span class="line">7) <span class="string">"c"</span></span><br><span class="line">8) <span class="string">"b"</span></span><br><span class="line">9) <span class="string">"a"</span></span><br></pre></td></tr></table></figure>
+<p>在第一个 <code>b</code> 之前插入 11</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; LINSERT mylist4 before b 11</span><br><span class="line">(<span class="built_in">integer</span>) 10</span><br><span class="line">127.0.0.1:6379&gt; lrange mylist4 0 -1</span><br><span class="line"> 1) <span class="string">"c"</span></span><br><span class="line"> 2) <span class="string">"11"</span></span><br><span class="line"> 3) <span class="string">"b"</span></span><br><span class="line"> 4) <span class="string">"a"</span></span><br><span class="line"> 5) <span class="string">"c"</span></span><br><span class="line"> 6) <span class="string">"b"</span></span><br><span class="line"> 7) <span class="string">"a"</span></span><br><span class="line"> 8) <span class="string">"c"</span></span><br><span class="line"> 9) <span class="string">"b"</span></span><br><span class="line">10) <span class="string">"a"</span></span><br></pre></td></tr></table></figure>
+<p>在第一个 <code>b</code> 之后插入 22</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; LINSERT mylist4 after b 22</span><br><span class="line">(<span class="built_in">integer</span>) 11</span><br><span class="line">127.0.0.1:6379&gt; lrange mylist4 0 -1</span><br><span class="line"> 1) <span class="string">"c"</span></span><br><span class="line"> 2) <span class="string">"11"</span></span><br><span class="line"> 3) <span class="string">"b"</span></span><br><span class="line"> 4) <span class="string">"22"</span></span><br><span class="line"> 5) <span class="string">"a"</span></span><br><span class="line"> 6) <span class="string">"c"</span></span><br><span class="line"> 7) <span class="string">"b"</span></span><br><span class="line"> 8) <span class="string">"a"</span></span><br><span class="line"> 9) <span class="string">"c"</span></span><br><span class="line">10) <span class="string">"b"</span></span><br><span class="line">11) <span class="string">"a"</span></span><br></pre></td></tr></table></figure>
+<p>创建两个 <code>list</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; lrange mylist5 0 -1</span><br><span class="line">1) <span class="string">"c"</span></span><br><span class="line">2) <span class="string">"b"</span></span><br><span class="line">3) <span class="string">"a"</span></span><br><span class="line">127.0.0.1:6379&gt; lrange mylist6 0 -1</span><br><span class="line">1) <span class="string">"3"</span></span><br><span class="line">2) <span class="string">"2"</span></span><br><span class="line">3) <span class="string">"1"</span></span><br></pre></td></tr></table></figure>
+<p>现在讲 <code>mylist5</code> 右左边弹出，从左侧压入 <code>mylist6</code></p>
+<p><code>rpop</code> 和 <code>lpush</code> 用于消息队列</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; RPOPLPUSH mylist5 mylist6</span><br><span class="line"><span class="string">"a"</span></span><br><span class="line">127.0.0.1:6379&gt; lrange mylist5 0 -1</span><br><span class="line">1) <span class="string">"c"</span></span><br><span class="line">2) <span class="string">"b"</span></span><br><span class="line">127.0.0.1:6379&gt; lrange mylist6 0 -1</span><br><span class="line">1) <span class="string">"a"</span></span><br><span class="line">2) <span class="string">"3"</span></span><br><span class="line">3) <span class="string">"2"</span></span><br><span class="line">4) <span class="string">"1"</span></span><br></pre></td></tr></table></figure>
+<h3 id="Set-类型"><a href="#Set-类型" class="headerlink" title="Set 类型"></a>Set 类型</h3><p><code>set</code> 类型不允许出现相同的操作，<code>set</code> 通常用作</p>
+<ol>
+<li>跟踪一些唯一性数据</li>
+<li>用户维护数据对象之间的关联关系</li>
+</ol>
+<p>创建一个 <code>set</code> 并添加一个元素</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sadd myset a</span><br><span class="line">sadd myset 1 2 3</span><br><span class="line">sadd myset 1 2</span><br></pre></td></tr></table></figure>
+<p>查看所有元素发现没有重复元素</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; SMEMBERS myset</span><br><span class="line">1) <span class="string">"3"</span></span><br><span class="line">2) <span class="string">"1"</span></span><br><span class="line">3) <span class="string">"a"</span></span><br><span class="line">4) <span class="string">"2"</span></span><br></pre></td></tr></table></figure>
+<p>查看一个元素是否存在于某个集合</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; SISMEMBER myset a</span><br><span class="line">(integer) 1</span><br><span class="line">127.0.0.1:6379&gt; SISMEMBER myset x</span><br><span class="line">(integer) 0</span><br></pre></td></tr></table></figure>
+<p>说明 <code>myset</code> 中包含 <code>a</code>，但不包含  <code>x</code></p>
+<p>创建两个 <code>set</code> </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; SMEMBERS mya1</span><br><span class="line">1) <span class="string">"b"</span></span><br><span class="line">2) <span class="string">"c"</span></span><br><span class="line">3) <span class="string">"a"</span></span><br><span class="line">127.0.0.1:6379&gt; SMEMBERS myb1</span><br><span class="line">1) <span class="string">"2"</span></span><br><span class="line">2) <span class="string">"1"</span></span><br><span class="line">3) <span class="string">"c"</span></span><br><span class="line">4) <span class="string">"a"</span></span><br></pre></td></tr></table></figure>
+<p>找出 <code>mya1</code> 中有，但是 <code>myb1</code> 中没有的元素</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; sdiff mya1 myb1</span><br><span class="line">1) <span class="string">"b"</span></span><br></pre></td></tr></table></figure>
+<p>找出 <code>myb1</code> 中有，但是 <code>mya1</code> 中没有的元素</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; sdiff myb1 mya1</span><br><span class="line">1) <span class="string">"1"</span></span><br><span class="line">2) <span class="string">"2</span></span><br></pre></td></tr></table></figure>
+<p> 将 <code>sdiff</code> 产生的结果直接保存</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; SDIFFSTORE my1 mya1 myb1</span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br><span class="line">127.0.0.1:6379&gt; SMEMBERS my1</span><br><span class="line">1) <span class="string">"b"</span></span><br></pre></td></tr></table></figure>
+<p>找出 <code>mya1</code>  ,<code>myb1</code> 中都有的元素</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; SINTER mya1 myb1</span><br><span class="line">1) <span class="string">"c"</span></span><br><span class="line">2) <span class="string">"a"</span></span><br></pre></td></tr></table></figure>
+<p>将上面的结果直接存储</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; SINTERSTORE my2 mya1 myb1</span><br><span class="line">(<span class="built_in">integer</span>) 2</span><br><span class="line">127.0.0.1:6379&gt; SMEMBERS my2</span><br><span class="line">1) <span class="string">"a"</span></span><br><span class="line">2) <span class="string">"c"</span></span><br></pre></td></tr></table></figure>
+<p>列出 <code>mya1</code> 和 <code>myb1</code> 的所有元素</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; SUNION mya1 myb1</span><br><span class="line">1) <span class="string">"b"</span></span><br><span class="line">2) <span class="string">"c"</span></span><br><span class="line">3) <span class="string">"2"</span></span><br><span class="line">4) <span class="string">"a"</span></span><br><span class="line">5) <span class="string">"1"</span></span><br></pre></td></tr></table></figure>
+<p>将上面的结果直接保存</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; SUNIONSTORE my3 mya1 myb1</span><br><span class="line">(<span class="built_in">integer</span>) 5</span><br><span class="line">127.0.0.1:6379&gt; SMEMBERS my3</span><br><span class="line">1) <span class="string">"b"</span></span><br><span class="line">2) <span class="string">"c"</span></span><br><span class="line">3) <span class="string">"2"</span></span><br><span class="line">4) <span class="string">"a"</span></span><br><span class="line">5) <span class="string">"1"</span></span><br></pre></td></tr></table></figure>
+<p>查看 <code>set</code> 中元素的个数</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; SCARD mya1</span><br><span class="line">(<span class="built_in">integer</span>) 3</span><br></pre></td></tr></table></figure>
+<p>随机返回 <code>set</code> 中的一个元素</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; SRANDMEMBER mya1</span><br><span class="line"><span class="string">"b"</span></span><br><span class="line">127.0.0.1:6379&gt; SRANDMEMBER mya1</span><br><span class="line"><span class="string">"a"</span></span><br><span class="line">127.0.0.1:6379&gt; SRANDMEMBER mya1</span><br><span class="line"><span class="string">"c"</span></span><br></pre></td></tr></table></figure>
+<h3 id="sorted-set"><a href="#sorted-set" class="headerlink" title="sorted set"></a>sorted set</h3><p><code>sorted set</code> 中每一个元素都有一个分数与之关联，<code>redis</code> 正是通过这些分数来为 <code>set</code> 排序，<code>sorted set</code>  元素是有序的.</p>
+<p>可以用于：</p>
+<ol>
+<li>大型游戏的积分排行榜</li>
+<li>构建索引数据</li>
+</ol>
+<p>添加元素</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; ZADD mysort 70 zs 80 ls 90 ww</span><br><span class="line">(<span class="built_in">integer</span>) 3</span><br><span class="line">// 如果 <span class="built_in">set</span> 中已经包将要添加的元素，执行添加命令将覆盖原来的分数 </span><br><span class="line">127.0.0.1:6379&gt; ZADD mysort 100 zs</span><br><span class="line">(<span class="built_in">integer</span>) 0</span><br><span class="line">127.0.0.1:6379&gt; ZADD mysort 60 tom</span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br></pre></td></tr></table></figure>
+<p>展示元素的分数</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; ZSCORE mysort zs</span><br><span class="line"><span class="string">"100"</span></span><br></pre></td></tr></table></figure>
+<p>移除元素</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; zrem mysort tom ww</span><br><span class="line">(<span class="built_in">integer</span>) 2</span><br></pre></td></tr></table></figure>
+<p>查看元素的个数</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; ZCARD mysort</span><br><span class="line">(<span class="built_in">integer</span>) 2</span><br></pre></td></tr></table></figure>
+<p>再添加两个元素</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; zadd mysort 85 jack 95 rose</span><br><span class="line">(<span class="built_in">integer</span>) 2</span><br></pre></td></tr></table></figure>
+<p>展示所有元素</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; ZRANGE mysort 0 -1</span><br><span class="line">1) <span class="string">"ls"</span></span><br><span class="line">2) <span class="string">"jack"</span></span><br><span class="line">3) <span class="string">"rose"</span></span><br><span class="line">4) <span class="string">"zs"</span></span><br></pre></td></tr></table></figure>
+<p>展示所有元素和分数</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; ZRANGE mysort 0 -1 withscores</span><br><span class="line">1) <span class="string">"ls"</span></span><br><span class="line">2) <span class="string">"80"</span></span><br><span class="line">3) <span class="string">"jack"</span></span><br><span class="line">4) <span class="string">"85"</span></span><br><span class="line">5) <span class="string">"rose"</span></span><br><span class="line">6) <span class="string">"95"</span></span><br><span class="line">7) <span class="string">"zs"</span></span><br><span class="line">8) <span class="string">"100"</span></span><br></pre></td></tr></table></figure>
+<p>按分数从大到小排列</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; ZREVRANGE mysort 0 -1 withscores</span><br><span class="line">1) <span class="string">"zs"</span></span><br><span class="line">2) <span class="string">"100"</span></span><br><span class="line">3) <span class="string">"rose"</span></span><br><span class="line">4) <span class="string">"95"</span></span><br><span class="line">5) <span class="string">"jack"</span></span><br><span class="line">6) <span class="string">"85"</span></span><br><span class="line">7) <span class="string">"ls"</span></span><br><span class="line">8) <span class="string">"80"</span></span><br></pre></td></tr></table></figure>
+<p>删除排序从 0 到 3 的元素</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; ZRANGE mysort 0 -1</span><br><span class="line">1) <span class="string">"bruce"</span></span><br><span class="line">2) <span class="string">"perter"</span></span><br><span class="line">3) <span class="string">"clark"</span></span><br><span class="line">4) <span class="string">"arrow"</span></span><br><span class="line">5) <span class="string">"wonder"</span></span><br><span class="line">// 删除了排名 0 到 2 的元素</span><br><span class="line">127.0.0.1:6379&gt; ZREMRANGEBYRANK mysort 0 2</span><br><span class="line">(<span class="built_in">integer</span>) 3</span><br><span class="line">127.0.0.1:6379&gt; ZRANGE mysort 0 -1</span><br><span class="line">1) <span class="string">"arrow"</span></span><br><span class="line">2) <span class="string">"wonder"</span></span><br></pre></td></tr></table></figure>
+<p>新增几个元素</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; zrange mysort 0 -1 withscores</span><br><span class="line"> 1) <span class="string">"arrow"</span></span><br><span class="line"> 2) <span class="string">"40"</span></span><br><span class="line"> 3) <span class="string">"wonder"</span></span><br><span class="line"> 4) <span class="string">"50"</span></span><br><span class="line"> 5) <span class="string">"bruce"</span></span><br><span class="line"> 6) <span class="string">"60"</span></span><br><span class="line"> 7) <span class="string">"clark"</span></span><br><span class="line"> 8) <span class="string">"70"</span></span><br><span class="line"> 9) <span class="string">"peter"</span></span><br><span class="line">10) <span class="string">"80"</span></span><br></pre></td></tr></table></figure>
+<p>查找分数在 40 到 70 分区间的前两个元素</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; ZRANGEBYSCORE mysort 40 70 withscores <span class="built_in">limit</span> 0 2</span><br><span class="line">1) <span class="string">"arrow"</span></span><br><span class="line">2) <span class="string">"40"</span></span><br><span class="line">3) <span class="string">"wonder"</span></span><br><span class="line">4) <span class="string">"50"</span></span><br></pre></td></tr></table></figure>
+<p>增加分数</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; ZINCRBY mysort 7 arrow</span><br><span class="line"><span class="string">"47"</span></span><br></pre></td></tr></table></figure>
+<p>查找某个分数段内元素的个数</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; ZCOUNT mysort 50 80</span><br><span class="line">(<span class="built_in">integer</span>) 4</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="redis的keys基本操作"><a href="#redis的keys基本操作" class="headerlink" title="redis的keys基本操作"></a>redis的keys基本操作</h2><p> 查找所有的 <code>keys</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; keys *</span><br><span class="line"> 1) <span class="string">"myhash2"</span></span><br><span class="line"> 2) <span class="string">"hahaha"</span></span><br><span class="line"> 3) <span class="string">"mylist2"</span></span><br><span class="line"> 4) <span class="string">"myhashset2"</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>查看以 <code>my</code> 开头的所有的 key</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; keys my?</span><br><span class="line">1) <span class="string">"my3"</span></span><br><span class="line">2) <span class="string">"my2"</span></span><br><span class="line">3) <span class="string">"my1"</span></span><br></pre></td></tr></table></figure>
+<p>删除 keys</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; del my1 my2 my3</span><br><span class="line">(<span class="built_in">integer</span>) 3</span><br></pre></td></tr></table></figure>
+<p>判断某个 key 是否存在</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; EXISTS hahahs</span><br><span class="line">(<span class="built_in">integer</span>) 0</span><br><span class="line">127.0.0.1:6379&gt; EXISTS mysort</span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br></pre></td></tr></table></figure>
+<p>重命名key</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; get compnay</span><br><span class="line"><span class="string">"immooc"</span></span><br><span class="line">127.0.0.1:6379&gt; RENAME compnay</span><br><span class="line">(error) ERR wrong number of arguments <span class="keyword">for</span> <span class="string">'rename'</span> <span class="built_in">command</span></span><br><span class="line">127.0.0.1:6379&gt; RENAME compnay newcompany</span><br><span class="line">OK</span><br><span class="line">// 重命名之后就获取不到了</span><br><span class="line">127.0.0.1:6379&gt; get compnay</span><br><span class="line">(nil)</span><br><span class="line">// 使用新的名字获取</span><br><span class="line">127.0.0.1:6379&gt; get newcompany</span><br><span class="line"><span class="string">"immooc"</span></span><br></pre></td></tr></table></figure>
+<p>设置超时时间 单位秒</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; EXPIRE newcompany 1000</span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br><span class="line">// 查看剩余超时时间</span><br><span class="line">127.0.0.1:6379&gt; ttl newcompany</span><br><span class="line">(<span class="built_in">integer</span>) 989</span><br></pre></td></tr></table></figure>
+<p>查看 key 的类型</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; <span class="built_in">type</span> newcompany</span><br><span class="line">string</span><br><span class="line">127.0.0.1:6379&gt; <span class="built_in">type</span> mylist</span><br><span class="line">list</span><br><span class="line">127.0.0.1:6379&gt; <span class="built_in">type</span> myhash</span><br><span class="line"><span class="built_in">hash</span></span><br><span class="line">127.0.0.1:6379&gt; <span class="built_in">type</span> mysort</span><br><span class="line">zset</span><br><span class="line">127.0.0.1:6379&gt; <span class="built_in">type</span> myset</span><br><span class="line"><span class="built_in">set</span></span><br></pre></td></tr></table></figure>
+<h2 id="redis-的事务"><a href="#redis-的事务" class="headerlink" title="redis 的事务"></a>redis 的事务</h2><p>一个 redis 实例可以包含 <strong>15</strong> 个数据库，下标是从 0-15，默认选择第 0 号数据库</p>
+<p>切换数据库命令如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; select 1</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379[1]&gt; keys *</span><br><span class="line">(empty list or <span class="built_in">set</span>)</span><br></pre></td></tr></table></figure>
+<p>可以看到 1 号数据库中没有保存任何的key</p>
+<p>将 0 号数据库中的一个 key 移动到 1 号数据库</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; MOVE mysort 1</span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br><span class="line">127.0.0.1:6379&gt; select 1</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379[1]&gt; keys *</span><br><span class="line">1) <span class="string">"mysort"</span></span><br></pre></td></tr></table></figure>
+<p><code>multi</code> 相当于开启事务</p>
+<p>开启事务后，输入的命令将被保存的队列中</p>
+<p><code>exec</code> 相当于 <code>commit</code> </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; get num</span><br><span class="line"><span class="string">"65"</span></span><br><span class="line">127.0.0.1:6379&gt; multi</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt; incr num</span><br><span class="line">QUEUED</span><br><span class="line">127.0.0.1:6379&gt; incr num</span><br><span class="line">QUEUED</span><br><span class="line">127.0.0.1:6379&gt; <span class="built_in">exec</span></span><br><span class="line">1) (<span class="built_in">integer</span>) 66</span><br><span class="line">2) (<span class="built_in">integer</span>) 67</span><br><span class="line">127.0.0.1:6379&gt;</span><br></pre></td></tr></table></figure>
+<p>执行之后命令队列中的命令将会被全部执行</p>
+<p><code>discard</code> 相当于 <code>rollerback</code></p>
+<h2 id="redis-持久化概述"><a href="#redis-持久化概述" class="headerlink" title="redis 持久化概述"></a>redis 持久化概述</h2><p><code>redis</code> 之所以效率很高是因为数据都保存在内存中，为了使 <code>redis</code> 重启之后数据不丢失，就需要将 <code>redis</code> 数据保存到硬盘上。</p>
+<p><code>redis</code> 持久化有两种方式：</p>
+<ul>
+<li>RDB 方式</li>
+<li>AOF 方式</li>
+</ul>
+<p>持久化的使用方式</p>
+<ul>
+<li>RDB 持久化：定期保存 <code>redis</code> 的快照到硬盘</li>
+<li>AOF 通过日志记录 <code>redis</code> 的命令，每次重启之后读取这个文件来重现 <code>redis</code> 之前的状态</li>
+<li>无持久化：单纯将 <code>redis</code> 作为一个缓存服务</li>
+<li>同时使用 RDB 和 AOF</li>
+</ul>
+<h3 id="RDB-方式"><a href="#RDB-方式" class="headerlink" title="RDB 方式"></a>RDB 方式</h3><p>在 <code>redis.conf</code> 文件中可以指定保存快照的时机</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">save 900 1</span><br><span class="line">save 300 10</span><br><span class="line">save 60 10000</span><br></pre></td></tr></table></figure>
+<p>AOF 方式</p>
+<p>需要在 <code>redis.conf</code> 中打开配置</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> aof 是否打开 默认是关闭的 需要改为 yes</span></span><br><span class="line">appendonly yes</span><br><span class="line">appendfilename "appendonly.aof"</span><br><span class="line"><span class="meta">#</span><span class="bash"> 每次操作都同步日志</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> appendfsync always</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 每秒同步记录一次</span></span><br><span class="line">appendfsync everysec</span><br><span class="line"><span class="meta">#</span><span class="bash"> 不同步</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> appendfsync no</span></span><br></pre></td></tr></table></figure>
+<h2 id="SringBoot-Redis-重要注解"><a href="#SringBoot-Redis-重要注解" class="headerlink" title="SringBoot Redis 重要注解"></a>SringBoot Redis 重要注解</h2><p><code>Spring-boot</code> 引入 <code>redis</code> 缓存机制，首先需要在启动类上增加一个注解</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@EnableCaching</span></span><br></pre></td></tr></table></figure>
+<p>在 <code>controller</code> 的方法上增加  <code>@Cacheable</code> 注解，一般用于查询接口</p>
+<p><code>@Cacheable(cacheNames = &quot;product&quot;, key = &#39;#sellerId&#39;, condition=&quot;#sellerId.length&gt;3&quot;, unless = &quot;#result.getCode()!=0&quot;)</code></p>
+<p><code>#sellerId</code> 的写法成为 <code>spel</code> 表达式，获取参数 <code>sellerId的值</code></p>
+<p>当 <code>sellerId</code> 的字符长度大于 3 ，而且 除了 返回的 code!=0（也就是等于0都缓存）</p>
+<p>当数据改变之后表用 <code>@Cacheput</code> 注解修改缓存，通常用于保存或者修改方法</p>
+<p><code>@CachePut</code> </p>
+<p>要使用上面两个注解更新缓存 必须保证方法的返回值一致</p>
+<p>如果上面两个注解的 key 不填或者为空，则key默认为方法的参数，这就会导致 key不一致的问题（即使方法的返回值一致）</p>
+<p>可以把 <code>cacheName</code> 属性移到 类注解 <code>@CacheConfig(cacheNames=&quot;product&quot;)</code></p>
+<p><code>@CacheEvict（cacheNames = &quot;product&quot;，key=&quot;123&quot;）</code></p>
+<p>清除缓存</p>
+<p>使用上面的缓存必须实现序列化</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/14/Java泛型/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bruce Liu">
+      <meta itemprop="description" content="Bruce Liu个人站，主要涉及前端知识共享、实践教程、前沿技术共同学习等方面">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bruce Liu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/03/14/Java泛型/" class="post-title-link" itemprop="http://yoursite.com/page/3/index.html">Java泛型</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-14 15:35:34" itemprop="dateCreated datePublished" datetime="2019-03-14T15:35:34+08:00">2019-03-14</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-09-14 00:22:44" itemprop="dateModified" datetime="2019-09-14T00:22:44+08:00">2019-09-14</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>泛型是从  Java 5 开始增加的对于数据类型的规范和检测机制，使用泛型有如下两个优点</p>
+<ol>
+<li>可以有效地避免 <code>ClassCastException</code> ，在编译期就可以使用泛型发现类型转换错误，或者类型不匹配</li>
+<li>避免强类型转换     </li>
+</ol>
+<h2 id="一、泛型引入"><a href="#一、泛型引入" class="headerlink" title="一、泛型引入"></a>一、泛型引入</h2><p>请看下面的例子</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ShowExample</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        List list = <span class="keyword">new</span> ArrayList();</span><br><span class="line">        <span class="comment">// 往 list 中添加一个 String</span></span><br><span class="line">        list.add(<span class="string">"这是一个String"</span>);</span><br><span class="line">        <span class="comment">// 往 list 中添加一个 整形 </span></span><br><span class="line">        list.add(<span class="number">123</span>);</span><br><span class="line">        printSomeThing(list);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">printSomeThing</span><span class="params">(List list)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; list.size(); i++) &#123;</span><br><span class="line">            <span class="comment">// 进行类型转换</span></span><br><span class="line">            String temp = (String) list.get(i);</span><br><span class="line">            System.out.println(temp);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">这是一个String</span><br><span class="line">Exception <span class="keyword">in</span> thread <span class="string">"main"</span> java.lang.ClassCastException: java.lang.Integer cannot be cast to java.lang.String</span><br></pre></td></tr></table></figure>
+<p>第一行被正确打印，但是第二行的整形却在进行强制类型转换的时候失败了，这个如果发生在程序运行期间，会给整个项目带来安全问题。所以，如果能在编译期间就发现这个问题，会对程序的健壮性有很大的提高。</p>
+<p>泛型使用一对尖括号来设置变量的类型，多用在集合框架中。比如，如下代码定义了一个只能存放 <code>String</code> 类型数据的 <code>List</code> 。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; stringList = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br></pre></td></tr></table></figure>
+<h2 id="二、泛型类"><a href="#二、泛型类" class="headerlink" title="二、泛型类"></a>二、泛型类</h2><p><strong>当类中要操作的引用数据类型不确定时，就需要使用泛型。</strong></p>
+<h3 id="JDK-1-5-之前使用-Object-来完成扩展"><a href="#JDK-1-5-之前使用-Object-来完成扩展" class="headerlink" title="JDK 1.5 之前使用 Object 来完成扩展"></a>JDK 1.5 之前使用 Object 来完成扩展</h3><p>现在我们需要定义一个工具类用来设置和获取属性值，在没有泛型之前，可以通过下面的方法实现</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GenericClassDemo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        ToolOld toolOld = <span class="keyword">new</span> ToolOld();</span><br><span class="line">        <span class="comment">// 通过 Object 暂存数据</span></span><br><span class="line">        toolOld.setObject(<span class="keyword">new</span> Cat());</span><br><span class="line">        <span class="comment">// 将数据强制装换回原来的类型</span></span><br><span class="line">        Cat cat = (Cat) toolOld.getObject();</span><br><span class="line">        <span class="comment">// 如果强制准换的类型于原来的类型不一致，就会出现类型转换错误</span></span><br><span class="line">        <span class="comment">// ClassCastException</span></span><br><span class="line">        <span class="comment">// Dog dog = (Dog) toolOld.getObject();</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span> </span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span> </span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 此方法可以用来暂存和获取一个对象</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ToolOld</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Object object;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">getObject</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> object;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setObject</span><span class="params">(Object object)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.object = object;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果没有报错，因为 <code>Object</code> 是所有类的父类，上面的 <code>ToolOld</code> 通过 <code>object</code> 属性暂存数据，当需要获取数据时再通过强制转换，转换成原来的类型。</p>
+<h3 id="定义泛型类"><a href="#定义泛型类" class="headerlink" title="定义泛型类"></a>定义泛型类</h3><p>泛型类的定义方法如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ClassName</span>&lt;泛型标识符&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> 泛型标识符 属性名称;</span><br><span class="line">    <span class="comment">// 定义一个参数类型是指定泛型的方法</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">testMethod</span><span class="params">(T t)</span> </span>&#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="使用泛型类"><a href="#使用泛型类" class="headerlink" title="使用泛型类"></a>使用泛型类</h3><p>上面 <code>Object</code> 的方法可以使用泛型来代替。下面定义了一个泛型类 <code>ToolGeneric</code>，每次创建对象时可以传入类型，在调用 <code>set</code> 方法时，如果类型不匹配，则编译不会通过。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GenericClassDemo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 这里指定了类中只能传入 toolGeneric 类型</span></span><br><span class="line">        ToolGeneric&lt;Cat&gt; toolGeneric = <span class="keyword">new</span> ToolGeneric&lt;Cat&gt;();</span><br><span class="line">        <span class="comment">// 如果传入 new Dog() 就会报错</span></span><br><span class="line">        toolGeneric.setT(<span class="keyword">new</span> Cat());</span><br><span class="line">        Cat cat = toolGeneric.getT();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 泛型类 传入的类型用T来标记</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ToolGeneric</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> T t;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">getT</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> t;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 调用set 函数时传入的参数类型必须与创建对象时泛型的类型相同</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setT</span><span class="params">(T t)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.t = t;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>另一个泛型类的例子</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GenericClassShowCase</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        PrintTool&lt;String&gt; printToolStr = <span class="keyword">new</span> PrintTool&lt;String&gt;();</span><br><span class="line">        printToolStr.printSomeThing(<span class="string">"你好"</span>);</span><br><span class="line">        <span class="comment">// 因为已经指定 printToolStr 传入的类型为 String 下面的语句不能通过编译</span></span><br><span class="line">       <span class="comment">// printToolStr.printSomeThing(12312);</span></span><br><span class="line"></span><br><span class="line">        PrintTool&lt;Integer&gt; printToolInt = <span class="keyword">new</span> PrintTool&lt;Integer&gt;();</span><br><span class="line">        printToolInt.printSomeThing(<span class="number">3123412</span>);</span><br><span class="line">        <span class="comment">// 因为已经指定 printToolStr 传入的类型为 Integer 下面的语句不能通过编译</span></span><br><span class="line">       <span class="comment">// printToolInt.printSomeThing("你好");</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PrintTool</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">printSomeThing</span><span class="params">(T t)</span> </span>&#123;</span><br><span class="line">        System.out.println(t);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 需要注意的是 静态方法不能引用上面的泛型 T，</span></span><br><span class="line">    <span class="comment">// 但是可以定义泛型静态方法</span></span><br><span class="line">    <span class="comment">// 'PrintTool.this' cannot be referenced from a static context</span></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    public static void showIt(T t) &#123;</span></span><br><span class="line"><span class="comment">        System.out.println(t);</span></span><br><span class="line"><span class="comment">    &#125;*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果 ：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">你好</span><br><span class="line">3123412</span><br></pre></td></tr></table></figure>
+<p>上面的泛型类通过每次指定不同的类型，可以打印不同的数据类型。但是每打印一个新的数据类型都需要运行 <code>PrintTool&lt;XXX&gt; printTool = new PrintTool&lt;XXX&gt;()</code> 来创建新的类，这样也不方便，所以有必要使用<strong>泛型方法</strong>。</p>
+<h3 id="泛型方法"><a href="#泛型方法" class="headerlink" title="泛型方法"></a>泛型方法</h3><p>泛型方法定义时需要将一对尖括号包裹的泛型类型写在函数的返回值之前。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public &lt;T&gt; void getName(T t) &#123;</span><br><span class="line">    // TODO</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>下面是一个泛型方法的例子</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GenericMethodShow</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        GenericMethod&lt;String&gt; stringGenericMethod = <span class="keyword">new</span> GenericMethod&lt;String&gt;();</span><br><span class="line">        stringGenericMethod.show(<span class="string">"你好"</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 编译不通过，应为 show 方法使用的是类传来的参数类型，</span></span><br><span class="line">        <span class="comment">// 所以在本例中只能打印 String 类型的数据</span></span><br><span class="line">        <span class="comment">// stringGenericMethod.show(13123);</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// show 方法的参数类型在调用时通过传入的参数确定，</span></span><br><span class="line">        <span class="comment">// 所以两种类型都可以打印</span></span><br><span class="line">        stringGenericMethod.print(<span class="string">"你好"</span>);</span><br><span class="line">        stringGenericMethod.print(<span class="number">123124</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 调用静态泛型方法</span></span><br><span class="line">        GenericMethod.showStatic(<span class="string">"static"</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GenericMethod</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="comment">// 这是一个普通的方法，只是参数的类型是泛型</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">(T t)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"show: "</span> + t);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 这是一个泛型方法,这里泛型使用的是 T2，而不是类中的T</span></span><br><span class="line">    <span class="keyword">public</span> &lt;T2&gt; <span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(T2 t)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"print: "</span> + t);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 静态方法可以定义泛型函数，可以使用用户调用时传入的参数的类型 T3</span></span><br><span class="line">    <span class="comment">// 但是无法使用本类的泛型 T</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> &lt;T3&gt; <span class="function"><span class="keyword">void</span> <span class="title">showStatic</span><span class="params">(T3 t3)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"static: "</span> + t3);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">show: 你好</span><br><span class="line"><span class="built_in">print</span>: 你好</span><br><span class="line"><span class="built_in">print</span>: 123124</span><br><span class="line">static: static</span><br></pre></td></tr></table></figure>
+<h2 id="泛型接口"><a href="#泛型接口" class="headerlink" title="泛型接口"></a>泛型接口</h2><p>泛型接口的定义方式为</p>
+<figure class="highlight plain"><figcaption><span>IterName<t>&#123;</t></span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">interface IterName&lt;T&gt;&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>泛型接口使用时可以在<strong>泛型类的定义时传入泛型的类型</strong>，也可以在<strong>调用方法时通过参数来确定泛型的类型</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GenericInterfaceShow</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        ShowInterImpl1 showInterImpl1 = <span class="keyword">new</span> ShowInterImpl1();</span><br><span class="line">        showInterImpl1.show(<span class="string">"哈哈"</span>);</span><br><span class="line">        <span class="comment">// 编译不通过</span></span><br><span class="line">        <span class="comment">//showInterImpl1.show(123);</span></span><br><span class="line"></span><br><span class="line">        ShowInterImpl2 showInterImpl2 = <span class="keyword">new</span> ShowInterImpl2();</span><br><span class="line">        <span class="comment">// 在调用时确定参数类型</span></span><br><span class="line">        showInterImpl2.show(<span class="string">"哈哈2"</span>);</span><br><span class="line">        showInterImpl2.show(<span class="number">1234</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义一个泛型接口</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">ShowInter</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">show</span><span class="params">(T t)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在定义接口类时传入泛型</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ShowInterImpl1</span> <span class="keyword">implements</span> <span class="title">ShowInter</span>&lt;<span class="title">String</span>&gt; </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="comment">// 这里的参数类型必须写 String</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        System.out.println(s);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在调用时定义参数类型</span></span><br><span class="line"><span class="comment">// 方法定义时必须在类名和接口名后都加入泛型</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ShowInterImpl2</span>&lt;<span class="title">T</span>&gt; <span class="keyword">implements</span> <span class="title">ShowInter</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">(T t)</span> </span>&#123;</span><br><span class="line">        System.out.println(t);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">哈哈</span><br><span class="line">哈哈<span class="number">2</span></span><br><span class="line"><span class="number">1234</span></span><br></pre></td></tr></table></figure>
+<h2 id="泛型限定"><a href="#泛型限定" class="headerlink" title="泛型限定"></a>泛型限定</h2><p>当不知道数据类型时，可以用 <code>?</code> 作为通配符</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GenericExtends</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        ArrayList&lt;Person&gt; personList = <span class="keyword">new</span> ArrayList&lt;Person&gt;();</span><br><span class="line">        personList.add(<span class="keyword">new</span> Person(<span class="string">"aaa"</span>));</span><br><span class="line">        personList.add(<span class="keyword">new</span> Person(<span class="string">"bbb"</span>));</span><br><span class="line">        personList.add(<span class="keyword">new</span> Person(<span class="string">"ccc"</span>));</span><br><span class="line"></span><br><span class="line">        ArrayList&lt;Student&gt; studentList = <span class="keyword">new</span> ArrayList&lt;Student&gt;();</span><br><span class="line">        personList.add(<span class="keyword">new</span> Person(<span class="string">"aaa1"</span>));</span><br><span class="line">        personList.add(<span class="keyword">new</span> Person(<span class="string">"bbb2"</span>));</span><br><span class="line">        personList.add(<span class="keyword">new</span> Person(<span class="string">"ccc3"</span>));</span><br><span class="line"></span><br><span class="line">      <span class="comment">//  printData(personList);</span></span><br><span class="line">      <span class="comment">//  printData(studentList);</span></span><br><span class="line"></span><br><span class="line">        ArrayList&lt;String&gt; strings = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">        strings.add(<span class="string">"a"</span>);</span><br><span class="line">        strings.add(<span class="string">"b"</span>);</span><br><span class="line">        strings.add(<span class="string">"c"</span>);</span><br><span class="line"></span><br><span class="line">        ArrayList&lt;Integer&gt; integers  = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">        integers.add(<span class="number">1</span>);</span><br><span class="line">        integers.add(<span class="number">2</span>);</span><br><span class="line">        integers.add(<span class="number">3</span>);</span><br><span class="line">        printData(strings);</span><br><span class="line">        printData(integers);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用 ? 作为限定符</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">printData</span><span class="params">(ArrayList&lt;?&gt; dataList)</span> </span>&#123;</span><br><span class="line">        Iterator&lt;?&gt; iterator = dataList.iterator();</span><br><span class="line">        <span class="keyword">while</span> (iterator.hasNext()) &#123;</span><br><span class="line">            System.out.println(iterator.next());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 这里也可以使用T, 这种写法与 printData 的差别不大，区别在于可以通过 t 对变量进行操作</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function"><span class="keyword">void</span> <span class="title">printData2</span><span class="params">(ArrayList&lt;T&gt; dataList)</span> </span>&#123;</span><br><span class="line">        Iterator&lt;T&gt; iterator = dataList.iterator();</span><br><span class="line">        <span class="keyword">while</span> (iterator.hasNext()) &#123;</span><br><span class="line">            T t = iterator.next();</span><br><span class="line">            System.out.println(t);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a</span><br><span class="line">b</span><br><span class="line">c</span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
+<p>可以看出：使用 <code>?</code> 可以匹配不同类型的数据</p>
+<p> 这个例子说明 <strong>子父类之间的泛型不能通过多态调用</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 泛型限定</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GenericExtends</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        ArrayList&lt;Person&gt; personList = <span class="keyword">new</span> ArrayList&lt;Person&gt;();</span><br><span class="line">        personList.add(<span class="keyword">new</span> Person(<span class="string">"aaa"</span>));</span><br><span class="line">        personList.add(<span class="keyword">new</span> Person(<span class="string">"bbb"</span>));</span><br><span class="line">        personList.add(<span class="keyword">new</span> Person(<span class="string">"ccc"</span>));</span><br><span class="line"></span><br><span class="line">        ArrayList&lt;Student&gt; studentList = <span class="keyword">new</span> ArrayList&lt;Student&gt;();</span><br><span class="line">        studentList.add(<span class="keyword">new</span> Student(<span class="string">"aaa1"</span>));</span><br><span class="line">        studentList.add(<span class="keyword">new</span> Student(<span class="string">"bbb2"</span>));</span><br><span class="line">        studentList.add(<span class="keyword">new</span> Student(<span class="string">"ccc3"</span>));</span><br><span class="line">        printPerson(personList);</span><br><span class="line">        <span class="comment">// 下面的代码编译不通过</span></span><br><span class="line">        <span class="comment">// 说明 ArrayList&lt;Person&gt; peopleList = new       ArrayList&lt;Student&gt;();是不成立的</span></span><br><span class="line">        <span class="comment">// 同样 ArrayList&lt;Student&gt; peopleList = new       ArrayList&lt;Person&gt;(); 也是不成立的</span></span><br><span class="line">       <span class="comment">// printPerson(studentList);</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">printPerson</span><span class="params">(ArrayList&lt;Person&gt; personList)</span> </span>&#123;</span><br><span class="line">        Iterator&lt;Person&gt; iterator = personList.iterator();</span><br><span class="line">        <span class="keyword">while</span> (iterator.hasNext()) &#123;</span><br><span class="line">            System.out.println(iterator.next().getName());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span> <span class="keyword">extends</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Student</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>现在我们确实需要使用 <code>printPerson</code> 方法来打印 <code>studentList</code> ，将 <code>printPerson</code> 申明为<strong>泛型方法</strong>是一个途径：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function"><span class="keyword">void</span> <span class="title">printPerson</span><span class="params">(ArrayList&lt;T&gt; personList)</span> </span>&#123;</span><br><span class="line">        Iterator&lt;T&gt; iterator = personList.iterator();</span><br><span class="line">        <span class="keyword">while</span> (iterator.hasNext()) &#123;</span><br><span class="line"></span><br><span class="line">            System.out.println(((Person) iterator.next()).getName());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>或者使用 <code>？</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">printPerson</span><span class="params">(ArrayList&lt;?&gt; personList)</span> </span>&#123;</span><br><span class="line">        Iterator&lt;?&gt; iterator = personList.iterator();</span><br><span class="line">        <span class="keyword">while</span> (iterator.hasNext()) &#123;</span><br><span class="line">            System.out.println(((Person) iterator.next()).getName());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>但是这两种方法都有局限性：无论 <code>personList</code> 中存储的是什么类型的数据都可以传入。这就存在了风险：就上面的例子来说，如果 <code>personList</code> 里边存储的不是 <code>Person</code> 类（或者子类），就会造成类型转换异常。为了解决这个问题，引入了类型限定。</p>
+<p>使用 <code>&lt;? extends Person&gt;</code> 来限定 <code>personList</code> 只能存储 <strong><code>Person</code> 类或者其子类型</strong>。</p>
+<p>下面是一个类型限定的例子</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">printPersonExtend</span><span class="params">(ArrayList&lt;? extends Person&gt; personList)</span> </span>&#123;</span><br><span class="line">    Iterator&lt;? extends Person&gt; iterator = personList.iterator();</span><br><span class="line">    <span class="keyword">while</span>(iterator.hasNext()) &#123;</span><br><span class="line">        System.out.println(iterator.next().getName());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>增加一个汽车类 <code>Car</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Car</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String brandName;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Car</span><span class="params">(String brandName)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.brandName = brandName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getBrandName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> brandName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setBrandName</span><span class="params">(String brandName)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.brandName = brandName;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>调用打印方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">public class GenericExtends &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        ArrayList&lt;Person&gt; personList = new ArrayList&lt;Person&gt;();</span><br><span class="line">        personList.add(new Person(&quot;aaa&quot;));</span><br><span class="line">        personList.add(new Person(&quot;bbb&quot;));</span><br><span class="line">        personList.add(new Person(&quot;ccc&quot;));</span><br><span class="line"></span><br><span class="line">        ArrayList&lt;Student&gt; studentList = new ArrayList&lt;Student&gt;();</span><br><span class="line">        studentList.add(new Student(&quot;aaa1&quot;));</span><br><span class="line">        studentList.add(new Student(&quot;bbb2&quot;));</span><br><span class="line">        studentList.add(new Student(&quot;ccc3&quot;));</span><br><span class="line">        // 打印 Person</span><br><span class="line">        printPersonExtend(personList);</span><br><span class="line">        // 因为 Stduent 是 Person 的子类，所以也可以打印</span><br><span class="line">        printPersonExtend(studentList);</span><br><span class="line">        </span><br><span class="line"></span><br><span class="line">        ArrayList&lt;Car&gt; carList = new ArrayList&lt;Car&gt;();</span><br><span class="line">        carList.add(new Car(&quot;Benz&quot;));</span><br><span class="line">        carList.add(new Car(&quot;BMW&quot;));</span><br><span class="line">        carList.add(new Car(&quot;Porsche&quot;));</span><br><span class="line">        // 编译失败，因为 Car 类和 Person 类没有任何关系</span><br><span class="line">        // printPersonExtend(carList);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void printPersonExtend(ArrayList&lt;? extends Person&gt; personList) &#123;</span><br><span class="line">        Iterator&lt;? extends Person&gt; iterator = personList.iterator();</span><br><span class="line">        while (iterator.hasNext()) &#123;</span><br><span class="line">            System.out.println(iterator.next().getName());</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>与此同时，使用 <code>&lt;? super Student&gt;</code> 限定只能传入 <code>Student</code> 类及其父类，<code>TreeSet</code> 的一个构造方法就使用如下的限定符：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">TreeSet</span><span class="params">(Comparator&lt;? <span class="keyword">super</span> E&gt; comparator)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">this</span>(<span class="keyword">new</span> TreeMap&lt;E,Object&gt;(comparator));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>下面是一个使用 <code>&lt;? super E&gt;</code> 的例子:</p>
+<p>定义一个 <code>Worker</code> 类，它同时也是 <code>Person</code> 的子类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Worker</span> <span class="keyword">extends</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Worker</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>现在我们用 <code>TreeSet</code> 分别存储 学生 和 工人，并将它们倒序输出</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GenericSuper</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 创建 studentTreeSet 并用 StudentComparator 指定比较的方法</span></span><br><span class="line">        TreeSet&lt;Student&gt; studentTreeSet = <span class="keyword">new</span> TreeSet&lt;Student&gt;(<span class="keyword">new</span> StudentComparator());</span><br><span class="line">        studentTreeSet.add(<span class="keyword">new</span> Student(<span class="string">"s--001"</span>));</span><br><span class="line">        studentTreeSet.add(<span class="keyword">new</span> Student(<span class="string">"s--002"</span>));</span><br><span class="line">        studentTreeSet.add(<span class="keyword">new</span> Student(<span class="string">"s--003"</span>));</span><br><span class="line">        Iterator&lt;Student&gt; studentIterator = studentTreeSet.iterator();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (studentIterator.hasNext()) &#123;</span><br><span class="line">            System.out.println(studentIterator.next().getName());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 创建 studentTreeSet 并用 WorkerComparator 指定比较的方法</span></span><br><span class="line">        TreeSet&lt;Worker&gt; workerTreeSet = <span class="keyword">new</span> TreeSet&lt;Worker&gt;(<span class="keyword">new</span> WorkerComparator());</span><br><span class="line">        workerTreeSet.add(<span class="keyword">new</span> Worker(<span class="string">"w--001"</span>));</span><br><span class="line">        workerTreeSet.add(<span class="keyword">new</span> Worker(<span class="string">"w--002"</span>));</span><br><span class="line">        workerTreeSet.add(<span class="keyword">new</span> Worker(<span class="string">"w--003"</span>));</span><br><span class="line"></span><br><span class="line">        Iterator&lt;Worker&gt; workerIterator = workerTreeSet.iterator();</span><br><span class="line">        <span class="keyword">while</span> (workerIterator.hasNext()) &#123;</span><br><span class="line">            System.out.println(workerIterator.next().getName());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 用来比较 Student 对象</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">StudentComparator</span> <span class="keyword">implements</span> <span class="title">Comparator</span>&lt;<span class="title">Student</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Student s1, Student s2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> s2.getName().compareTo(s1.getName());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 用来比较 Worker 对象</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">WorkerComparator</span> <span class="keyword">implements</span> <span class="title">Comparator</span>&lt;<span class="title">Worker</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Worker w1, Worker w2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> w2.getName().compareTo(w1.getName());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出结果如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">s--003</span><br><span class="line">s--002</span><br><span class="line">s--001</span><br><span class="line">w--003</span><br><span class="line">w--002</span><br><span class="line">w--001</span><br></pre></td></tr></table></figure>
+<p>上面两种不同的对象比较，使用了不同的比较器，是否可以将其合并成一个呢？</p>
+<p>查看源码 <code>TreeSet</code> 当前的构造函数如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">TreeSet</span><span class="params">(Comparator&lt;? <span class="keyword">super</span> E&gt; comparator)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">this</span>(<span class="keyword">new</span> TreeMap&lt;E,Object&gt;(comparator));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个源码说明比较器参数可以<strong>传入 <code>E</code> 类型，或者 <code>E</code> 类型的 父类型</strong></p>
+<p>现在重写一个通用的比较器</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这里指定了类型时 Student 和 Worker 的共同父类 Person </span></span><br><span class="line"><span class="comment">// 所以，当传入 Student 或者 Worker 时，比较器都是可以使用的 </span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AllPersonComp</span> <span class="keyword">implements</span> <span class="title">Comparator</span>&lt;<span class="title">Person</span>&gt; </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Person s1, Person s2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> s2.getName().compareTo(s1.getName())</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在定义 <code>TreeSet</code> 时传入上面的比较器</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GenericSuper</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 构造函数中传入的泛型是Student，后面的参数就可以传入以Student的父类作为泛型的比较器</span></span><br><span class="line">        TreeSet&lt;Student&gt; studentTreeSet = <span class="keyword">new</span> TreeSet&lt;Student&gt;(<span class="keyword">new</span> AllPersonComp());</span><br><span class="line">        studentTreeSet.add(<span class="keyword">new</span> Student(<span class="string">"s--001"</span>));</span><br><span class="line">        studentTreeSet.add(<span class="keyword">new</span> Student(<span class="string">"s--002"</span>));</span><br><span class="line">        studentTreeSet.add(<span class="keyword">new</span> Student(<span class="string">"s--003"</span>));</span><br><span class="line">        Iterator&lt;Student&gt; studentIterator = studentTreeSet.iterator();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (studentIterator.hasNext()) &#123;</span><br><span class="line">            System.out.println(studentIterator.next().getName());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 构造函数中传入的泛型是Worker，后面的参数就可以传入以Worker的父类作为泛型的比较器</span></span><br><span class="line">        TreeSet&lt;Worker&gt; workerTreeSet = <span class="keyword">new</span> TreeSet&lt;Worker&gt;(<span class="keyword">new</span> AllPersonComp());</span><br><span class="line">        workerTreeSet.add(<span class="keyword">new</span> Worker(<span class="string">"w--001"</span>));</span><br><span class="line">        workerTreeSet.add(<span class="keyword">new</span> Worker(<span class="string">"w--002"</span>));</span><br><span class="line">        workerTreeSet.add(<span class="keyword">new</span> Worker(<span class="string">"w--003"</span>));</span><br><span class="line"></span><br><span class="line">        Iterator&lt;Worker&gt; workerIterator = workerTreeSet.iterator();</span><br><span class="line">        <span class="keyword">while</span> (workerIterator.hasNext()) &#123;</span><br><span class="line">            System.out.println(workerIterator.next().getName());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果与上面相同</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/11/mysql问题/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bruce Liu">
+      <meta itemprop="description" content="Bruce Liu个人站，主要涉及前端知识共享、实践教程、前沿技术共同学习等方面">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bruce Liu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/03/11/mysql问题/" class="post-title-link" itemprop="http://yoursite.com/page/3/index.html">mysql问题</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-11 11:42:02" itemprop="dateCreated datePublished" datetime="2019-03-11T11:42:02+08:00">2019-03-11</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-09-14 00:22:44" itemprop="dateModified" datetime="2019-09-14T00:22:44+08:00">2019-09-14</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li><p>提示时区错误</p>
+<p>具体报错如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">The server time zone value &apos;ÖÐ¹ú±ê×¼Ê±¼ä&apos; is unrecognized or represents more than one time zone</span><br></pre></td></tr></table></figure>
+<p>有两种解决方法</p>
+<p>a. 在数据库路径的后面增加时区配置选项</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">url: jdbc:mysql://localhost:3306/sell?characterEncoding=utf-8&amp;useSSL=<span class="literal">false</span>&amp;serverTimezone=GMT%2B8</span><br></pre></td></tr></table></figure>
+<p>b. 增加全局配置的选项</p>
+<p>使用下面的语句查看当前的时区配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SHOW VARIABLES LIKE <span class="string">'%time_zone%'</span></span><br></pre></td></tr></table></figure>
+<p>输出结果如下</p>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Variable_name</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">system_time_zone</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">time_zone</td>
+<td>SYSTEM</td>
+</tr>
+</tbody>
+</table>
+<p>   将时区设置为 <code>+8</code> 区</p>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SET GLOBAL time_zone = &apos;+8:00&apos;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/20/git远程分支/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1377,696 +2338,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/14/查看git日志的命令/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bruce Liu">
-      <meta itemprop="description" content="Bruce Liu个人站，主要涉及前端知识共享、实践教程、前沿技术共同学习等方面">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Bruce Liu's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/01/14/查看git日志的命令/" class="post-title-link" itemprop="http://yoursite.com/page/3/index.html">查看git日志的命令</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-01-14 19:30:54" itemprop="dateCreated datePublished" datetime="2019-01-14T19:30:54+08:00">2019-01-14</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-09-14 00:22:44" itemprop="dateModified" datetime="2019-09-14T00:22:44+08:00">2019-09-14</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>查看日志</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span></span><br></pre></td></tr></table></figure>
-<p>查看近两次提交的日志</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span> -2</span><br></pre></td></tr></table></figure>
-<p>查看近两周提交的日志</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span> --since=2.weeks</span><br></pre></td></tr></table></figure>
-<p>查看某一天提交的日志</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span> --since=2019--01--14</span><br></pre></td></tr></table></figure>
-<p>查看最近两年三个月前天3分钟的日志</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span> --since=<span class="string">"2 years 1 day 3 minutes ago"</span></span><br></pre></td></tr></table></figure>
-<p>log查看分支图</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span> --oneline --all --graph</span><br></pre></td></tr></table></figure>
-<p>显示提交的差异</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span> --patch</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-       
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/23/git问题处理/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bruce Liu">
-      <meta itemprop="description" content="Bruce Liu个人站，主要涉及前端知识共享、实践教程、前沿技术共同学习等方面">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Bruce Liu's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/12/23/git问题处理/" class="post-title-link" itemprop="http://yoursite.com/page/3/index.html">git问题处理</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-12-23 22:22:28" itemprop="dateCreated datePublished" datetime="2018-12-23T22:22:28+08:00">2018-12-23</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-09-14 00:22:44" itemprop="dateModified" datetime="2019-09-14T00:22:44+08:00">2019-09-14</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<h2 id="Q1"><a href="#Q1" class="headerlink" title="Q1"></a>Q1</h2><blockquote>
-<p>fatal: remote origin already exists.</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote rm origin</span><br></pre></td></tr></table></figure>
-<hr>
-<h2 id="Q2"><a href="#Q2" class="headerlink" title="Q2"></a>Q2</h2><p>取消文件跟踪</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rm -r --cached [filename]</span><br></pre></td></tr></table></figure>
-<hr>
-<h2 id="Q3"><a href="#Q3" class="headerlink" title="Q3"></a>Q3</h2><blockquote>
-<p>fatal: refusing to merge unrelated histories</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin master --allow-unrelated-histories</span><br></pre></td></tr></table></figure>
-<hr>
-<h2 id="Q4"><a href="#Q4" class="headerlink" title="Q4"></a>Q4</h2><p>git log查看分支图</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span> --oneline --decorate --graph --all</span><br></pre></td></tr></table></figure>
-<h2 id="Q5"><a href="#Q5" class="headerlink" title="Q5"></a>Q5</h2><p>查看跟踪的文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git ls-files</span><br></pre></td></tr></table></figure>
-<h2 id="Q6"><a href="#Q6" class="headerlink" title="Q6"></a>Q6</h2><p>Please move or remove them before you can merge</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard HEAD</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-       
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/22/JavaScript添加点击事件/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bruce Liu">
-      <meta itemprop="description" content="Bruce Liu个人站，主要涉及前端知识共享、实践教程、前沿技术共同学习等方面">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Bruce Liu's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/12/22/JavaScript添加点击事件/" class="post-title-link" itemprop="http://yoursite.com/page/3/index.html">JavaScript添加点击事件</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-12-22 22:47:23" itemprop="dateCreated datePublished" datetime="2018-12-22T22:47:23+08:00">2018-12-22</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-09-14 00:22:44" itemprop="dateModified" datetime="2019-09-14T00:22:44+08:00">2019-09-14</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="方法一-使用-onclick-事件"><a href="#方法一-使用-onclick-事件" class="headerlink" title="方法一 使用 onclick 事件"></a>方法一 使用 onclick 事件</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;button id=<span class="string">"mybutton"</span>&gt;点我&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>body&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="keyword">var</span> newButton = <span class="built_in">document</span>.getElementById(<span class="string">"mybutton"</span>);</span><br><span class="line">    <span class="comment">// 绑定 oncclick 事件</span></span><br><span class="line"></span><br><span class="line">    newButton.onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        alert(<span class="string">"onclick"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;/</span>html&gt;</span><br></pre></td></tr></table></figure>
-<p>运行结果如下</p>
-<p><img src="http://wx3.sinaimg.cn/mw690/730892e4ly1fyfzduusr6j20ze06dwee.jpg" alt="运行结果"></p>
-<h2 id="方法二-使用-click-方法"><a href="#方法二-使用-click-方法" class="headerlink" title="方法二 使用 click 方法"></a>方法二 使用 click 方法</h2><p><code>click</code> 方法，模拟鼠标点击</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;button id=<span class="string">"mybutton"</span>&gt;点我&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>body&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="keyword">var</span> newButton = <span class="built_in">document</span>.getElementById(<span class="string">"mybutton"</span>);</span><br><span class="line">    newButton.onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        alert(<span class="string">"onclick"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 直接打开页面就会执行 click 方法，同时会触发上面的 onclick 事件</span></span><br><span class="line">    <span class="comment">// 注意下面的语句不是绑定事件 而是 模拟点击鼠标的动作</span></span><br><span class="line"></span><br><span class="line">    newButton.click(alert(<span class="string">"click"</span>))</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;/</span>html&gt;</span><br></pre></td></tr></table></figure>
-<p><img src="http://wx1.sinaimg.cn/mw690/730892e4ly1fyfzdt8ab9j20jg063mx0.jpg" alt="模拟点击鼠标"></p>
-<p><img src="http://wx3.sinaimg.cn/mw690/730892e4ly1fyfzdtma48j20mm06wglh.jpg" alt="同时会触发绑定的 onclick 事件"></p>
-<h2 id="方法三-使用-addEventListener-来绑定事件-（推荐使用）"><a href="#方法三-使用-addEventListener-来绑定事件-（推荐使用）" class="headerlink" title="方法三  使用 addEventListener 来绑定事件 （推荐使用）"></a>方法三  使用 addEventListener 来绑定事件 （推荐使用）</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;button id=<span class="string">"mybutton"</span>&gt;点我&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>body&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="keyword">var</span> newButton = <span class="built_in">document</span>.getElementById(<span class="string">"mybutton"</span>);</span><br><span class="line">    <span class="comment">// 推荐使用这种方法</span></span><br><span class="line">    newButton.addEventListener(<span class="string">"click"</span>,<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        alert(<span class="string">"addEventListener"</span>);</span><br><span class="line">        </span><br><span class="line">    &#125;, <span class="literal">false</span>);</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;/</span>html&gt;</span><br></pre></td></tr></table></figure>
-<p>运行结果：</p>
-<p><img src="http://wx2.sinaimg.cn/mw690/730892e4ly1fyfzdudacqj211b06ojri.jpg" alt="使用addEventListener()"></p>
-<p>为什么使用这种方法，以下来自 <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget/addEventListener" target="_blank" rel="noopener">MDN</a></p>
-<blockquote>
-<p><code>addEventListener()</code> 是 W3C DOM 规范中提供的注册事件监听器的方法。它的优点包括：</p>
-<ul>
-<li>它允许给一个事件注册多个监听器。 特别是在使用<a href="https://developer.mozilla.org/en-US/docs/Glossary/AJAX" title="AJAX: Asynchronous JavaScript And XML (AJAX) is a programming practice of building more complex, dynamic webpages using a technology known as XMLHttpRequest." target="_blank" rel="noopener">AJAX</a>库，JavaScript模块，或其他需要第三方库/插件的代码。<blockquote>
-<ul>
-<li>它提供了一种更精细的手段控制<code>listener</code> 的触发阶段。（即可以选择捕获或者冒泡）。</li>
-<li>它对任何 DOM 元素都是有效的，而不仅仅只对 HTML 元素有效。</li>
-</ul>
-</blockquote>
-</li>
-</ul>
-</blockquote>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-       
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/11/新建一个Vue项目/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bruce Liu">
-      <meta itemprop="description" content="Bruce Liu个人站，主要涉及前端知识共享、实践教程、前沿技术共同学习等方面">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Bruce Liu's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/12/11/新建一个Vue项目/" class="post-title-link" itemprop="http://yoursite.com/page/3/index.html">新建一个Vue项目</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-12-11 19:18:01" itemprop="dateCreated datePublished" datetime="2018-12-11T19:18:01+08:00">2018-12-11</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-09-14 00:22:44" itemprop="dateModified" datetime="2019-09-14T00:22:44+08:00">2019-09-14</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>以下操作步骤基于 Vue CLI 3.0  （@vue/cli）</p>
-<h2 id="0、安装Vue脚手架"><a href="#0、安装Vue脚手架" class="headerlink" title="0、安装Vue脚手架"></a>0、安装Vue脚手架</h2><p>使用下面的命令全局安装 Vue CLI</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g @vue/cli</span><br></pre></td></tr></table></figure>
-<p>安装完成之后，可以使用下面的命令来检查是否安装正确</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue -version</span><br></pre></td></tr></table></figure>
-<h2 id="1-新建一个项目"><a href="#1-新建一个项目" class="headerlink" title="1. 新建一个项目"></a>1. 新建一个项目</h2><p>使用下面的命令新建一个名为 <code>vue-playlist</code> 的项目</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue create vue-playlist</span><br></pre></td></tr></table></figure>
-<p>创建成功之后会提示安装的组件，这里可以选择默认</p>
-<p><img src="http://wx2.sinaimg.cn/mw690/730892e4ly1fy31paki06j20it0cajrz.jpg" alt="选择默认"></p>
-<p>也可以手动选择组件</p>
-<p><img src="http://wx2.sinaimg.cn/mw690/730892e4ly1fy31pa44igj20it0cajrv.jpg" alt="手动选择组件"></p>
-<p>安装成功之后，使用下面的命令进入目录</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> vue-playlist</span><br></pre></td></tr></table></figure>
-<p>然后运行下面的命令启动程序</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run serve</span><br></pre></td></tr></table></figure>
-<p>启动成功后，在 <code>http://localhost:8080</code> 即可看到</p>
-<p><img src="http://wx2.sinaimg.cn/mw690/730892e4ly1fy32gaq090j20q00jc0ti.jpg" alt="访问成功"></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-       
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -2109,7 +2385,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">38</span>
+                    <span class="site-state-item-count">42</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
