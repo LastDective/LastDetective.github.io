@@ -108,24 +108,24 @@
 
 
 
-  <meta name="description" content="1234final Map&amp;lt;String, JSONObject&amp;gt; moudlesDataMap =             allModulesData.stream()                     .collect(Collectors.toMap(                             item -&amp;gt; (item.get(&quot;name&quot;).toS">
+  <meta name="description" content="mysql groupBy问题12ERROR 1055 (42000): Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column &amp;apos;xxx&amp;apos; which is not functionally dependent on columns  in GROUP B">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java8tomap">
-<meta property="og:url" content="http://yoursite.com/2020/08/11/java8tomap/index.html">
+<meta property="og:title" content="mysql-groupby报错">
+<meta property="og:url" content="http://yoursite.com/2020/09/16/mysql-groupby报错/index.html">
 <meta property="og:site_name" content="Bruce Liu&#39;s Blog">
-<meta property="og:description" content="1234final Map&amp;lt;String, JSONObject&amp;gt; moudlesDataMap =             allModulesData.stream()                     .collect(Collectors.toMap(                             item -&amp;gt; (item.get(&quot;name&quot;).toS">
+<meta property="og:description" content="mysql groupBy问题12ERROR 1055 (42000): Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column &amp;apos;xxx&amp;apos; which is not functionally dependent on columns  in GROUP B">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-08-11T09:12:41.970Z">
+<meta property="og:updated_time" content="2020-09-16T03:14:30.204Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="java8tomap">
-<meta name="twitter:description" content="1234final Map&amp;lt;String, JSONObject&amp;gt; moudlesDataMap =             allModulesData.stream()                     .collect(Collectors.toMap(                             item -&amp;gt; (item.get(&quot;name&quot;).toS">
+<meta name="twitter:title" content="mysql-groupby报错">
+<meta name="twitter:description" content="mysql groupBy问题12ERROR 1055 (42000): Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column &amp;apos;xxx&amp;apos; which is not functionally dependent on columns  in GROUP B">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/08/11/java8tomap/">
+  <link rel="canonical" href="http://yoursite.com/2020/09/16/mysql-groupby报错/">
 
 
 
@@ -135,7 +135,7 @@
   };
 </script>
 
-  <title>java8tomap | Bruce Liu's Blog</title>
+  <title>mysql-groupby报错 | Bruce Liu's Blog</title>
   
 
 
@@ -355,7 +355,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/11/java8tomap/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/16/mysql-groupby报错/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Bruce Liu">
@@ -372,7 +372,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">java8tomap
+          <h1 class="post-title" itemprop="name headline">mysql-groupby报错
               
             
           </h1>
@@ -397,7 +397,7 @@
                 
               
 
-              <time title="创建时间：2020-08-11 17:11:31 / 修改时间：17:12:41" itemprop="dateCreated datePublished" datetime="2020-08-11T17:11:31+08:00">2020-08-11</time>
+              <time title="创建时间：2020-09-16 11:03:12 / 修改时间：11:14:30" itemprop="dateCreated datePublished" datetime="2020-09-16T11:03:12+08:00">2020-09-16</time>
             
 
             
@@ -435,7 +435,33 @@
       
 
       
-        <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> Map&lt;String, JSONObject&gt; moudlesDataMap =</span><br><span class="line">             allModulesData.stream()</span><br><span class="line">                     .collect(Collectors.toMap(</span><br><span class="line">                             item -&gt; (item.get(<span class="string">"name"</span>).toString()), item -&gt; item, (oldValue, newValue) -&gt; newValue));</span><br></pre></td></tr></table></figure>
+        <h2 id="mysql-groupBy问题"><a href="#mysql-groupBy问题" class="headerlink" title="mysql groupBy问题"></a>mysql groupBy问题</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ERROR 1055 (42000): Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column &apos;xxx&apos; which is not </span><br><span class="line">functionally dependent on columns  in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by</span><br></pre></td></tr></table></figure>
+<h3 id="解决办法一"><a href="#解决办法一" class="headerlink" title="解决办法一"></a>解决办法一</h3><ol>
+<li><p>查询 sql_mode</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select @@global.sql_mode;</span><br></pre></td></tr></table></figure>
+<p>结果如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION</span><br></pre></td></tr></table></figure>
+<p>只需要将上面的 <code>ONLY_FULL_GROUP_BY</code> 去掉就行</p>
+<p>使用如下语句</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set @@global.sql_mode=&apos;STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION&apos;;</span><br></pre></td></tr></table></figure>
+<p>这种方法存在的问题</p>
+<ol>
+<li>在有些时候不生效</li>
+<li>mysql重启之后配置失效</li>
+</ol>
+</li>
+</ol>
+<h3 id="解决办法二"><a href="#解决办法二" class="headerlink" title="解决办法二"></a>解决办法二</h3><p>打开 <code>mysql</code>配置文件 <code>my.cnf</code>,在最下面添加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sql_mode=STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION</span><br></pre></td></tr></table></figure>
+<p>使用这种方法会永久解决上面的报错问题</p>
+<p>P.S. 如果 <code>mysql</code> 使用的是 <code>docker</code></p>
+<p>在进入容器内部</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it my-mysql /bin/bash</span><br></pre></td></tr></table></figure>
+<p>之后可能出现没有 <code>vi/vim</code> 工具导致无法修改配置文件</p>
+<p>在此情况下首先执行 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get update</span><br></pre></td></tr></table></figure>
+<p>然后安装 vim</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install vim</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -495,8 +521,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/07/21/JWT-Token基础/" rel="next" title="JWT Token基础">
-                <i class="fa fa-chevron-left"></i> JWT Token基础
+              <a href="/2020/08/31/maven的依赖机制/" rel="next" title="maven的依赖机制">
+                <i class="fa fa-chevron-left"></i> maven的依赖机制
               </a>
             
           </div>
@@ -504,10 +530,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/08/31/maven的依赖机制/" rel="prev" title="maven的依赖机制">
-                maven的依赖机制 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -552,8 +574,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -636,6 +667,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#mysql-groupBy问题"><span class="nav-number">1.</span> <span class="nav-text">mysql groupBy问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#解决办法一"><span class="nav-number">1.1.</span> <span class="nav-text">解决办法一</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决办法二"><span class="nav-number">1.2.</span> <span class="nav-text">解决办法二</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

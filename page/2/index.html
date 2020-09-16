@@ -355,6 +355,202 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/07/rabbitmq进阶/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bruce Liu">
+      <meta itemprop="description" content="Bruce Liu个人站，主要涉及前端知识共享、实践教程、前沿技术共同学习等方面">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bruce Liu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/12/07/rabbitmq进阶/" class="post-title-link" itemprop="http://yoursite.com/page/2/index.html">rabbitmq进阶</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-12-07 16:42:40 / 修改时间：18:24:45" itemprop="dateCreated datePublished" datetime="2019-12-07T16:42:40+08:00">2019-12-07</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><p>交换机（exchange）的属性</p>
+<p><code>autodelete</code> 当最后一个绑定到 Exchange 上的队列删除后，自动删除该 Exchange。</p>
+<p>internal 当前Exchange 是否用于 RabbitMq 内部使用，默认为 false。</p>
+<p>arguments 扩展参数，用于 AMQP 协议自制订化使用</p>
+<h2 id="消息如何保障-100-的投递成功"><a href="#消息如何保障-100-的投递成功" class="headerlink" title="消息如何保障 100 % 的投递成功"></a>消息如何保障 100 % 的投递成功</h2><h3 id="什么是生产端的可靠性投递"><a href="#什么是生产端的可靠性投递" class="headerlink" title="什么是生产端的可靠性投递"></a>什么是生产端的可靠性投递</h3><ol>
+<li>保障消息成功发出。</li>
+<li>保障MQ 节点的成功接收。</li>
+<li>发送端到MQ节点的（Broker）确认应答。</li>
+<li>完善的消息进行补偿机制。</li>
+</ol>
+<p>解决方法</p>
+<ol>
+<li><p>消息落库，对消息状态进行打标</p>
+<p>发送消息时，将消息持久化到数据库，并设置一个状态，客户端会送应答之后进行状态变更。</p>
+</li>
+<li><p>消息的延迟投递，做二次确认，回调检查。</p>
+<ol>
+<li><p>业务数据入库</p>
+</li>
+<li><p>发送业务消息，并生成二次检查的消息</p>
+</li>
+<li><p>消费端收到这个消息正确处理之后，再生成一条消息，该消息由 call-back 进行监听，callback将其入库</p>
+</li>
+<li><p>生产段 经过几分钟之后 发送二次检查消息到 call-back，查看刚才的业务是否处理成功，如果成功则不进行任何操作，如果失败 call-back 会发起一个 rpc 请求，让生产端进行重发。</p>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="幂等性的概念"><a href="#幂等性的概念" class="headerlink" title="幂等性的概念"></a>幂等性的概念</h2><p>可以借鉴数据库乐观锁的机制</p>
+<p>比如执行如下的一条sql</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span> t_reps <span class="keyword">set</span> <span class="keyword">count</span> = <span class="keyword">count</span><span class="number">-1</span>,<span class="keyword">version</span>=<span class="keyword">version</span>+<span class="number">1</span> <span class="keyword">where</span> <span class="keyword">id</span>=<span class="string">'xiaomi9'</span></span><br></pre></td></tr></table></figure>
+<p>如果现在某个手机在数据库中 <code>count=1</code>, 而且 <code>version=1</code>,在执行上面的 <code>sql</code> 的时候，应该首先查询数据库,多个进程应该查询数据库</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">count</span>,<span class="keyword">version</span> <span class="keyword">from</span> t_reps <span class="keyword">where</span> <span class="keyword">id</span> =<span class="string">'xiaomi9'</span>;</span><br></pre></td></tr></table></figure>
+<p>多个消费者进程可能都会查到这条数据，假设 count = 1, version=1</p>
+<p>将上面的 sql 更改为</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span> t_reps <span class="keyword">set</span> <span class="keyword">count</span> = <span class="keyword">count</span><span class="number">-1</span>,<span class="keyword">version</span>=<span class="keyword">version</span>+<span class="number">1</span> <span class="keyword">where</span> <span class="keyword">id</span>=<span class="string">'xiaomi9'</span> <span class="keyword">and</span> <span class="keyword">version</span> = <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>可以避免多个进程的重复操作。</p>
+<h2 id="消费端-幂等性保障"><a href="#消费端-幂等性保障" class="headerlink" title="消费端-幂等性保障"></a>消费端-幂等性保障</h2><ol>
+<li><p>唯一id+指纹码 机制</p>
+<p>唯一id + 指纹码机制，利用数据库主键去重</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">count</span>(*) <span class="keyword">from</span> t_order <span class="keyword">where</span> <span class="keyword">id</span> = 唯一<span class="keyword">id</span>+指纹码</span><br></pre></td></tr></table></figure>
+<p>好处 实现简单</p>
+<p>坏处 高并发下有数据库写入的性能瓶颈</p>
+<p>解决方案 数据库路由</p>
+</li>
+</ol>
+<ol start="2">
+<li><p>使用 redis 的原子性特性</p>
+<p>redis 进行幂等，需要考虑的问题：</p>
+<ol>
+<li>我们是否要进行数据的落库，如果落库的话，关键问题是数据库和缓存如何做到原子性</li>
+<li>如果不进行落库，那么都存储到缓存中，如何设置定时的同步策略。</li>
+</ol>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/30/rabbitmq基础/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1885,167 +2081,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/29/springboot2-0深度实践/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bruce Liu">
-      <meta itemprop="description" content="Bruce Liu个人站，主要涉及前端知识共享、实践教程、前沿技术共同学习等方面">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Bruce Liu's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/03/29/springboot2-0深度实践/" class="post-title-link" itemprop="http://yoursite.com/page/2/index.html">springboot2.0深度实践</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-03-29 19:37:12" itemprop="dateCreated datePublished" datetime="2019-03-29T19:37:12+08:00">2019-03-29</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-09-14 00:22:44" itemprop="dateModified" datetime="2019-09-14T00:22:44+08:00">2019-09-14</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="核心特性"><a href="#核心特性" class="headerlink" title="核心特性"></a>核心特性</h2><p>Spring Boot 三大特性</p>
-<ol>
-<li>组件自动装配：Web Mvc、Web Flux、JDBC</li>
-<li>嵌入式WEB容器：Tomcat、Jetty 以及 Undertow</li>
-<li>生产准备特性：指标、健康检查、外部化配置</li>
-</ol>
-<h3 id="Spring-Boot-Bean-源码解读"><a href="#Spring-Boot-Bean-源码解读" class="headerlink" title="Spring Boot Bean 源码解读"></a>Spring Boot Bean 源码解读</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SpringApplicationBootstrap</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 在 run 方法中可以填入带有 @SpringBootApplication 的注解的类</span></span><br><span class="line">      <span class="comment">// SpringApplication.run(ApplicationTest.class, args);</span></span><br><span class="line">        <span class="comment">// 引导类的配置</span></span><br><span class="line">        Set&lt;String&gt; sources =  <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">        sources.add(ApplicationTest.class.getName());</span><br><span class="line">        SpringApplication springApplication = <span class="keyword">new</span> SpringApplication();</span><br><span class="line">        springApplication.setSources(sources);</span><br><span class="line">        ConfigurableApplicationContext context = springApplication.run(args);</span><br><span class="line">        System.out.println(<span class="string">"Bean "</span>+context.getBean(ApplicationTest.class));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@SpringBootApplication</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span>  <span class="class"><span class="keyword">class</span> <span class="title">ApplicationTest</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Spring 可以通断出当前应用的类型，主要是在 <code>SpringApplication</code> 中的 <code>org.springframework.boot.SpringApplication#setApplicationContextClass</code> 方法中</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-       
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2093,7 +2128,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">43</span>
+                    <span class="site-state-item-count">44</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
