@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.6.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.6.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.6.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.6.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="mysql 使用 explain 命令进行分析时 type 字段会有下面几种 join type类型 查询效率由好到差  system 这个表只有一行（这个表是系统表），这是 join type =  const 的一种特殊形式 1234EXPLAIN SELECT	* FROM	`mysql`.`proxies_priv` 查询结果如下 | id   | select_type | table">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MysqlExplain的type字段">
+<meta property="og:url" content="http://yoursite.com/2020/12/27/MysqlExplain的type字段/index.html">
+<meta property="og:site_name" content="Bruce Liu&#39;s Blog">
+<meta property="og:description" content="mysql 使用 explain 命令进行分析时 type 字段会有下面几种 join type类型 查询效率由好到差  system 这个表只有一行（这个表是系统表），这是 join type =  const 的一种特殊形式 1234EXPLAIN SELECT	* FROM	`mysql`.`proxies_priv` 查询结果如下 | id   | select_type | table">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-12-27T13:45:44.269Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MysqlExplain的type字段">
+<meta name="twitter:description" content="mysql 使用 explain 命令进行分析时 type 字段会有下面几种 join type类型 查询效率由好到差  system 这个表只有一行（这个表是系统表），这是 join type =  const 的一种特殊形式 1234EXPLAIN SELECT	* FROM	`mysql`.`proxies_priv` 查询结果如下 | id   | select_type | table">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/12/27/MysqlExplain的type字段/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>MysqlExplain的type字段 | Bruce Liu's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Bruce Liu's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Stay Hungry, Stay Foolish</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/12/27/MysqlExplain的type字段/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bruce Liu">
+      <meta itemprop="description" content="Bruce Liu个人站，主要涉及前端知识共享、实践教程、前沿技术共同学习等方面">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bruce Liu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">MysqlExplain的type字段
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-12-27 19:00:40 / 修改时间：21:45:44" itemprop="dateCreated datePublished" datetime="2020-12-27T19:00:40+08:00">2020-12-27</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><code>mysql</code> 使用 <code>explain</code> 命令进行分析时 <code>type</code> 字段会有下面几种 <code>join type</code>类型</p>
+<p>查询效率<strong>由好到差</strong></p>
+<ul>
+<li><p><strong>system</strong></p>
+<p>这个表只有一行（这个表是系统表），这是 <code>join type</code> =  <code>const</code> 的一种特殊形式</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">EXPLAIN</span> <span class="keyword">SELECT</span></span><br><span class="line">	* </span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	<span class="string">`mysql`</span>.<span class="string">`proxies_priv`</span></span><br></pre></td></tr></table></figure>
+<p>查询结果如下</p>
+<p>| id   | select_type | table        | partitions | type | possible_keys | key  | key_len | ref  | rows | filtered | Extra |<br>| —- | ———– | ———— | ———- | —- | ————- | —- | ——- | —- | —- | ——– | —– |<br>| 1    | SIMPLE      | proxies_priv | system     |      |               |      |         | 1    | 100  |          |       |</p>
+</li>
+<li><p><strong>const</strong></p>
+<p>表中只有一行匹配的数据，在 <code>where</code> 条件中和所有 </p>
+<p>1)<code>主键</code></p>
+<p>2) 唯一键</p>
+<p>进行比较时会用到 <code>const</code></p>
+<p>比如有如下表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE `tb_name` (</span><br><span class="line">  `pp1` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,</span><br><span class="line">  `pp2` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,</span><br><span class="line">  `f3` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,</span><br><span class="line">  `f4` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,</span><br><span class="line">  UNIQUE KEY `pp1` (`pp1`,`pp2`)</span><br><span class="line">) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;</span><br><span class="line"></span><br><span class="line">INSERT INTO `db02`.`tb_name`(`pp1`, `pp2`, `f3`, `f4`) VALUES (&apos;1&apos;, &apos;2&apos;, &apos;3&apos;, &apos;4&apos;);</span><br><span class="line">INSERT INTO `db02`.`tb_name`(`pp1`, `pp2`, `f3`, `f4`) VALUES (&apos;2&apos;, &apos;3&apos;, &apos;4&apos;, &apos;5&apos;);</span><br></pre></td></tr></table></figure>
+<p>执行如下查询</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">EXPLAIN SELECT</span><br><span class="line">	* </span><br><span class="line">FROM</span><br><span class="line">	`tb_name` </span><br><span class="line">WHERE</span><br><span class="line">	pp1 = &apos;1&apos; </span><br><span class="line">	AND pp2 = &apos;2&apos;</span><br><span class="line">## 或者</span><br><span class="line">EXPLAIN SELECT</span><br><span class="line">	* </span><br><span class="line">FROM</span><br><span class="line">	`tb_name` </span><br><span class="line">WHERE</span><br><span class="line">	pp2 = &apos;2&apos; </span><br><span class="line">	AND pp1 = &apos;1&apos;</span><br><span class="line">都会使用 const</span><br></pre></td></tr></table></figure>
+<p>结果如下</p>
+<p>| id   | select_type | table   | partitions | type  | possible_keys | key  | key_len | ref         | rows | filtered | Extra |<br>| —- | ———– | ——- | ———- | —– | ————- | —- | ——- | ———– | —- | ——– | —– |<br>| 1    | SIMPLE      | tb_name |            | const | pp1           | pp1  | 2046    | const,const | 1    | 100      |       |</p>
+</li>
+<li><p><strong>eq_ref</strong></p>
+<p>前表的每一行，在后表中只有一行被扫描</p>
+<blockquote>
+<p>One row is read from this table for each combination of rows from the previous tables.</p>
+</blockquote>
+<p>有如下两张表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE `students` (</span><br><span class="line">  `id` int(11) NOT NULL,</span><br><span class="line">  `name` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,</span><br><span class="line">  `age` int(3) DEFAULT NULL,</span><br><span class="line">  PRIMARY KEY (`id`)</span><br><span class="line">) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;</span><br><span class="line"></span><br><span class="line">INSERT INTO `db02`.`students`(`id`, `name`, `age`) VALUES (1, &apos;张三&apos;, 23);</span><br><span class="line">INSERT INTO `db02`.`students`(`id`, `name`, `age`) VALUES (2, &apos;李四&apos;, 33);</span><br><span class="line"></span><br><span class="line">CREATE TABLE `scores` (</span><br><span class="line">  `user_id` int(11) NOT NULL,</span><br><span class="line">  `score` int(255) DEFAULT NULL</span><br><span class="line">) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;\</span><br><span class="line">INSERT INTO `db02`.`scores`(`user_id`, `score`) VALUES (1, 100);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">EXPLAIN SELECT</span><br><span class="line">	* </span><br><span class="line">FROM</span><br><span class="line">	students t1,</span><br><span class="line">	scores t2 </span><br><span class="line">WHERE</span><br><span class="line">	t1.id = t2.user_id</span><br></pre></td></tr></table></figure>
+<p>可见 <code>scores</code> 表中只有一条数据，结果如下，</p>
+<p>| id   | select_type | table | partitions | type   | possible_keys | key     | key_len | ref             | rows | filtered | Extra |<br>| —- | ———– | —– | ———- | —— | ————- | ——- | ——- | ————— | —- | ——– | —– |<br>| 1    | SIMPLE      | t2    |            | ALL    | PRIMARY       |         |         |                 | 1    | 100      |       |<br>| 1    | SIMPLE      | t1    |            | eq_ref | PRIMARY       | PRIMARY | 4       | db02.t2.user_id | 1    | 100      |       |</p>
+<p>如果再往 <code>score</code> 表中 插入一行数据，则会变为全表扫描</p>
+</li>
+<li><p><strong>ref</strong></p>
+<p>非唯一性索引扫描，返回匹配某个单独值的所有行. 这个索引</p>
+<p>1) 不是 <strong>主键</strong> 也不是 <strong>唯一键</strong></p>
+<p>或者</p>
+<p>2）使用最左匹配原则进行匹配</p>
+<p>ref 虽然使用了索引，但是查询结果并不唯一，但是并不需要扫描全表，因为索引时有序的</p>
+<p>有如下两个表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE `tb_ref` (</span><br><span class="line">  `f1` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,</span><br><span class="line">  `f2` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,</span><br><span class="line">  `f3` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,</span><br><span class="line">  `f4` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,</span><br><span class="line">  KEY `index_tb_ref_f1` (`f1`)</span><br><span class="line">) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;</span><br><span class="line">## 一定要多添 `tb_ref` 一定要多添加几条数据，如果数据太少 mysql 直接会使用全表扫描 type=ALL</span><br><span class="line">INSERT INTO `tb_ref`(`f1`, `f2`, `f3`, `f4`) VALUES (&apos;1&apos;, &apos;2&apos;, &apos;3&apos;, &apos;4&apos;);</span><br><span class="line">INSERT INTO `tb_ref`(`f1`, `f2`, `f3`, `f4`) VALUES (&apos;2&apos;, &apos;2&apos;, &apos;3&apos;, &apos;4&apos;);</span><br><span class="line">INSERT INTO `tb_ref`(`f1`, `f2`, `f3`, `f4`) VALUES (&apos;2&apos;, &apos;2&apos;, &apos;3&apos;, &apos;4&apos;);</span><br><span class="line">INSERT INTO `tb_ref`(`f1`, `f2`, `f3`, `f4`) VALUES (&apos;2&apos;, &apos;2&apos;, &apos;3&apos;, &apos;4&apos;);</span><br><span class="line">INSERT INTO `tb_ref`(`f1`, `f2`, `f3`, `f4`) VALUES (&apos;2&apos;, &apos;2&apos;, &apos;3&apos;, &apos;4&apos;);</span><br><span class="line">INSERT INTO `tb_ref`(`f1`, `f2`, `f3`, `f4`) VALUES (&apos;2&apos;, &apos;2&apos;, &apos;3&apos;, &apos;4&apos;);</span><br><span class="line">INSERT INTO `tb_ref`(`f1`, `f2`, `f3`, `f4`) VALUES (&apos;2&apos;, &apos;2&apos;, &apos;3&apos;, &apos;4&apos;);</span><br><span class="line">INSERT INTO `tb_ref`(`f1`, `f2`, `f3`, `f4`) VALUES (&apos;2&apos;, &apos;2&apos;, &apos;3&apos;, &apos;4&apos;);</span><br><span class="line">INSERT INTO `tb_ref`(`f1`, `f2`, `f3`, `f4`) VALUES (&apos;2&apos;, &apos;2&apos;, &apos;3&apos;, &apos;4&apos;);</span><br><span class="line">INSERT INTO `tb_ref`(`f1`, `f2`, `f3`, `f4`) VALUES (&apos;2&apos;, &apos;2&apos;, &apos;3&apos;, &apos;4&apos;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">CREATE TABLE `other_table` (</span><br><span class="line">  `ref_f1` varchar(255) COLLATE utf8mb4_bin NOT NULL,</span><br><span class="line">  `age` int(3) DEFAULT NULL,</span><br><span class="line">  `name` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL</span><br><span class="line">) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;</span><br><span class="line"></span><br><span class="line">INSERT INTO `other_table`(`ref_f1`, `age`, `name`) VALUES (&apos;1&apos;, 22, &apos;张三&apos;);</span><br><span class="line">INSERT INTO `other_table`(`ref_f1`, `age`, `name`) VALUES (&apos;1&apos;, 23, &apos;张1三&apos;);</span><br><span class="line">INSERT INTO `other_table`(`ref_f1`, `age`, `name`) VALUES (&apos;2&apos;, 23, &apos;张1三&apos;);</span><br><span class="line">INSERT INTO `other_table`(`ref_f1`, `age`, `name`) VALUES (&apos;2&apos;, 23, &apos;张1三&apos;);</span><br><span class="line">INSERT INTO `other_table`(`ref_f1`, `age`, `name`) VALUES (&apos;2&apos;, 23, &apos;张1三&apos;);</span><br><span class="line">INSERT INTO `other_table`(`ref_f1`, `age`, `name`) VALUES (&apos;2&apos;, 23, &apos;张1三&apos;);</span><br><span class="line">INSERT INTO `other_table`(`ref_f1`, `age`, `name`) VALUES (&apos;2&apos;, 23, &apos;张1三&apos;);</span><br><span class="line">INSERT INTO `other_table`(`ref_f1`, `age`, `name`) VALUES (&apos;2&apos;, 23, &apos;张1三&apos;);</span><br><span class="line">INSERT INTO `other_table`(`ref_f1`, `age`, `name`) VALUES (&apos;2&apos;, 23, &apos;张1三&apos;);</span><br></pre></td></tr></table></figure>
+<p>执行如下语句</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">EXPLAIN SELECT</span><br><span class="line">	* </span><br><span class="line">FROM</span><br><span class="line">	tb_ref </span><br><span class="line">WHERE</span><br><span class="line">	f1=&apos;1&apos;</span><br></pre></td></tr></table></figure>
+<p>结果如下：</p>
+<p>| id   | select_type | table  | partitions | type | possible_keys   | key             | key_len | ref   | rows | filtered | Extra |<br>| —- | ———– | —— | ———- | —- | ————— | ————— | ——- | —– | —- | ——– | —– |<br>| 1    | SIMPLE      | tb_ref |            | ref  | index_tb_ref_f1 | index_tb_ref_f1 | 1023    | const | 1    | 100      |       |</p>
+<p>执行如下语句</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">EXPLAIN SELECT</span><br><span class="line">	* </span><br><span class="line">FROM</span><br><span class="line">	tb_ref t1,</span><br><span class="line">	other_table t2 </span><br><span class="line">WHERE</span><br><span class="line">	t1.f1 = t2.ref_f1</span><br></pre></td></tr></table></figure>
+<p>返回结果</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>select_type</th>
+<th>table</th>
+<th>partitions</th>
+<th>type</th>
+<th>possible_keys</th>
+<th>key</th>
+<th>key_len</th>
+<th>ref</th>
+<th>rows</th>
+<th>filtered</th>
+<th>Extra</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>SIMPLE</td>
+<td>t2</td>
+<td></td>
+<td>ALL</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>9</td>
+<td>100</td>
+<td></td>
+</tr>
+<tr>
+<td>1</td>
+<td>SIMPLE</td>
+<td>t1</td>
+<td></td>
+<td>ref</td>
+<td>index_tb_ref_f1</td>
+<td>index_tb_ref_f1</td>
+<td>1023</td>
+<td>db02.t2.ref_f1</td>
+<td>1</td>
+<td>100</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p><strong>range</strong></p>
+<p>range 是范围扫描，当比较索引列包含 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">=, &lt;&gt;, &gt;, &gt;=, &lt;,&lt;=, IS NULL, &lt;=&gt;, BETWEEN, LIKE, or IN()</span><br></pre></td></tr></table></figure>
+<p>时，可能产生 <code>range</code></p>
+<blockquote>
+<p>Only rows that are in a given range are retrieved, using an index to select the rows. The key column in the output row indicates which index is used. The key_len contains the longest key part that was used. The ref column is NULL for this type. range can be used when a key column is compared to a constant using any of the =, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, IS NULL, &lt;=&gt;, BETWEEN, LIKE, or IN() operators: SELECT <em> FROM tbl_name WHERE key_column = 10; SELECT </em> FROM tbl_name WHERE key_column BETWEEN 10 and 20; SELECT <em> FROM tbl_name 1351 EXPLAIN Output Format WHERE key_column IN (10,20,30); SELECT </em> FROM tbl_name WHERE key_part1 = 10 AND key_part2 IN (10,20,30);</p>
+</blockquote>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>您的支持是我继续创作的最大动力,非常感谢您的支持</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="Bruce Liu 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="Bruce Liu 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/12/24/HashMap面试题/" rel="next" title="HashMap面试题">
+                <i class="fa fa-chevron-left"></i> HashMap面试题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Bruce Liu</p>
+              <p class="site-description motion-element" itemprop="description">Bruce Liu个人站，主要涉及前端知识共享、实践教程、前沿技术共同学习等方面</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">46</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/lastdetective" title="GitHub &rarr; https://github.com/lastdetective" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:xlgjsj004@sina.com" title="E-Mail &rarr; mailto:xlgjsj004@sina.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bruce Liu</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v6.6.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.6.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.6.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.6.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.6.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.6.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.6.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.6.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

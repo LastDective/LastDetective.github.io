@@ -355,6 +355,422 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/12/27/MysqlExplain的type字段/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bruce Liu">
+      <meta itemprop="description" content="Bruce Liu个人站，主要涉及前端知识共享、实践教程、前沿技术共同学习等方面">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bruce Liu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2020/12/27/MysqlExplain的type字段/" class="post-title-link" itemprop="http://yoursite.com/index.html">MysqlExplain的type字段</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-12-27 19:00:40 / 修改时间：21:45:44" itemprop="dateCreated datePublished" datetime="2020-12-27T19:00:40+08:00">2020-12-27</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><code>mysql</code> 使用 <code>explain</code> 命令进行分析时 <code>type</code> 字段会有下面几种 <code>join type</code>类型</p>
+<p>查询效率<strong>由好到差</strong></p>
+<ul>
+<li><p><strong>system</strong></p>
+<p>这个表只有一行（这个表是系统表），这是 <code>join type</code> =  <code>const</code> 的一种特殊形式</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">EXPLAIN</span> <span class="keyword">SELECT</span></span><br><span class="line">	* </span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	<span class="string">`mysql`</span>.<span class="string">`proxies_priv`</span></span><br></pre></td></tr></table></figure>
+<p>查询结果如下</p>
+<p>| id   | select_type | table        | partitions | type | possible_keys | key  | key_len | ref  | rows | filtered | Extra |<br>| —- | ———– | ———— | ———- | —- | ————- | —- | ——- | —- | —- | ——– | —– |<br>| 1    | SIMPLE      | proxies_priv | system     |      |               |      |         | 1    | 100  |          |       |</p>
+</li>
+<li><p><strong>const</strong></p>
+<p>表中只有一行匹配的数据，在 <code>where</code> 条件中和所有 </p>
+<p>1)<code>主键</code></p>
+<p>2) 唯一键</p>
+<p>进行比较时会用到 <code>const</code></p>
+<p>比如有如下表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE `tb_name` (</span><br><span class="line">  `pp1` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,</span><br><span class="line">  `pp2` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,</span><br><span class="line">  `f3` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,</span><br><span class="line">  `f4` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,</span><br><span class="line">  UNIQUE KEY `pp1` (`pp1`,`pp2`)</span><br><span class="line">) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;</span><br><span class="line"></span><br><span class="line">INSERT INTO `db02`.`tb_name`(`pp1`, `pp2`, `f3`, `f4`) VALUES (&apos;1&apos;, &apos;2&apos;, &apos;3&apos;, &apos;4&apos;);</span><br><span class="line">INSERT INTO `db02`.`tb_name`(`pp1`, `pp2`, `f3`, `f4`) VALUES (&apos;2&apos;, &apos;3&apos;, &apos;4&apos;, &apos;5&apos;);</span><br></pre></td></tr></table></figure>
+<p>执行如下查询</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">EXPLAIN SELECT</span><br><span class="line">	* </span><br><span class="line">FROM</span><br><span class="line">	`tb_name` </span><br><span class="line">WHERE</span><br><span class="line">	pp1 = &apos;1&apos; </span><br><span class="line">	AND pp2 = &apos;2&apos;</span><br><span class="line">## 或者</span><br><span class="line">EXPLAIN SELECT</span><br><span class="line">	* </span><br><span class="line">FROM</span><br><span class="line">	`tb_name` </span><br><span class="line">WHERE</span><br><span class="line">	pp2 = &apos;2&apos; </span><br><span class="line">	AND pp1 = &apos;1&apos;</span><br><span class="line">都会使用 const</span><br></pre></td></tr></table></figure>
+<p>结果如下</p>
+<p>| id   | select_type | table   | partitions | type  | possible_keys | key  | key_len | ref         | rows | filtered | Extra |<br>| —- | ———– | ——- | ———- | —– | ————- | —- | ——- | ———– | —- | ——– | —– |<br>| 1    | SIMPLE      | tb_name |            | const | pp1           | pp1  | 2046    | const,const | 1    | 100      |       |</p>
+</li>
+<li><p><strong>eq_ref</strong></p>
+<p>前表的每一行，在后表中只有一行被扫描</p>
+<blockquote>
+<p>One row is read from this table for each combination of rows from the previous tables.</p>
+</blockquote>
+<p>有如下两张表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE `students` (</span><br><span class="line">  `id` int(11) NOT NULL,</span><br><span class="line">  `name` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,</span><br><span class="line">  `age` int(3) DEFAULT NULL,</span><br><span class="line">  PRIMARY KEY (`id`)</span><br><span class="line">) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;</span><br><span class="line"></span><br><span class="line">INSERT INTO `db02`.`students`(`id`, `name`, `age`) VALUES (1, &apos;张三&apos;, 23);</span><br><span class="line">INSERT INTO `db02`.`students`(`id`, `name`, `age`) VALUES (2, &apos;李四&apos;, 33);</span><br><span class="line"></span><br><span class="line">CREATE TABLE `scores` (</span><br><span class="line">  `user_id` int(11) NOT NULL,</span><br><span class="line">  `score` int(255) DEFAULT NULL</span><br><span class="line">) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;\</span><br><span class="line">INSERT INTO `db02`.`scores`(`user_id`, `score`) VALUES (1, 100);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">EXPLAIN SELECT</span><br><span class="line">	* </span><br><span class="line">FROM</span><br><span class="line">	students t1,</span><br><span class="line">	scores t2 </span><br><span class="line">WHERE</span><br><span class="line">	t1.id = t2.user_id</span><br></pre></td></tr></table></figure>
+<p>可见 <code>scores</code> 表中只有一条数据，结果如下，</p>
+<p>| id   | select_type | table | partitions | type   | possible_keys | key     | key_len | ref             | rows | filtered | Extra |<br>| —- | ———– | —– | ———- | —— | ————- | ——- | ——- | ————— | —- | ——– | —– |<br>| 1    | SIMPLE      | t2    |            | ALL    | PRIMARY       |         |         |                 | 1    | 100      |       |<br>| 1    | SIMPLE      | t1    |            | eq_ref | PRIMARY       | PRIMARY | 4       | db02.t2.user_id | 1    | 100      |       |</p>
+<p>如果再往 <code>score</code> 表中 插入一行数据，则会变为全表扫描</p>
+</li>
+<li><p><strong>ref</strong></p>
+<p>非唯一性索引扫描，返回匹配某个单独值的所有行. 这个索引</p>
+<p>1) 不是 <strong>主键</strong> 也不是 <strong>唯一键</strong></p>
+<p>或者</p>
+<p>2）使用最左匹配原则进行匹配</p>
+<p>ref 虽然使用了索引，但是查询结果并不唯一，但是并不需要扫描全表，因为索引时有序的</p>
+<p>有如下两个表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE `tb_ref` (</span><br><span class="line">  `f1` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,</span><br><span class="line">  `f2` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,</span><br><span class="line">  `f3` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,</span><br><span class="line">  `f4` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,</span><br><span class="line">  KEY `index_tb_ref_f1` (`f1`)</span><br><span class="line">) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;</span><br><span class="line">## 一定要多添 `tb_ref` 一定要多添加几条数据，如果数据太少 mysql 直接会使用全表扫描 type=ALL</span><br><span class="line">INSERT INTO `tb_ref`(`f1`, `f2`, `f3`, `f4`) VALUES (&apos;1&apos;, &apos;2&apos;, &apos;3&apos;, &apos;4&apos;);</span><br><span class="line">INSERT INTO `tb_ref`(`f1`, `f2`, `f3`, `f4`) VALUES (&apos;2&apos;, &apos;2&apos;, &apos;3&apos;, &apos;4&apos;);</span><br><span class="line">INSERT INTO `tb_ref`(`f1`, `f2`, `f3`, `f4`) VALUES (&apos;2&apos;, &apos;2&apos;, &apos;3&apos;, &apos;4&apos;);</span><br><span class="line">INSERT INTO `tb_ref`(`f1`, `f2`, `f3`, `f4`) VALUES (&apos;2&apos;, &apos;2&apos;, &apos;3&apos;, &apos;4&apos;);</span><br><span class="line">INSERT INTO `tb_ref`(`f1`, `f2`, `f3`, `f4`) VALUES (&apos;2&apos;, &apos;2&apos;, &apos;3&apos;, &apos;4&apos;);</span><br><span class="line">INSERT INTO `tb_ref`(`f1`, `f2`, `f3`, `f4`) VALUES (&apos;2&apos;, &apos;2&apos;, &apos;3&apos;, &apos;4&apos;);</span><br><span class="line">INSERT INTO `tb_ref`(`f1`, `f2`, `f3`, `f4`) VALUES (&apos;2&apos;, &apos;2&apos;, &apos;3&apos;, &apos;4&apos;);</span><br><span class="line">INSERT INTO `tb_ref`(`f1`, `f2`, `f3`, `f4`) VALUES (&apos;2&apos;, &apos;2&apos;, &apos;3&apos;, &apos;4&apos;);</span><br><span class="line">INSERT INTO `tb_ref`(`f1`, `f2`, `f3`, `f4`) VALUES (&apos;2&apos;, &apos;2&apos;, &apos;3&apos;, &apos;4&apos;);</span><br><span class="line">INSERT INTO `tb_ref`(`f1`, `f2`, `f3`, `f4`) VALUES (&apos;2&apos;, &apos;2&apos;, &apos;3&apos;, &apos;4&apos;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">CREATE TABLE `other_table` (</span><br><span class="line">  `ref_f1` varchar(255) COLLATE utf8mb4_bin NOT NULL,</span><br><span class="line">  `age` int(3) DEFAULT NULL,</span><br><span class="line">  `name` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL</span><br><span class="line">) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;</span><br><span class="line"></span><br><span class="line">INSERT INTO `other_table`(`ref_f1`, `age`, `name`) VALUES (&apos;1&apos;, 22, &apos;张三&apos;);</span><br><span class="line">INSERT INTO `other_table`(`ref_f1`, `age`, `name`) VALUES (&apos;1&apos;, 23, &apos;张1三&apos;);</span><br><span class="line">INSERT INTO `other_table`(`ref_f1`, `age`, `name`) VALUES (&apos;2&apos;, 23, &apos;张1三&apos;);</span><br><span class="line">INSERT INTO `other_table`(`ref_f1`, `age`, `name`) VALUES (&apos;2&apos;, 23, &apos;张1三&apos;);</span><br><span class="line">INSERT INTO `other_table`(`ref_f1`, `age`, `name`) VALUES (&apos;2&apos;, 23, &apos;张1三&apos;);</span><br><span class="line">INSERT INTO `other_table`(`ref_f1`, `age`, `name`) VALUES (&apos;2&apos;, 23, &apos;张1三&apos;);</span><br><span class="line">INSERT INTO `other_table`(`ref_f1`, `age`, `name`) VALUES (&apos;2&apos;, 23, &apos;张1三&apos;);</span><br><span class="line">INSERT INTO `other_table`(`ref_f1`, `age`, `name`) VALUES (&apos;2&apos;, 23, &apos;张1三&apos;);</span><br><span class="line">INSERT INTO `other_table`(`ref_f1`, `age`, `name`) VALUES (&apos;2&apos;, 23, &apos;张1三&apos;);</span><br></pre></td></tr></table></figure>
+<p>执行如下语句</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">EXPLAIN SELECT</span><br><span class="line">	* </span><br><span class="line">FROM</span><br><span class="line">	tb_ref </span><br><span class="line">WHERE</span><br><span class="line">	f1=&apos;1&apos;</span><br></pre></td></tr></table></figure>
+<p>结果如下：</p>
+<p>| id   | select_type | table  | partitions | type | possible_keys   | key             | key_len | ref   | rows | filtered | Extra |<br>| —- | ———– | —— | ———- | —- | ————— | ————— | ——- | —– | —- | ——– | —– |<br>| 1    | SIMPLE      | tb_ref |            | ref  | index_tb_ref_f1 | index_tb_ref_f1 | 1023    | const | 1    | 100      |       |</p>
+<p>执行如下语句</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">EXPLAIN SELECT</span><br><span class="line">	* </span><br><span class="line">FROM</span><br><span class="line">	tb_ref t1,</span><br><span class="line">	other_table t2 </span><br><span class="line">WHERE</span><br><span class="line">	t1.f1 = t2.ref_f1</span><br></pre></td></tr></table></figure>
+<p>返回结果</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>select_type</th>
+<th>table</th>
+<th>partitions</th>
+<th>type</th>
+<th>possible_keys</th>
+<th>key</th>
+<th>key_len</th>
+<th>ref</th>
+<th>rows</th>
+<th>filtered</th>
+<th>Extra</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>SIMPLE</td>
+<td>t2</td>
+<td></td>
+<td>ALL</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>9</td>
+<td>100</td>
+<td></td>
+</tr>
+<tr>
+<td>1</td>
+<td>SIMPLE</td>
+<td>t1</td>
+<td></td>
+<td>ref</td>
+<td>index_tb_ref_f1</td>
+<td>index_tb_ref_f1</td>
+<td>1023</td>
+<td>db02.t2.ref_f1</td>
+<td>1</td>
+<td>100</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p><strong>range</strong></p>
+<p>range 是范围扫描，当比较索引列包含 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">=, &lt;&gt;, &gt;, &gt;=, &lt;,&lt;=, IS NULL, &lt;=&gt;, BETWEEN, LIKE, or IN()</span><br></pre></td></tr></table></figure>
+<p>时，可能产生 <code>range</code></p>
+<blockquote>
+<p>Only rows that are in a given range are retrieved, using an index to select the rows. The key column in the output row indicates which index is used. The key_len contains the longest key part that was used. The ref column is NULL for this type. range can be used when a key column is compared to a constant using any of the =, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, IS NULL, &lt;=&gt;, BETWEEN, LIKE, or IN() operators: SELECT <em> FROM tbl_name WHERE key_column = 10; SELECT </em> FROM tbl_name WHERE key_column BETWEEN 10 and 20; SELECT <em> FROM tbl_name 1351 EXPLAIN Output Format WHERE key_column IN (10,20,30); SELECT </em> FROM tbl_name WHERE key_part1 = 10 AND key_part2 IN (10,20,30);</p>
+</blockquote>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/12/24/HashMap面试题/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bruce Liu">
+      <meta itemprop="description" content="Bruce Liu个人站，主要涉及前端知识共享、实践教程、前沿技术共同学习等方面">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bruce Liu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2020/12/24/HashMap面试题/" class="post-title-link" itemprop="http://yoursite.com/index.html">HashMap面试题</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-12-24 15:50:26" itemprop="dateCreated datePublished" datetime="2020-12-24T15:50:26+08:00">2020-12-24</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-12-26 11:57:28" itemprop="dateModified" datetime="2020-12-26T11:57:28+08:00">2020-12-26</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="问题一"><a href="#问题一" class="headerlink" title="问题一"></a>问题一</h2><p>为什么容量一定是2的幂？<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hash &amp; (length-1)</span><br></pre></td></tr></table></figure></p>
+<p>如果 <code>length</code> = 16，则 <code>length-1</code> = 15=1111;</p>
+<p>如果hash 是一个32 位的整数，最后四位是 1001</p>
+<p>…. …. …. 1001</p>
+<p>&amp;             1111</p>
+<p>​                1001</p>
+<p>所以使用这种按位与的方法很容易，求出 <code>hash % length</code> 的值</p>
+<p>JAVA 8 HashMap的改进</p>
+<p>数组+链表/红黑树</p>
+<p>扩容时插入顺序的改进</p>
+<p>函数方法</p>
+<p>​       forEach</p>
+<p>​       compute系列</p>
+<p>Map的新Api</p>
+<p>​       merge</p>
+<p>​       replace</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/22/正则表达式相关/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1611,432 +2027,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/03/java-in-puzzles-summary/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bruce Liu">
-      <meta itemprop="description" content="Bruce Liu个人站，主要涉及前端知识共享、实践教程、前沿技术共同学习等方面">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Bruce Liu's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2020/06/03/java-in-puzzles-summary/" class="post-title-link" itemprop="http://yoursite.com/index.html">java in puzzles summary</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2020-06-03 15:57:23" itemprop="dateCreated datePublished" datetime="2020-06-03T15:57:23+08:00">2020-06-03</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2020-06-04 11:02:37" itemprop="dateModified" datetime="2020-06-04T11:02:37+08:00">2020-06-04</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="第二章-Expressive-Puzzles"><a href="#第二章-Expressive-Puzzles" class="headerlink" title="第二章 Expressive Puzzles"></a>第二章 Expressive Puzzles</h2><h2 id="第三章-with-Character"><a href="#第三章-with-Character" class="headerlink" title="第三章 with Character"></a>第三章 with Character</h2><h3 id="Puzzle-11-The-Last-Laugh"><a href="#Puzzle-11-The-Last-Laugh" class="headerlink" title="Puzzle 11 The Last Laugh"></a>Puzzle 11 The Last Laugh</h3><p>执行下面的代码</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LastLaugh</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">            System.out.print(<span class="string">"H"</span> + <span class="string">"a"</span>);</span><br><span class="line">            System.out.print(’H’ + ’a’);</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>预期</strong>的打印结果是</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HaHa</span><br></pre></td></tr></table></figure>
-<p>但是实际情况如下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ha169</span><br></pre></td></tr></table></figure>
-<p>第二个打印语句实际上是将两个字符的ASCII码值相加的结果</p>
-<p>下面的语句是可以将两个字符连起来的</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">System.out.print(&quot;&quot;+&apos;H&apos; + &apos;a&apos;);</span><br><span class="line">// 输出Ha</span><br></pre></td></tr></table></figure>
-<p>下面的例子中 不会输出两个数字相加的结果，而是将数字相加的操作作为字符串打印出来</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(&quot;2 + 2 = &quot; + 2+2);</span><br><span class="line">// 输出2 + 2 = 22</span><br><span class="line">显然我们期望的结果是 2 + 2 = 4</span><br></pre></td></tr></table></figure>
-<p>从 Java1.5 开始，下面的语句也可以将 两个 <code>char</code> ，作为字符串链接输出</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.printf(&quot;%c%c&quot;, &apos;H&apos;, &apos;a&apos;);</span><br></pre></td></tr></table></figure>
-<p><strong><em>结论</em></strong></p>
-<blockquote>
-<p>the <code>+</code> operator performs string concatenation if and only if at least one of its operands is of type String; otherwise, it performs addition.</p>
-<p>当且仅当运算符中的至少一个是字符串类型时，<code>+</code> 运算符才执行字符串连接，在其他情况下执行加操作</p>
-</blockquote>
-<p>如果需要进行字符串连接的几个值之间没有一个是 <code>String</code> 类型，那么有以下几个选择：</p>
-<ol>
-<li>增加一个空字符串 <code>&quot;&quot;</code></li>
-<li>使用 <code>String.valueOf()</code> 进行显式转换；</li>
-<li>使用 <code>StringBuffer</code>/<code>StringBuilder</code></li>
-<li>使用上面提到的 <code>System.out.printf(&quot;%c%c&quot;, &#39;H&#39;, &#39;a&#39;);</code>的写法</li>
-</ol>
-<h3 id="Puzzle12-ABC"><a href="#Puzzle12-ABC" class="headerlink" title="Puzzle12 ABC"></a>Puzzle12 ABC</h3><p>运行下面的代码</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String letters = <span class="string">"ABC"</span>;</span><br><span class="line"><span class="keyword">char</span>[] numbers = &#123; <span class="string">'1'</span>, <span class="string">'2'</span>, <span class="string">'3'</span> &#125;;</span><br><span class="line">System.out.println(letters + <span class="string">" easy as "</span> + numbers);</span><br></pre></td></tr></table></figure>
-<p>预期输出</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ABC easy as 123</span><br></pre></td></tr></table></figure>
-<p>实际输出</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ABC easy as [C@5e2de80c</span><br></pre></td></tr></table></figure>
-<p>之所以会出现上面的结果是因为 在打印的时候 <code>numbers</code> 调用了 <code>Object</code> 的 <code>toString</code> 方法:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public String toString() &#123;</span><br><span class="line">       return getClass().getName() + &quot;@&quot; + Integer.toHexString(hashCode());</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-<p>所以会导致 出现上面的字符串</p>
-<p>为了解决上面的问题，可以调用 <code>String.valueOf(char[] data)</code> 方法，该方法会答应出字符数组内所有的字符:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String letters = &quot;ABC&quot;;</span><br><span class="line">char[] numbers = &#123;&apos;1&apos;, &apos;2&apos;, &apos;3&apos;&#125;;</span><br><span class="line">System.out.println(letters + &quot; easy as &quot; + String.valueOf(numbers));</span><br></pre></td></tr></table></figure>
-<p>上面的代码输出</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ABC easy as 123</span><br></pre></td></tr></table></figure>
-<p>也可以使用下面的分开输出的方法</p>
-<p>调用 <code>println(char[] data)</code> 方法:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">String letters = &quot;ABC&quot;;</span><br><span class="line">       char[] numbers = &#123;&apos;1&apos;, &apos;2&apos;, &apos;3&apos;&#125;;</span><br><span class="line">       System.out.print(letters + &quot; easy as &quot;);</span><br><span class="line">       System.out.println(numbers);</span><br></pre></td></tr></table></figure>
-<p><strong><em>总结</em></strong></p>
-<blockquote>
-<p> char arrays are not strings. To convert a  char array to astring, invoke  String.valueOf(char[]) .char</p>
-<p> 数组不是字符串。 要将char数组转换为字符串，请调用String.valueOf（char []）。</p>
-</blockquote>
-<h3 id="Puzzle-14-Escape-Rout"><a href="#Puzzle-14-Escape-Rout" class="headerlink" title="Puzzle 14 Escape Rout"></a>Puzzle 14 Escape Rout</h3><p>这里实际上是使用 Unicode 标识 ASCII 字符</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(<span class="string">"a\u0022.length() + \u0022b"</span>.length());</span><br></pre></td></tr></table></figure>
-<p>打印结果是 2</p>
-<p>等同于</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(&quot;a&quot;.length() + &quot;b&quot;.length());</span><br></pre></td></tr></table></figure>
-<p>使用转义之后，即可打印字符串的长度</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(&quot;a\&quot;.length() + \&quot;b&quot;.length());</span><br><span class="line">// 16</span><br></pre></td></tr></table></figure>
-<p><strong><em>结论</em></strong></p>
-<blockquote>
-<p>In summary, prefer escape sequences to Unicode escapes in string and character literals. </p>
-<p>总之，相对于字符串和字符文字中的Unicode转义，更喜欢转义序列。</p>
-<p>Do not use Unicode escapes to represent ASCII characters. </p>
-<p>不要使用Unicode转义符表示ASCII字符。</p>
-</blockquote>
-<h3 id="Puzzle-20-What’s-My-Class"><a href="#Puzzle-20-What’s-My-Class" class="headerlink" title="Puzzle 20 What’s My Class?"></a>Puzzle 20 What’s My Class?</h3><p>下面的代码是将字符串中的所有点号转换成斜杠</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(MyTest.class.getName());</span><br><span class="line">        System.out.println(</span><br><span class="line">                MyTest.class.getName().replaceAll(<span class="string">"."</span>, <span class="string">"/"</span>) + <span class="string">".class"</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p>最后打印的结果是</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">com.bruceliu.algorithms.puzzles.MyTest</span><br><span class="line">//////////////////////////////////////.class</span><br></pre></td></tr></table></figure>
-<p>出现这个结果的原因是 <code>replaceAll()</code>方法的第一个参数是一个<code>正则表达式</code>(<code>regular expression</code>)，而不是一个字符串序列</p>
-<blockquote>
-<p>正则表达式“。” 匹配任何单个字符，因此类名的每个字符都用斜杠替换，产生我们看到的输出。</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">    System.out.println(MyTest.class.getName());</span><br><span class="line">    System.out.println(</span><br><span class="line">                MyTest.class.getName().replaceAll(&quot;\\.&quot;, &quot;/&quot;) + &quot;.class&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>自 <code>JAVA 1.5</code> 开始，也可以使用以下代码</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(MyTest.class.getName().</span><br><span class="line">           replaceAll(Pattern.quote(<span class="string">"."</span>), <span class="string">"/"</span>) + <span class="string">".class"</span>);</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>要仅匹配句点字符，正则表达式中的句点必须通过在其前面加上反斜杠（\）进行转义。 因为反斜杠字符在字符串文字中有特殊含义-它开始一个转义序列-后面的斜杠本身必须用第二个反斜杠转义。</p>
-</blockquote>
-<h3 id="Puzzle-21"><a href="#Puzzle-21" class="headerlink" title="Puzzle: 21"></a>Puzzle: 21</h3><p>执行下面的代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(MeToo.class.getName().replaceAll(&quot;\\.&quot;, File.separator) + &quot;.class&quot;);</span><br></pre></td></tr></table></figure>
-<p>这段代码在 <code>windows</code> 平台会报错</p>
-<p><code>File.separator</code> 在 <code>windows</code> 平台是反斜杠 <code>backslash</code>,反斜杠会对其之后的字符进行转义。而在上面的例子中，反斜杠后面没有其他字符了，所以第二个参数是一个无效的输入。</p>
-<p>自 <code>java 1.5</code> 之后有两种方法解决这个问题，方法一：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(MyTest.class.getName().replaceAll(&quot;\\.&quot;, Matcher.quoteReplacement(File.separator))+ &quot;.class&quot;);</span><br></pre></td></tr></table></figure>
-<p>方法二：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(MyTest.class.getName().replace(&quot;.&quot;, File.separator) + &quot;.class&quot;);</span><br><span class="line">注意 replace 方法的第一个参数是 字符序列 而不是正则表达式</span><br></pre></td></tr></table></figure>
-<p>在 <code>java 1.5</code> 之前同样也有解决方法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(MyTest.class.getName().replace(&apos;.&apos;, File.separatorChar) + &quot;.class&quot;);</span><br></pre></td></tr></table></figure>
-<h3 id="Puzzle-23-No-Pain，No-Gain"><a href="#Puzzle-23-No-Pain，No-Gain" class="headerlink" title="Puzzle: 23 No Pain，No Gain."></a>Puzzle: 23 No Pain，No Gain.</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Random;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Rhymes</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Random rnd = <span class="keyword">new</span> Random();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        StringBuffer word = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">switch</span> (rnd.nextInt(<span class="number">2</span>)) &#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">                word = <span class="keyword">new</span> StringBuffer(’P’);</span><br><span class="line">            <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">                word = <span class="keyword">new</span> StringBuffer(’G’);</span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">                word = <span class="keyword">new</span> StringBuffer(’M’);</span><br><span class="line">        &#125;</span><br><span class="line">        word.append(’a’);</span><br><span class="line">        word.append(’i’);</span><br><span class="line">        word.append(’n’);</span><br><span class="line">        System.out.println(word);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">上面代码的目的是 打印出  Pain,Gain或者Main</span><br><span class="line">但是运行结果是 只打印 `ain`</span><br></pre></td></tr></table></figure>
-<p>有如下三个bug</p>
-<ol>
-<li>rnd.nextInt(2)  的取值范围是[0,2)，2是永远不可能取到的，这里应该改成 rnd.nexInt(3);</li>
-<li><code>switch</code> 语句没有 <code>break</code>，应该给每一个分支增加 break;</li>
-<li><code>new StringBuffer(char)</code> 实际调用的是 <code>new StringBuffer(int capacity)</code>,即给 <code>StringBuffer</code> 初始化大小，并不是 <code>new StingBuffer(String str)</code> 初始化字符串</li>
-</ol>
-<p>可以进行如下的修改</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Random;</span><br><span class="line"></span><br><span class="line">public class Rhymes &#123;</span><br><span class="line">    private static Random rnd = new Random();</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        StringBuffer word = null;</span><br><span class="line">        switch (rnd.nextInt(3)) &#123;</span><br><span class="line">            case 1:</span><br><span class="line">                word = new StringBuffer(&quot;P&quot;);</span><br><span class="line">                break;</span><br><span class="line">            case 2:</span><br><span class="line">                word = new StringBuffer(&quot;G&quot;);</span><br><span class="line">                break;</span><br><span class="line">            default:</span><br><span class="line">                word = new StringBuffer(&quot;M&quot;);</span><br><span class="line">                break;</span><br><span class="line">        &#125;</span><br><span class="line">        word.append(&apos;a&apos;);</span><br><span class="line">        word.append(&apos;i&apos;);</span><br><span class="line">        word.append(&apos;n&apos;);</span><br><span class="line">        System.out.println(word);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这个代码还可以写得更加优雅</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(&quot;PGM&quot;.charAt(rnd.nextInt(3)) + &quot;ain&quot;);</span><br></pre></td></tr></table></figure>
-<h2 id="第四章-Loopy-Puzzlers"><a href="#第四章-Loopy-Puzzlers" class="headerlink" title="第四章 Loopy Puzzlers"></a>第四章 Loopy Puzzlers</h2><h3 id="Puzzle-24-A-Big-Delight-in-Every-Byte"><a href="#Puzzle-24-A-Big-Delight-in-Every-Byte" class="headerlink" title="Puzzle 24: A Big Delight in Every Byte"></a>Puzzle 24: A Big Delight in Every Byte</h3>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-       
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/27/ElasticsSearch基础/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bruce Liu">
-      <meta itemprop="description" content="Bruce Liu个人站，主要涉及前端知识共享、实践教程、前沿技术共同学习等方面">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Bruce Liu's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2020/05/27/ElasticsSearch基础/" class="post-title-link" itemprop="http://yoursite.com/index.html">ElasticsSearch例子</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2020-05-27 14:46:17 / 修改时间：15:18:57" itemprop="dateCreated datePublished" datetime="2020-05-27T14:46:17+08:00">2020-05-27</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h2><p>原始数据结构如下</p>
-<p>这是一个银行账户的索引</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"state"</span>:<span class="string">"open"</span>,</span><br><span class="line">    <span class="attr">"settings"</span>:&#123;</span><br><span class="line">        <span class="attr">"index"</span>:&#123;</span><br><span class="line">            <span class="attr">"creation_date"</span>:<span class="string">"1590560065840"</span>,</span><br><span class="line">            <span class="attr">"number_of_shards"</span>:<span class="string">"1"</span>,</span><br><span class="line">            <span class="attr">"number_of_replicas"</span>:<span class="string">"1"</span>,</span><br><span class="line">            <span class="attr">"uuid"</span>:<span class="string">"qJ2GvjkCTXG5hkL-puXqQA"</span>,</span><br><span class="line">            <span class="attr">"version"</span>:&#123;</span><br><span class="line">                <span class="attr">"created"</span>:<span class="string">"7070099"</span></span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="attr">"provided_name"</span>:<span class="string">"bank"</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"mappings"</span>:&#123;</span><br><span class="line">        <span class="attr">"_doc"</span>:&#123;</span><br><span class="line">            <span class="attr">"properties"</span>:&#123;</span><br><span class="line">                <span class="attr">"account_number"</span>:&#123;</span><br><span class="line">                    <span class="attr">"type"</span>:<span class="string">"long"</span></span><br><span class="line">                &#125;,</span><br><span class="line">                <span class="attr">"firstname"</span>:&#123;</span><br><span class="line">                    <span class="attr">"type"</span>:<span class="string">"text"</span>,</span><br><span class="line">                    <span class="attr">"fields"</span>:&#123;</span><br><span class="line">                        <span class="attr">"keyword"</span>:&#123;</span><br><span class="line">                            <span class="attr">"ignore_above"</span>:<span class="number">256</span>,</span><br><span class="line">                            <span class="attr">"type"</span>:<span class="string">"keyword"</span></span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;,</span><br><span class="line">                <span class="attr">"address"</span>:&#123;</span><br><span class="line">                    <span class="attr">"type"</span>:<span class="string">"text"</span>,</span><br><span class="line">                    <span class="attr">"fields"</span>:&#123;</span><br><span class="line">                        <span class="attr">"keyword"</span>:&#123;</span><br><span class="line">                            <span class="attr">"ignore_above"</span>:<span class="number">256</span>,</span><br><span class="line">                            <span class="attr">"type"</span>:<span class="string">"keyword"</span></span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;,</span><br><span class="line">                <span class="attr">"balance"</span>:&#123;</span><br><span class="line">                    <span class="attr">"type"</span>:<span class="string">"long"</span></span><br><span class="line">                &#125;,</span><br><span class="line">                <span class="attr">"gender"</span>:&#123;</span><br><span class="line">                    <span class="attr">"type"</span>:<span class="string">"text"</span>,</span><br><span class="line">                    <span class="attr">"fields"</span>:&#123;</span><br><span class="line">                        <span class="attr">"keyword"</span>:&#123;</span><br><span class="line">                            <span class="attr">"ignore_above"</span>:<span class="number">256</span>,</span><br><span class="line">                            <span class="attr">"type"</span>:<span class="string">"keyword"</span></span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;,</span><br><span class="line">                <span class="attr">"city"</span>:&#123;</span><br><span class="line">                    <span class="attr">"type"</span>:<span class="string">"text"</span>,</span><br><span class="line">                    <span class="attr">"fields"</span>:&#123;</span><br><span class="line">                        <span class="attr">"keyword"</span>:&#123;</span><br><span class="line">                            <span class="attr">"ignore_above"</span>:<span class="number">256</span>,</span><br><span class="line">                            <span class="attr">"type"</span>:<span class="string">"keyword"</span></span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;,</span><br><span class="line">                <span class="attr">"employer"</span>:&#123;</span><br><span class="line">                    <span class="attr">"type"</span>:<span class="string">"text"</span>,</span><br><span class="line">                    <span class="attr">"fields"</span>:&#123;</span><br><span class="line">                        <span class="attr">"keyword"</span>:&#123;</span><br><span class="line">                            <span class="attr">"ignore_above"</span>:<span class="number">256</span>,</span><br><span class="line">                            <span class="attr">"type"</span>:<span class="string">"keyword"</span></span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;,</span><br><span class="line">                <span class="attr">"state"</span>:&#123;</span><br><span class="line">                    <span class="attr">"type"</span>:<span class="string">"text"</span>,</span><br><span class="line">                    <span class="attr">"fields"</span>:&#123;</span><br><span class="line">                        <span class="attr">"keyword"</span>:&#123;</span><br><span class="line">                            <span class="attr">"ignore_above"</span>:<span class="number">256</span>,</span><br><span class="line">                            <span class="attr">"type"</span>:<span class="string">"keyword"</span></span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;,</span><br><span class="line">                <span class="attr">"age"</span>:&#123;</span><br><span class="line">                    <span class="attr">"type"</span>:<span class="string">"long"</span></span><br><span class="line">                &#125;,</span><br><span class="line">                <span class="attr">"email"</span>:&#123;</span><br><span class="line">                    <span class="attr">"type"</span>:<span class="string">"text"</span>,</span><br><span class="line">                    <span class="attr">"fields"</span>:&#123;</span><br><span class="line">                        <span class="attr">"keyword"</span>:&#123;</span><br><span class="line">                            <span class="attr">"ignore_above"</span>:<span class="number">256</span>,</span><br><span class="line">                            <span class="attr">"type"</span>:<span class="string">"keyword"</span></span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;,</span><br><span class="line">                <span class="attr">"lastname"</span>:&#123;</span><br><span class="line">                    <span class="attr">"type"</span>:<span class="string">"text"</span>,</span><br><span class="line">                    <span class="attr">"fields"</span>:&#123;</span><br><span class="line">                        <span class="attr">"keyword"</span>:&#123;</span><br><span class="line">                            <span class="attr">"ignore_above"</span>:<span class="number">256</span>,</span><br><span class="line">                            <span class="attr">"type"</span>:<span class="string">"keyword"</span></span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"aliases"</span>:[</span><br><span class="line"></span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">"primary_terms"</span>:&#123;</span><br><span class="line">        <span class="attr">"0"</span>:<span class="number">1</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"in_sync_allocations"</span>:&#123;</span><br><span class="line">        <span class="attr">"0"</span>:[</span><br><span class="line">            <span class="string">"0xyG_6vxQ2WWQ6Z0lGVFBQ"</span></span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol>
-<li><p>查询所有账户，并按账户号码升序排序</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">GET /bank/_search</span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">"query"</span>: &#123; <span class="attr">"match_all"</span>: &#123;&#125; &#125;,</span><br><span class="line">  <span class="attr">"sort"</span>: [</span><br><span class="line">    &#123; <span class="attr">"account_number"</span>: <span class="string">"asc"</span> &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>默认情况下，返回 <code>10</code> 条数据，可以通过指定 <code>size</code> 参数来改变返回的最大数量</p>
-</li>
-<li><p>分页查询</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">GET /bank/_search</span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">"query"</span>: &#123; <span class="attr">"match_all"</span>: &#123;&#125; &#125;,</span><br><span class="line">  <span class="attr">"sort"</span>: [</span><br><span class="line">    &#123; <span class="attr">"account_number"</span>: <span class="string">"asc"</span> &#125;</span><br><span class="line">  ],</span><br><span class="line">  <span class="attr">"from"</span>: <span class="number">10</span>,</span><br><span class="line">  <span class="attr">"size"</span>: <span class="number">10</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>模糊匹配</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">GET /bank/_search</span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">"query"</span>: &#123; </span><br><span class="line">      <span class="attr">"match"</span>: &#123; <span class="attr">"address"</span>: <span class="string">"mill lane"</span> &#125; </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>返回地址中包含 <code>mill</code> 和 <code>lane</code> 的记录</p>
-</li>
-<li><p>复合查询</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">GET /bank/_search</span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">"query"</span>: &#123;</span><br><span class="line">    <span class="attr">"bool"</span>: &#123;</span><br><span class="line">      <span class="attr">"must"</span>: [</span><br><span class="line">        &#123; <span class="attr">"match"</span>: &#123; <span class="attr">"age"</span>: <span class="string">"40"</span> &#125; &#125;</span><br><span class="line">      ],</span><br><span class="line">      <span class="attr">"must_not"</span>: [</span><br><span class="line">        &#123; <span class="attr">"match"</span>: &#123; <span class="attr">"state"</span>: <span class="string">"ID"</span> &#125; &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>返回所有年龄在 <code>40</code> 岁，但是没有居住在 <code>ID</code> (爱荷华州)</p>
-<p>注意 <code>must</code> 、<code>should</code> 会影响评分</p>
-<p><code>must_not</code> 不会影响评分</p>
-</li>
-<li><p>范围查询</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">GET /bank/_search</span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">"query"</span>: &#123;</span><br><span class="line">    <span class="attr">"bool"</span>: &#123;</span><br><span class="line">      <span class="attr">"must"</span>: &#123; <span class="attr">"match_all"</span>: &#123;&#125; &#125;,</span><br><span class="line">      <span class="attr">"filter"</span>: &#123;</span><br><span class="line">        <span class="attr">"range"</span>: &#123;</span><br><span class="line">          <span class="attr">"balance"</span>: &#123;</span><br><span class="line">            <span class="attr">"gte"</span>: <span class="number">20000</span>,</span><br><span class="line">            <span class="attr">"lte"</span>: <span class="number">30000</span></span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>查询出工资在 <code>[20000,30000]</code> 的数据</p>
-</li>
-<li><p>查出每个州的账户数量</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">GET /bank/_search</span><br><span class="line">&#123;</span><br><span class="line">  &quot;size&quot;: 0,</span><br><span class="line">  &quot;aggs&quot;: &#123;</span><br><span class="line">    &quot;group_by_state&quot;: &#123;</span><br><span class="line">      &quot;terms&quot;: &#123;</span><br><span class="line">        &quot;field&quot;: &quot;state.keyword&quot;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>返回结果如下</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"took"</span>: <span class="number">29</span>,</span><br><span class="line">  <span class="attr">"timed_out"</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="attr">"_shards"</span>: &#123;</span><br><span class="line">    <span class="attr">"total"</span>: <span class="number">5</span>,</span><br><span class="line">    <span class="attr">"successful"</span>: <span class="number">5</span>,</span><br><span class="line">    <span class="attr">"skipped"</span> : <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"failed"</span>: <span class="number">0</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"hits"</span> : &#123;</span><br><span class="line">     <span class="attr">"total"</span> : &#123;</span><br><span class="line">        <span class="attr">"value"</span>: <span class="number">1000</span>,</span><br><span class="line">        <span class="attr">"relation"</span>: <span class="string">"eq"</span></span><br><span class="line">     &#125;,</span><br><span class="line">    <span class="attr">"max_score"</span> : <span class="literal">null</span>,</span><br><span class="line">    <span class="attr">"hits"</span> : [ ]</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"aggregations"</span> : &#123;</span><br><span class="line">    <span class="attr">"group_by_state"</span> : &#123;</span><br><span class="line">      <span class="attr">"doc_count_error_upper_bound"</span>: <span class="number">20</span>,</span><br><span class="line">      <span class="attr">"sum_other_doc_count"</span>: <span class="number">770</span>,</span><br><span class="line">      <span class="attr">"buckets"</span> : [ &#123;</span><br><span class="line">        <span class="attr">"key"</span> : <span class="string">"ID"</span>,</span><br><span class="line">        <span class="attr">"doc_count"</span> : <span class="number">27</span></span><br><span class="line">      &#125;, &#123;</span><br><span class="line">        <span class="attr">"key"</span> : <span class="string">"TX"</span>,</span><br><span class="line">        <span class="attr">"doc_count"</span> : <span class="number">27</span></span><br><span class="line">      &#125;, &#123;</span><br><span class="line">        <span class="attr">"key"</span> : <span class="string">"AL"</span>,</span><br><span class="line">        <span class="attr">"doc_count"</span> : <span class="number">25</span></span><br><span class="line">      &#125;, &#123;</span><br><span class="line">        <span class="attr">"key"</span> : <span class="string">"MD"</span>,</span><br><span class="line">        <span class="attr">"doc_count"</span> : <span class="number">25</span></span><br><span class="line">      &#125;, &#123;</span><br><span class="line">        <span class="attr">"key"</span> : <span class="string">"TN"</span>,</span><br><span class="line">        <span class="attr">"doc_count"</span> : <span class="number">23</span></span><br><span class="line">      &#125;, &#123;</span><br><span class="line">        <span class="attr">"key"</span> : <span class="string">"MA"</span>,</span><br><span class="line">        <span class="attr">"doc_count"</span> : <span class="number">21</span></span><br><span class="line">      &#125;, &#123;</span><br><span class="line">        <span class="attr">"key"</span> : <span class="string">"NC"</span>,</span><br><span class="line">        <span class="attr">"doc_count"</span> : <span class="number">21</span></span><br><span class="line">      &#125;, &#123;</span><br><span class="line">        <span class="attr">"key"</span> : <span class="string">"ND"</span>,</span><br><span class="line">        <span class="attr">"doc_count"</span> : <span class="number">21</span></span><br><span class="line">      &#125;, &#123;</span><br><span class="line">        <span class="attr">"key"</span> : <span class="string">"ME"</span>,</span><br><span class="line">        <span class="attr">"doc_count"</span> : <span class="number">20</span></span><br><span class="line">      &#125;, &#123;</span><br><span class="line">        <span class="attr">"key"</span> : <span class="string">"MO"</span>,</span><br><span class="line">        <span class="attr">"doc_count"</span> : <span class="number">20</span></span><br><span class="line">      &#125; ]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>由于查询的时候指定 <code>size=0</code>，所以 <code>hits</code> 字段长度为 <code>0</code>。</p>
-</li>
-<li><p>返回每个州的的账户数量，以及平均工资</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">GET /bank/_search</span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">"size"</span>: <span class="number">0</span>,</span><br><span class="line">  <span class="attr">"aggs"</span>: &#123;</span><br><span class="line">    <span class="attr">"group_by_state"</span>: &#123;</span><br><span class="line">      <span class="attr">"terms"</span>: &#123;</span><br><span class="line">        <span class="attr">"field"</span>: <span class="string">"state.keyword"</span></span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="attr">"aggs"</span>: &#123;</span><br><span class="line">        <span class="attr">"average_balance"</span>: &#123;</span><br><span class="line">          <span class="attr">"avg"</span>: &#123;</span><br><span class="line">            <span class="attr">"field"</span>: <span class="string">"balance"</span></span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>指定已平均工资降序排序</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">GET /bank/_search</span><br><span class="line">&#123;</span><br><span class="line">  &quot;size&quot;: 0,</span><br><span class="line">  &quot;aggs&quot;: &#123;</span><br><span class="line">    &quot;group_by_state&quot;: &#123;</span><br><span class="line">      &quot;terms&quot;: &#123;</span><br><span class="line">        &quot;field&quot;: &quot;state.keyword&quot;,</span><br><span class="line">        &quot;order&quot;: &#123;</span><br><span class="line">          &quot;average_balance&quot;: &quot;desc&quot;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      &quot;aggs&quot;: &#123;</span><br><span class="line">        &quot;average_balance&quot;: &#123;</span><br><span class="line">          &quot;avg&quot;: &#123;</span><br><span class="line">            &quot;field&quot;: &quot;balance&quot;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-       
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2084,7 +2074,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">44</span>
+                    <span class="site-state-item-count">46</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
